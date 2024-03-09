@@ -1,0 +1,701 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:customcontrol="clr-namespace:Maham.CustomControl"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Maham.Views.PriortiesView">
+    <Grid RowSpacing="0" Padding="5">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <customcontrol:RoundedView  Grid.Column="0"
+                                    Grid.Row="0"
+                                     Margin="5"
+                        BackgroundColor="{StaticResource WhiteColor}"
+                       BorderRadius="10"
+                      BorderColor="{StaticResource grey5}"
+                       BorderThickness="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="0.9*"/>
+                </Grid.ColumnDefinitions>
+                <customcontrol:RoundedView  Grid.Column="0"
+                                      WidthRequest="1"
+                                             BorderRadius="10"
+                                            BorderThickness="2"
+                                            Padding="0"
+                                        BackgroundColor="{StaticResource orange}"
+                                       />
+                <StackLayout Grid.Column="1" Padding="0">
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="0,6,0,0"
+                           HorizontalTextAlignment="Center"
+                           Text="CRITICAL"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource drakgrey}"/>
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="2"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource orange}"/>
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="0,-5,0,0"
+                           HorizontalTextAlignment="Center"
+                           Text="Tasks"
+                           FontSize="16"
+                           TextColor="{StaticResource orange}"/>
+                    <customcontrol:RoundedView
+                         Margin="10,3,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="Didnt start"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="35,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView
+                         Margin="10,3,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="In Progress"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="28,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView
+                         Margin="10,3,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="Returned"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="42,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView
+                         Margin="10,3,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="Completed"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="30,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView
+                         Margin="10,5,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="Delayed"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="45,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+
+                </StackLayout>
+            </Grid>
+        </customcontrol:RoundedView>
+        <customcontrol:RoundedView  Grid.Column="1"
+                                    Grid.Row="0"
+                                     Margin="5"
+                       BorderColor="{StaticResource lightgrey2}"
+               BackgroundColor="{StaticResource WhiteColor}"
+                   BorderRadius="10"
+                    BorderThickness="3">
+            <Grid Padding="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="0.9*"/>
+                </Grid.ColumnDefinitions>
+                <customcontrol:RoundedView  Grid.Column="0"
+                                      WidthRequest="1"
+                                             BorderRadius="10"
+                                            BorderThickness="2"
+                                        BackgroundColor="{StaticResource lightorange}"
+                                       />
+                <StackLayout Grid.Column="1" Padding="0">
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="0,6,0,0"
+                           HorizontalTextAlignment="Center"
+                           Text="HIGH"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource drakgrey}"/>
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="2"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource lightorange}"/>
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="0,-5,0,0"
+                           HorizontalTextAlignment="Center"
+                           Text="Tasks"
+                           FontSize="16"
+                           TextColor="{StaticResource lightorange}"/>
+                    <customcontrol:RoundedView
+                         Margin="10,3,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="Didnt start"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="35,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView
+                         Margin="10,3,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="In Progress"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="28,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView
+                         Margin="10,3,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="Returned"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="42,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView
+                         Margin="10,3,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="Completed"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="30,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView
+                         Margin="10,5,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="Delayed"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="45,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+
+                </StackLayout>
+            </Grid>
+        </customcontrol:RoundedView>
+        <customcontrol:RoundedView  Grid.Column="0"
+                                    Grid.Row="1"
+                                     Margin="5"
+               BackgroundColor="{StaticResource WhiteColor}"
+                   BorderRadius="10"
+                BorderColor="{StaticResource lightgrey2}"
+                    BorderThickness="3">
+            <Grid Padding="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="0.9*"/>
+                </Grid.ColumnDefinitions>
+                <customcontrol:RoundedView  Grid.Column="0"
+                                      WidthRequest="1"
+                                             BorderRadius="10"
+                                            BorderThickness="2"
+                                        BackgroundColor="{StaticResource lightblue2}"
+                                       />
+                <StackLayout Grid.Column="1" Padding="0">
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="0,6,0,0"
+                           HorizontalTextAlignment="Center"
+                           Text="NORMAL"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource drakgrey}"/>
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="2"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource lightblue2}"/>
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="0,-5,0,0"
+                           HorizontalTextAlignment="Center"
+                           Text="Tasks"
+                           FontSize="16"
+                           TextColor="{StaticResource lightblue2}"/>
+                    <customcontrol:RoundedView
+                         Margin="10,3,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="Didnt start"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="35,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView
+                         Margin="10,3,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="In Progress"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="28,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView
+                         Margin="10,3,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="Returned"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="42,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView
+                         Margin="10,3,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="Completed"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="30,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView
+                         Margin="10,5,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="Delayed"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="45,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+
+                </StackLayout>
+            </Grid>
+        </customcontrol:RoundedView>
+        <customcontrol:RoundedView  Grid.Column="1"
+                                    Grid.Row="1"
+                                    Margin="5"
+                     BorderColor="{StaticResource lightgrey1 }"
+                         BackgroundColor="{StaticResource WhiteColor}"
+                   BorderRadius="10"
+                    BorderThickness="3">
+            <Grid Padding="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="0.9*"/>
+                </Grid.ColumnDefinitions>
+                <customcontrol:RoundedView  Grid.Column="0"
+                                      WidthRequest="1"
+                                            BorderRadius="10"
+                                            BorderThickness="2"
+                                        BackgroundColor="{StaticResource purple}"
+                                       />
+                <StackLayout Grid.Column="1" Padding="0">
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="0,6,0,0"
+                           HorizontalTextAlignment="Center"
+                           Text="LOW"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource drakgrey}"/>
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="2"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource purple}"/>
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="0,-5,0,0"
+                           HorizontalTextAlignment="Center"
+                           Text="Tasks"
+                           FontSize="16"
+                           TextColor="{StaticResource purple}"/>
+                    <customcontrol:RoundedView
+                         Margin="10,3,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="Didnt start"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="35,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView
+                         Margin="10,3,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="In Progress"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="28,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView
+                         Margin="10,3,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="Returned"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="42,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView
+                         Margin="10,3,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="Completed"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="30,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView
+                         Margin="10,5,10,0"
+                        BorderRadius="10"
+                        HeightRequest="30"
+                        BorderThickness="6"
+                        BorderColor="{StaticResource lightgrey1}">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="Delayed"
+                           FontSize="15"
+                                   Margin="5,0,0,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                            <Label HorizontalOptions="End"
+                            VerticalTextAlignment="Center"
+                               Margin="45,0,5,0"
+                           HorizontalTextAlignment="Center"
+                           Text="1 task"
+                           FontSize="13"
+                           TextColor="{StaticResource grey4}"/>
+
+                        </StackLayout>
+                    </customcontrol:RoundedView>
+
+                </StackLayout>
+            </Grid>
+        </customcontrol:RoundedView>
+    </Grid>
+   
+  
+</ContentPage>

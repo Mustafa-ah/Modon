@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:customcontrol="clr-namespace:Maham.CustomControl"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:transalte="clr-namespace:Maham.Helpers"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="Maham.Views.ExistClientPage">
+    <ScrollView>
+        <Grid RowSpacing="0" BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            <Grid  Grid.Row="0">
+                <Image Source="Group13" Aspect="AspectFill" />
+                <Image HorizontalOptions="StartAndExpand" VerticalOptions="Start"
+                   Source="arrowleft"
+                   HeightRequest="30"
+                   Margin="5,15,5,6"
+                         Aspect="AspectFit"
+                   WidthRequest="30">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NaviagtionBackCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+            <StackLayout BackgroundColor="White" Grid.Row="1" Margin="10,0,10,0" VerticalOptions="Center">
+                <customcontrol:RoundedView BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                       BorderColor="{StaticResource lightblue1}"
+                                       WidthRequest="100"
+                                      HorizontalOptions="Start"
+                                   BackgroundColor="{StaticResource lightblue1}"
+                                       Margin="27,0,27,0"
+                                       BorderThickness="1">
+                    <Label Text="{transalte:Translate exisrcodeTitle}" 
+                           TextColor="White"
+                        HeightRequest="35"
+                           FontSize="16"
+                          HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           />
+                </customcontrol:RoundedView>
+                <customcontrol:RoundedView  BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                                  Margin="20,-16,20,0"
+                                                 BorderThickness="1" 
+                                                HeightRequest="53"
+                                                 BorderColor="{StaticResource lightblue1}">
+                    <StackLayout Orientation="Horizontal" Spacing="0" Padding="0" >
+                        <Image Source="code" 
+                                                Margin="5,5,5,5"
+                                                HeightRequest="20"
+                                                WidthRequest="20"/>
+                        <customcontrol:CustomEntry 
+                     Text="{Binding code}"
+                     Placeholder="{transalte:Translate existcoetext}"
+                        Margin="0,8,0,0"
+                        ReturnType="Done"
+                    HorizontalOptions="FillAndExpand"        
+                    TextColor="{StaticResource drakgrey}"
+                      
+                   HorizontalTextAlignment="Start"
+                        VerticalOptions="Center"
+                        HeightRequest="50"/>
+
+                    </StackLayout>
+                </customcontrol:RoundedView>
+
+                <Button BorderRadius="{x:OnPlatform iOS='5',Android='7'}"
+                            Text="{transalte:Translate existcodebtn}"
+                            TextColor="White"
+                            Margin="20,20,20,0" 
+                            HeightRequest="50"
+                          Command="{Binding SubmitCodeCommand}"
+                            BackgroundColor="#69CAF1"/>
+            </StackLayout>
+            <Image Grid.Row="2"
+                      Source="waves"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="End"
+                       Aspect="AspectFill"/>
+            <StackLayout Margin="0"
+                         Padding="0"
+                         Spacing="5"
+                             Grid.RowSpan="3"
+                           BackgroundColor="{StaticResource IndicatorBackground}"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         IsVisible="{Binding isbusy}">
+                <StackLayout Margin="0"
+                             Padding="0"
+                             Spacing="5"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand">
+
+                    <ActivityIndicator Color="#69CAF1"
+                                       WidthRequest="40"
+                                       Margin="0"
+                                       HeightRequest="40"
+                                       IsRunning="True"
+                                       IsVisible="True"/>
+                    <Label Text="{transalte:Translate indicatorloadingtext}"
+                           FontSize="12"
+                           Margin="0"
+                           TextColor="#fefefe"
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="Center"
+                           />
+                </StackLayout>
+            </StackLayout>
+            <customcontrol:DisconnectedView IsVisible="{Binding NotConnected}"
+                                    Grid.Row="2"
+                                    Text="{Binding NotConnectedMsg}"/>
+        </Grid>
+    </ScrollView>
+   
+</ContentPage>

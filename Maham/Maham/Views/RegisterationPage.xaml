@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:customcontrol="clr-namespace:Maham.CustomControl"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:transalte="clr-namespace:Maham.Helpers"
+             x:Class="Maham.Views.RegisterationPage">
+    <AbsoluteLayout VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand">
+        
+            <Grid RowSpacing="0" BackgroundColor="Yellow" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="0.7*"/>
+                </Grid.RowDefinitions>
+                <Grid  Grid.Row="0" >
+
+                    <Image Source="Group13"  Aspect="AspectFill" />
+                    <Image Source="arrowleft"
+                   Grid.Row="0"
+                   Margin="5,19,0,0"
+                  
+                   HorizontalOptions="Start"
+                   VerticalOptions="Start"
+                   HeightRequest="30"
+                      
+                   WidthRequest="30">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+            <ScrollView Grid.Row="1" x:Name="RootScroll">
+                <Grid 
+                  BackgroundColor="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.9*"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" Margin="30,20,30,0">
+
+                        <customcontrol:RoundedView   BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                       BorderColor="#69CAF1"
+                                       WidthRequest="100"
+                                      HorizontalOptions="Start"
+                                   BackgroundColor="{StaticResource lightblue1}"
+                                       Margin="10,0,0,0"
+                                       BorderThickness="3">
+                            <Label Text="{transalte:Translate UserName}" 
+                           TextColor="White"
+                        HeightRequest="35"
+                           FontSize="16"
+                          HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           />
+                        </customcontrol:RoundedView>
+                        <customcontrol:RoundedView    BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                                  Margin="0,-10,0,0"
+                                                 BorderThickness="3" 
+                                                HeightRequest="53"
+                                                 BorderColor="{StaticResource lightblue1}">
+                            <StackLayout Orientation="Horizontal" Spacing="0" Padding="0">
+                                <Image Source="name" 
+                                                Margin="10,0,10,0"
+                                                HeightRequest="25"
+                                                WidthRequest="25"/>
+                                <customcontrol:CustomEntry 
+                      x:Name="username" ReturnType="Next"
+                        Margin="0,8,0,0"
+                    HorizontalOptions="FillAndExpand"        
+                    TextColor="{StaticResource drakgrey}"
+                       Text="{Binding UserName}"
+                   HorizontalTextAlignment="Start"
+                        VerticalOptions="Center"
+                        HeightRequest="50"/>
+
+                            </StackLayout>
+                        </customcontrol:RoundedView>
+
+                        <customcontrol:RoundedView   BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                       BorderColor="{StaticResource lightblue1}"
+                                       WidthRequest="100"
+                                      HorizontalOptions="Start"
+                                           
+                                   BackgroundColor="{StaticResource lightblue1}"
+                                       Margin="10,0,0,0"
+                                       BorderThickness="3">
+                            <Label Text="{transalte:Translate Email}" 
+                           TextColor="White"
+                        HeightRequest="35"
+                           FontSize="16"
+                          HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           />
+                        </customcontrol:RoundedView>
+                        <customcontrol:RoundedView    BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                                  Margin="0,-10,0,0"
+                                                 BorderThickness="3" 
+                                                HeightRequest="53"
+                                                 BorderColor="{StaticResource lightblue1}">
+                            <StackLayout Orientation="Horizontal" Spacing="0" Padding="0">
+                                <Image Source="email" 
+                                                Margin="10,0,10,0"
+                                                HeightRequest="25"
+                                                WidthRequest="25"/>
+                                <customcontrol:CustomEntry 
+                        x:Name="email" ReturnType="Next"
+                              Margin="0,8,0,0"
+                     HorizontalTextAlignment="Start"
+                        VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"        
+                    TextColor="{StaticResource drakgrey}"
+                         Text="{Binding Email}"
+                        HeightRequest="50"/>
+                            </StackLayout>
+                        </customcontrol:RoundedView>
+
+                        <customcontrol:RoundedView
+                           BorderColor="{StaticResource lightgrey2}"
+                           BorderThickness="1" 
+                          BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                    HeightRequest="53"
+                           Margin="0,25,0,0"
+                           Padding="1">
+
+
+                            <StackLayout Orientation="Horizontal" >
+                                <Image Source="password" 
+                                                Margin="10,0,0,0"
+                                                HeightRequest="25"
+                                                WidthRequest="25"/>
+                                <customcontrol:CustomEntry  
+                       FlowDirection="LeftToRight"
+                            x:Name="password1"
+                          HeightRequest="50" 
+                                IsPassword="True"
+                              Margin="-2,8,0,0"
+                           Text="{Binding Password}"
+                       Placeholder="{transalte:Translate passwordtext}"
+                            VerticalOptions="Center"
+                            HorizontalTextAlignment="Start"
+                            HorizontalOptions="FillAndExpand"
+                        PlaceholderColor="{StaticResource lightgrey2}"/>
+
+
+                                <StackLayout 
+                                     HorizontalOptions="End"
+                            Margin="0,0,10,0"
+                                         Orientation="Horizontal">
+                                    <Image Source="show"
+                                   x:Name="showimage"
+                                       HeightRequest="25"
+                                       WidthRequest="25"/>
+                                    <Label Text="{transalte:Translate showtext}" x:Name="showlabel"
+                                       TextColor="{StaticResource lightgrey2}"
+                                         FontSize="14"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Center"
+                                       >
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+
+                                </StackLayout>
+                            </StackLayout>
+                        </customcontrol:RoundedView>
+                        <StackLayout Orientation="Horizontal" x:Name="CheckAgree">
+                            <!--<Image Source="{Binding CheckImage}"
+                           HeightRequest="30"
+                           Margin="0,18,0,0"
+                           WidthRequest="30">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AgreeCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>-->
+                            <customcontrol:CheckBoxControl 
+                         x:Name="check"
+                        HeightRequest="30"
+                           Margin="0,18,0,0"
+                             ImageChecked="blueCheckedbox"
+                               ImageUncheck="unchecked"
+                           WidthRequest="30"
+                            Checked="{Binding isagree}">
+                                <customcontrol:CheckBoxControl.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding AgreeCommand}" 
+                                                   BindingContext="{Binding Source={x:Reference CheckAgree}, Path=BindingContext}" 
+                                                  CommandParameter="{Binding Source={x:Reference check},Path=BindingContext}"/>
+                                </customcontrol:CheckBoxControl.GestureRecognizers>
+                            </customcontrol:CheckBoxControl>
+                            <Label  Margin="10,15,10,0"
+                            HorizontalOptions="Center" 
+                            VerticalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{transalte:Translate Iagree}" FontSize="16"  TextColor="{StaticResource drakgrey}"/>
+                                        <Span Text="{transalte:Translate TremsAndConditions}" FontSize="16" TextDecorations="Underline" LineHeight="20"  TextColor="{StaticResource lightblue1}">
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer  />
+                                            </Span.GestureRecognizers>
+                                        </Span>
+
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <Button   BorderRadius="{x:OnPlatform iOS='5',Android='7'}"
+                            Text="{transalte:Translate SignUp}" 
+                        Command="{Binding RegisterCommand}"
+                            TextColor="White"
+                            Margin="0,15,0,0"
+                            HeightRequest="50"
+                            BackgroundColor="{StaticResource lightblue1}"/>
+
+
+
+
+                    </StackLayout>
+                    <Image Grid.Row="1"
+                      Source="waves"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="End"
+                       Aspect="AspectFill"/>
+                </Grid>
+            </ScrollView>
+            <StackLayout Margin="0"
+                         Padding="0"
+                         Spacing="5"
+                             Grid.RowSpan="2"
+                           BackgroundColor="{StaticResource IndicatorBackground}"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         IsVisible="{Binding IsBusy}">
+                    <StackLayout Margin="0"
+                             Padding="0"
+                             Spacing="5"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand">
+
+                        <ActivityIndicator Color="#69CAF1"
+                                       WidthRequest="40"
+                                       Margin="0"
+                                       HeightRequest="40"
+                                       IsRunning="True"
+                                       IsVisible="True"/>
+                        <Label Text="{transalte:Translate indicatorloadingtext}"
+                           FontSize="12"
+                           Margin="0"
+                           TextColor="#fefefe"
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="Center"
+                           />
+                    </StackLayout>
+                </StackLayout>
+               
+            </Grid>
+       
+        
+        <customcontrol:DisconnectedView IsVisible="{Binding NotConnected}"
+                                    AbsoluteLayout.LayoutFlags="All" 
+                                    AbsoluteLayout.LayoutBounds="0, 1, 1, 0.1"
+                                    Text="{Binding NotConnectedMsg}"/>
+    </AbsoluteLayout>
+</ContentPage>

@@ -1,0 +1,1032 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             x:Class="Maham.Views.FillterPopup"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+              xmlns:TreeView="clr-namespace:Syncfusion.XForms.TreeView;assembly=Syncfusion.SfTreeView.XForms"
+             xmlns:SfButtons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:TreeViewEngine="clr-namespace:Syncfusion.TreeView.Engine;assembly=Syncfusion.SfTreeView.XForms"
+                xmlns:models="clr-namespace:Maham.Models"
+            xmlns:effect="clr-namespace:Maham.Effects"
+             xmlns:behaviors="clr-namespace:Maham.Behaviors"
+             xmlns:transalte="clr-namespace:Maham.Helpers"
+             xmlns:customcontrol="clr-namespace:Maham.CustomControl"
+                 xmlns:convert="clr-namespace:Maham.Converters">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Center"
+            PositionOut="Center" 
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+
+     <pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <convert:AlignmentConverter x:Key="Align"/>
+            <convert:BoolToImageConverter x:Key="CheckBool"/>
+            <convert:Switcher x:Key="switch"/>
+            <convert:ToShortDateStringConverter x:Key="ToShortDateString"/>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>
+
+    <Frame CornerRadius="10"
+           HeightRequest="20"
+           HasShadow="False" 
+            Margin="20,50,20,100"
+           BorderColor="{StaticResource lightgrey1}"
+           OutlineColor="{StaticResource lightgrey1}">
+        <StackLayout>
+            
+
+            <!--.........................................header...............................-->
+            <StackLayout Orientation="Horizontal">
+                <Label Text="{transalte:Translate filiterpoptitile}" 
+                   TextColor="{StaticResource drakgrey}"
+                        
+                       FontSize="21"   
+                       HorizontalOptions="StartAndExpand"
+                       Margin="5,0,5,0"/>
+                <Image Source="closeblue"
+                       HeightRequest="25"
+                       WidthRequest="25"
+                       HorizontalOptions="End">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CloseCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+
+            <BoxView HeightRequest="1" 
+                         HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource lightgrey2}"/>
+            <ScrollView Padding="0" 
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand">
+                <AbsoluteLayout>
+                    <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                        <!--......................................priority...........................................-->
+                        <StackLayout Margin="10,10,10,0" >
+
+                            <Label Text="{transalte:Translate prioritytext}" 
+                                              FontSize="16"  
+                                              TextColor="{StaticResource drakgrey2}"/>
+                            <customcontrol:RoundedView 
+                                            BorderColor="{StaticResource lightgrey2}"
+                                            BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                           BorderThickness="1"
+                                      BackgroundColor="White"
+                                        HeightRequest="50">
+                                <Grid Padding="0"   Margin="20,0,20,0" x:Name="gridpriority">
+
+                                    <Grid.ColumnDefinitions>
+
+                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="0.2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Orientation="Horizontal" Grid.Column="0">
+
+                                        <Label  
+                        Text="{Binding priorityname}" 
+                  
+                            VerticalTextAlignment="Center"
+                          HorizontalTextAlignment="Start"
+                            FontSize="14" 
+                            HorizontalOptions="StartAndExpand"
+                            TextColor="{StaticResource lightblue2}"
+                          
+                            HeightRequest="30"/>
+                                    </StackLayout>
+                                    <StackLayout  Grid.Column="1"
+                                              Margin="0,15,0,10" 
+                                              HorizontalOptions="FillAndExpand">
+                                        <customcontrol:CheckBoxMiniControl 
+                                HeightRequest="20"
+                                 WidthRequest="20"
+                                  HorizontalOptions="End"
+                            x:Name="arrowcheckdprioritity"
+                              Checked="{Binding arrowprioritycheck}"
+                           ImageUncheck="arrowdownkey"
+                          ImageChecked="ExpandArrowUp">
+
+                                            <customcontrol:CheckBoxMiniControl.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding TogglePriorityCommand}"
+                                                        BindingContext="{Binding Source={x:Reference gridpriority}, Path=BindingContext}" 
+                                                              CommandParameter="{Binding Source={x:Reference arrowcheckdprioritity},Path=BindingContext}"/>
+                                            </customcontrol:CheckBoxMiniControl.GestureRecognizers>
+                                        </customcontrol:CheckBoxMiniControl>
+                                    </StackLayout>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding TogglePriorityCommand}"
+                                                          CommandParameter="1"/>
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </customcontrol:RoundedView>
+                            <ActivityIndicator HorizontalOptions="Center" IsRunning="True" IsVisible="{Binding IsLoadingPriority}"/>
+                            <customcontrol:RoundedView  
+                      BackgroundColor="{StaticResource WhiteColor2}"
+                                            BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                           BorderThickness="1"
+                     BorderColor="{StaticResource lightgrey2}"
+                     IsVisible="{Binding prioritylist,Mode=TwoWay}">
+                                <ListView x:Name="prioritylist"
+                      HasUnevenRows="False"   
+                          HeightRequest="{Binding PriortyListHeight}"
+                      SeparatorVisibility="None"
+                             
+                      ItemsSource="{Binding PriorityDataList}">
+                                    <ListView.Behaviors>
+                                        <behaviors:DisableListItemSelectionBehavior />
+                                    </ListView.Behaviors>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Grid Padding="0" x:Name="gridpriority" >
+                                                    <Grid.GestureRecognizers>
+
+                                                        <TapGestureRecognizer
+                                                Command="{Binding CheckPriorityCommand}"
+                                                 BindingContext="{Binding Source={x:Reference prioritylist}, Path=BindingContext}" 
+                                                              CommandParameter="{Binding Source={x:Reference gridpriority},Path=BindingContext}"/>
+                                                    </Grid.GestureRecognizers>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto"/>
+
+                                                        <ColumnDefinition Width="auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                      <Image Grid.Column="0"  HeightRequest="20"  Grid.Row="0"
+                                                           WidthRequest="20" Margin="5,20,5,0" Source="{Binding IsChecked,Converter={StaticResource Key=CheckBool}}"/>
+
+                                                    <Label Grid.Column="1"   
+                                            Grid.Row="0"
+                                           Margin="0,20,0,0" FontSize="14"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Start"
+                                               HorizontalOptions="CenterAndExpand"
+                                           Text="{Binding name}" 
+                                                       LineBreakMode="TailTruncation"
+                                                        TextColor="{StaticResource drakgrey}"
+                                           />
+
+
+                                                </Grid>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </customcontrol:RoundedView>
+                        </StackLayout>
+
+                        <!--.................................Status...............................................-->
+                        <StackLayout Margin="10,10,10,0" >
+
+                            <Label Text="{transalte:Translate Statustext}" 
+                                             FontSize="16"  
+                                              TextColor="{StaticResource drakgrey2}"/>
+                            <customcontrol:RoundedView 
+                                            BorderColor="{StaticResource lightgrey2}"
+                                           
+                                           BorderRadius="{x:OnPlatform Android='15',iOS='6'}"
+                                           BorderThickness="1"
+                                      BackgroundColor="White"
+                                        HeightRequest="50">
+                                <Grid Padding="0"   Margin="20,0,20,0" x:Name="gridStatus">
+
+                                    <Grid.ColumnDefinitions>
+
+                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="0.2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Orientation="Horizontal" Grid.Column="0">
+
+                                        <Label  
+                        Text="{Binding Statusname}" 
+                           
+                            VerticalTextAlignment="Center"
+                          HorizontalTextAlignment="Start"
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            TextColor="{StaticResource lightblue2}"
+                          
+                            HeightRequest="30"/>
+                                    </StackLayout>
+                                    <StackLayout  Grid.Column="1"
+                                              Margin="0,15,0,10" 
+                                              HorizontalOptions="FillAndExpand">
+                                        <customcontrol:CheckBoxMiniControl 
+                                HeightRequest="20"
+                                 WidthRequest="20"
+                                  HorizontalOptions="End"
+                            x:Name="arrowcheckdStatus"
+                              Checked="{Binding arrowStatuscheck}"
+                           ImageUncheck="arrowdownkey"
+                          ImageChecked="ExpandArrowUp">
+
+                                            <customcontrol:CheckBoxMiniControl.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ToggleStatusCommand}"
+                                                        BindingContext="{Binding Source={x:Reference gridStatus}, Path=BindingContext}" 
+                                                              CommandParameter="{Binding Source={x:Reference arrowcheckdStatus},Path=BindingContext}"/>
+                                            </customcontrol:CheckBoxMiniControl.GestureRecognizers>
+                                        </customcontrol:CheckBoxMiniControl>
+                                    </StackLayout>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ToggleStatusCommand}"
+                                                          CommandParameter="1"/>
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </customcontrol:RoundedView>
+                            <ActivityIndicator HorizontalOptions="Center" IsRunning="True" IsVisible="{Binding IsLoadingStatus}"/>
+                            <customcontrol:RoundedView  
+                      BackgroundColor="{StaticResource WhiteColor2}"
+                                             BorderRadius="{x:OnPlatform Android='15',iOS='6'}"
+                                           BorderThickness="1"
+                     BorderColor="{StaticResource lightgrey2}"
+                     IsVisible="{Binding Statuslist,Mode=TwoWay}">
+                                <ListView x:Name="Statuslist"
+                      HasUnevenRows="False"   
+                          HeightRequest="{Binding StatusListHeight}"
+                      SeparatorVisibility="None"
+                             
+                      ItemsSource="{Binding StatusDataList}">
+                                    <ListView.Behaviors>
+                                        <behaviors:DisableListItemSelectionBehavior />
+                                    </ListView.Behaviors>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Grid Padding="0" x:Name="gridStatus" >
+                                                    <Grid.GestureRecognizers>
+
+                                                        <TapGestureRecognizer
+                                                Command="{Binding CheckStatusCommand}"
+                                                 BindingContext="{Binding Source={x:Reference Statuslist}, Path=BindingContext}" 
+                                                              CommandParameter="{Binding Source={x:Reference gridStatus},Path=BindingContext}"/>
+                                                    </Grid.GestureRecognizers>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto"/>
+
+                                                        <ColumnDefinition Width="auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+
+                                                    <Image Grid.Column="0"  HeightRequest="20"  Grid.Row="0"
+                                                           WidthRequest="20" Margin="5,20,5,0" Source="{Binding IsChecked,Converter={StaticResource Key=CheckBool}}"/>
+
+                                                    <Label Grid.Column="1"   
+                                            Grid.Row="0"
+                                           Margin="0,20,0,0" FontSize="14"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Start"
+                                               HorizontalOptions="CenterAndExpand"
+                                                       LineBreakMode="TailTruncation"
+                                           Text="{Binding name}" 
+                                           TextColor="{StaticResource drakgrey}"/>
+
+
+                                                </Grid>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </customcontrol:RoundedView>
+                        </StackLayout>
+
+                          <!--.................................Sector...............................................-->
+                        <StackLayout Margin="10,10,10,0" IsVisible="{Binding IsDashboardFilter}">
+
+                            <Label Text="{Binding SectorOrDepartmentString}" 
+                                             FontSize="16"  
+                                              TextColor="{StaticResource drakgrey2}"/>
+
+                            <customcontrol:RoundedView 
+                                            BorderColor="{StaticResource lightgrey2}"
+                                            BorderRadius="{x:OnPlatform Android='15',iOS='6'}"
+                                           BorderThickness="1"
+                                      BackgroundColor="White"
+                                        HeightRequest="50">
+                                <Grid Padding="0"   Margin="20,0,20,0" x:Name="SectorStatus">
+
+                                    <Grid.ColumnDefinitions>
+
+                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="0.2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Orientation="Horizontal" Grid.Column="0">
+
+                                        <Label  
+                        Text="{Binding Sectorname}" 
+                           
+                            VerticalTextAlignment="Center"
+                          HorizontalTextAlignment="Start"
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            TextColor="{StaticResource lightblue2}"/>
+
+                                    </StackLayout>
+                                    <StackLayout  Grid.Column="1"
+                                              Margin="0,15,0,10" 
+                                              HorizontalOptions="FillAndExpand">
+                                        <customcontrol:CheckBoxMiniControl 
+                                HeightRequest="20"
+                                 WidthRequest="20"
+                                  HorizontalOptions="End"
+                            x:Name="arrowcheckdSector"
+                              Checked="{Binding arrowSectorcheck}"
+                           ImageUncheck="arrowdownkey"
+                          ImageChecked="ExpandArrowUp">
+
+                                            <customcontrol:CheckBoxMiniControl.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ToggleSectorCommand}"
+                                                        BindingContext="{Binding Source={x:Reference SectorStatus}, Path=BindingContext}" 
+                                                              CommandParameter="{Binding Source={x:Reference arrowcheckdSector},Path=BindingContext}"/>
+                                            </customcontrol:CheckBoxMiniControl.GestureRecognizers>
+                                        </customcontrol:CheckBoxMiniControl>
+                                    </StackLayout>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ToggleSectorCommand}"
+                                                          CommandParameter="1"/>
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </customcontrol:RoundedView>
+                            <customcontrol:RoundedView  
+                      BackgroundColor="{StaticResource WhiteColor2}"
+                                             BorderRadius="{x:OnPlatform Android='15',iOS='6'}"
+                                           BorderThickness="1"
+                     BorderColor="{StaticResource lightgrey2}"
+                     IsVisible="{Binding Sectorlist, Mode=TwoWay}">
+                                <ListView x:Name="Sectorlist"
+                      HasUnevenRows="False"   
+                          HeightRequest="{Binding SectorListHeight}"
+                      SeparatorVisibility="None"
+                             
+                      ItemsSource="{Binding SectorsDataList}">
+                                    <ListView.Behaviors>
+                                        <behaviors:DisableListItemSelectionBehavior />
+                                    </ListView.Behaviors>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Grid Padding="0" x:Name="SectStatus" >
+                                                    <Grid.GestureRecognizers>
+
+                                                        <TapGestureRecognizer
+                                                Command="{Binding CheckSectorCommand}"
+                                                 BindingContext="{Binding Source={x:Reference Sectorlist}, Path=BindingContext}" 
+                                                              CommandParameter="{Binding Source={x:Reference SectStatus},Path=BindingContext}"/>
+                                                    </Grid.GestureRecognizers>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto"/>
+
+                                                        <ColumnDefinition Width="auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Image Grid.Column="0"  HeightRequest="20"  Grid.Row="0"
+                                                           WidthRequest="20" Margin="5,20,5,0" Source="{Binding IsChecked,Converter={StaticResource Key=CheckBool}}"/>
+
+                                                    <Label Grid.Column="1"   
+                                            Grid.Row="0"
+                                           Margin="0,20,0,0" FontSize="14"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Start"
+                                                       LineBreakMode="TailTruncation"
+                                               HorizontalOptions="CenterAndExpand"
+                                           Text="{Binding name}" 
+                                           TextColor="{StaticResource drakgrey}"/>
+
+
+                                                </Grid>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </customcontrol:RoundedView>
+                        </StackLayout>
+
+                         <!--.................................Entities...............................................-->
+                        <StackLayout Margin="10,10,10,0" IsVisible="{Binding IsDashboardFilter, Converter={StaticResource Key=switch}}">
+                            
+                            <Label Text="{transalte:Translate BusinessUnit}" 
+                                             FontSize="16"  
+                                              TextColor="{StaticResource drakgrey2}"/>
+
+                            <customcontrol:RoundedView 
+                                            BorderColor="{StaticResource lightgrey2}"
+                                            BorderRadius="{x:OnPlatform Android='15',iOS='6'}"
+                                           BorderThickness="1"
+                                      BackgroundColor="White"
+                                        HeightRequest="50">
+                                <Grid Padding="0"   Margin="20,0,20,0" x:Name="EntitiesGrid">
+
+                                    <Grid.ColumnDefinitions>
+
+                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="0.2*"/>
+                                    </Grid.ColumnDefinitions>
+                                     
+                                     <Label  Grid.Column="0" 
+                                                Text="{Binding Sectorname}" 
+                                             VerticalTextAlignment="Center"
+                                                  HorizontalTextAlignment="Start"
+                                                    FontSize="14"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    TextColor="{StaticResource lightblue2}"/>
+                                    <ScrollView Orientation="Horizontal"  Grid.Column="0">
+                                        <StackLayout Orientation="Horizontal" x:Name="listViewEntittes"
+                                                     Padding="5,10,5,10"
+                                                     BindableLayout.ItemsSource="{Binding CheckedEntitiesUI}">
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Frame BackgroundColor="#EEEEEE" Padding="2" CornerRadius="10" x:Name="entityFrame">
+                                                        <Frame.HasShadow>
+                                                            <OnPlatform x:TypeArguments="x:Boolean">
+                                                                <On Platform="Android" Value="True"/>
+                                                                <On Platform="UWP" Value="True"/>
+                                                                <On Platform="iOS,macOS" Value="False"/>
+                                                            </OnPlatform>
+                                                        </Frame.HasShadow>
+                                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                            <Label Grid.Row="1" Text="{Binding Text}"
+                                                                   LineBreakMode="WordWrap"
+                                                                   FontSize="Micro"
+                                                                   HorizontalTextAlignment="Start"
+                                                                   VerticalTextAlignment="Center"
+                                                                   TextColor="Black" 
+                                                                   Margin="5,0,5,0"/>
+                                                            <Image WidthRequest="40" Source="close">
+                                                                <Image.GestureRecognizers>
+                                                                      <TapGestureRecognizer
+                                                                            Command="{Binding RemoveEntityCommand}"
+                                                                             BindingContext="{Binding Source={x:Reference listViewEntittes}, Path=BindingContext}" 
+                                                                                          CommandParameter="{Binding Source={x:Reference entityFrame},Path=BindingContext}"/>
+                                                                </Image.GestureRecognizers>
+                                                            </Image>
+                                                         </StackLayout>
+                                                    </Frame>
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </StackLayout>
+                                    </ScrollView>
+                                    
+                                    <StackLayout  Grid.Column="1"
+                                              Margin="0,15,0,10" 
+                                              HorizontalOptions="FillAndExpand">
+                                        <customcontrol:CheckBoxMiniControl 
+                                HeightRequest="20"
+                                 WidthRequest="20"
+                                  HorizontalOptions="End"
+                            x:Name="arrowcheckdEntity"
+                              Checked="{Binding arrowSectorcheck}"
+                           ImageUncheck="arrowdownkey"
+                          ImageChecked="ExpandArrowUp">
+
+                                            <customcontrol:CheckBoxMiniControl.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ToggleEntitesCommand}"
+                                                        BindingContext="{Binding Source={x:Reference EntitiesGrid}, Path=BindingContext}" 
+                                                              CommandParameter="{Binding Source={x:Reference arrowcheckdEntity},Path=BindingContext}"/>
+                                            </customcontrol:CheckBoxMiniControl.GestureRecognizers>
+                                        </customcontrol:CheckBoxMiniControl>
+                                    </StackLayout>
+                                    <!--<Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ToggleEntitesCommand}"
+                                                          CommandParameter="1"/>
+                                    </Grid.GestureRecognizers>-->
+                                </Grid>
+                            </customcontrol:RoundedView>
+
+                             <ActivityIndicator HorizontalOptions="Center" IsRunning="True" IsVisible="{Binding Path=IsSectorsLoading}"/>
+
+                            <Entry  Grid.Column="0" IsVisible="{Binding Path=Entitieslist}"
+                                                Text="{Binding SectorSearchWord}" 
+                                                  HorizontalTextAlignment="Start"
+                                                    FontSize="14" Placeholder="search"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    TextColor="{StaticResource lightblue2}">
+                                 <Entry.Behaviors>
+                                     <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding Path=SearchSectorsCommand}"/>
+                                 </Entry.Behaviors>
+                                            <!--<Entry.Effects>
+                                                <effect:EntryEffect/>
+                                            </Entry.Effects>-->
+                                        </Entry>
+                           
+                            <customcontrol:RoundedView  
+                      BackgroundColor="{StaticResource WhiteColor2}"
+                                             BorderRadius="{x:OnPlatform Android='15',iOS='6'}"
+                                           BorderThickness="1"
+                     BorderColor="{StaticResource lightgrey2}"
+                     IsVisible="{Binding Entitieslist, Mode=TwoWay}">
+
+                                 <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <TreeView:SfTreeView x:Name="treeView" FlowDirection="LeftToRight"
+                                     ItemsSource="{Binding Entities}"
+                                     ItemTemplateContextType="Node"
+                                     CheckBoxMode="Recursive"
+                                     AutoExpandMode="AllNodesExpanded"
+                                     CheckedItems="{Binding CheckedEntities}">
+        
+                                    <TreeView:SfTreeView.HierarchyPropertyDescriptors>
+                                        <TreeViewEngine:HierarchyPropertyDescriptor TargetType="{x:Type models:Entity}" ChildPropertyName="Childern"/>
+                                    </TreeView:SfTreeView.HierarchyPropertyDescriptors>
+        
+                                    <TreeView:SfTreeView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <ViewCell.View>
+                                                    <Grid Padding="5" x:Name="entityCheck">
+                                                        <SfButtons:SfCheckBox
+                                                           HorizontalTextAlignment="End"
+                                                        x:Name="CheckBox"
+                                                        Text="{Binding Content.Text}"
+                                                        IsChecked="{Binding IsChecked, Mode=TwoWay}"/>
+                                                         <!--<Grid.GestureRecognizers>
+                                                                        <TapGestureRecognizer
+                                                                Command="{Binding CheckEntityCommand}"
+                                                                 BindingContext="{Binding Source={x:Reference treeView}, Path=BindingContext}" 
+                                                              CommandParameter="{Binding Source={x:Reference entityCheck},Path=BindingContext}"/>
+                                                    </Grid.GestureRecognizers>-->
+                                                    </Grid>
+                                                </ViewCell.View>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </TreeView:SfTreeView.ItemTemplate>
+                                </TreeView:SfTreeView>
+                                     </ScrollView>
+                            </customcontrol:RoundedView>
+                        </StackLayout>
+
+                        <!--.................................Assignee...............................................-->
+                        <StackLayout Margin="10,10,10,0">
+
+                            <Label Text="{transalte:Translate Assigneetext}" 
+                                             FontSize="16"  
+                                              TextColor="{StaticResource drakgrey2}"/>
+
+                            <customcontrol:RoundedView 
+                                            BorderColor="{StaticResource lightgrey2}"
+                                             BorderRadius="{x:OnPlatform Android='15',iOS='6'}"
+                                           BorderThickness="1"
+                                      BackgroundColor="White"
+                                        HeightRequest="50">
+                                <Grid Padding="0"   Margin="20,0,20,0" x:Name="AssigneeGrid">
+
+                                    <Grid.ColumnDefinitions>
+
+                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="0.2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Orientation="Horizontal" Grid.Column="0">
+
+                                        <Label  
+                        Text="{Binding Assigneename}" 
+                           
+                            VerticalTextAlignment="Center"
+                          HorizontalTextAlignment="Start"
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            TextColor="{StaticResource lightblue2}"
+                          
+                            HeightRequest="30"/>
+                                    </StackLayout>
+                                    <StackLayout  Grid.Column="1"
+                                              Margin="0,15,0,10" 
+                                              HorizontalOptions="FillAndExpand">
+                                        <customcontrol:CheckBoxMiniControl 
+                                HeightRequest="20"
+                                 WidthRequest="20"
+                                  HorizontalOptions="End"
+                            x:Name="arrowcheckdAssignee"
+                              Checked="{Binding arrowAssigneecheck}"
+                           ImageUncheck="arrowdownkey"
+                          ImageChecked="ExpandArrowUp">
+
+                                            <customcontrol:CheckBoxMiniControl.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ToggleAssigneeCommand}"
+                                                        BindingContext="{Binding Source={x:Reference AssigneeGrid}, Path=BindingContext}" 
+                                                              CommandParameter="{Binding Source={x:Reference arrowcheckdAssignee},Path=BindingContext}"/>
+                                            </customcontrol:CheckBoxMiniControl.GestureRecognizers>
+                                        </customcontrol:CheckBoxMiniControl>
+                                    </StackLayout>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ToggleAssigneeCommand}"
+                                                          CommandParameter="1"/>
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </customcontrol:RoundedView>
+                            <ActivityIndicator HorizontalOptions="Center" IsRunning="True" IsVisible="{Binding IsLoadingAssignee}"/>
+                            <customcontrol:RoundedView  
+                      BackgroundColor="{StaticResource WhiteColor2}"
+                                           BorderRadius="17"
+                                           BorderThickness="1"
+                     BorderColor="{StaticResource lightgrey2}"
+                     IsVisible="{Binding Assigneelist,Mode=TwoWay}">
+                                <StackLayout>
+                                    <ListView x:Name="listAssignee"
+                      HasUnevenRows="False"   
+                          HeightRequest="{Binding AssigneeListHeight}"
+                      SeparatorVisibility="None"
+                             
+                      ItemsSource="{Binding AssigneeDataList}">
+                                    <ListView.Behaviors>
+                                        <behaviors:DisableListItemSelectionBehavior />
+                                    </ListView.Behaviors>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Grid Padding="0" x:Name="gridAssignee" >
+                                                    <Grid.GestureRecognizers>
+
+                                                        <TapGestureRecognizer
+                                                Command="{Binding CheckAssigneeCommand}"
+                                                 BindingContext="{Binding Source={x:Reference listAssignee}, Path=BindingContext}" 
+                                                              CommandParameter="{Binding Source={x:Reference gridAssignee},Path=BindingContext}"/>
+                                                    </Grid.GestureRecognizers>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto"/>
+
+                                                        <ColumnDefinition Width="auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Image Grid.Row="0"  HeightRequest="20"
+                                                           WidthRequest="20" Margin="5,20,5,0" Source="{Binding IsCheckedemployee,Converter={StaticResource Key=CheckBool}}"/>
+                                                   
+                                                    <Label Grid.Column="1"   
+                                            Grid.Row="0"
+                                           Margin="0,20,0,0" FontSize="14"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Start"
+                                                       LineBreakMode="TailTruncation"
+                                               HorizontalOptions="CenterAndExpand"
+                                           Text="{Binding Text}" 
+                                           TextColor="{StaticResource drakgrey}"/>
+
+
+                                                </Grid>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                                     <Label Text="{transalte:Translate LoadMore}" HeightRequest="40" IsEnabled="{Binding CanLoadMoreAssignee}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   TextColor="{StaticResource lightblue3}">
+                                         <Label.Triggers>
+                                             <Trigger TargetType="Label" Property="IsEnabled" Value="False">
+                                                 <Setter Property="TextColor" Value="{StaticResource textcolorgrey}"/>
+                                             </Trigger>
+                                         </Label.Triggers>
+                                         <Label.GestureRecognizers>
+                                             <TapGestureRecognizer Command="{Binding LoadMoreAssigneeCommand}"/>
+                                         </Label.GestureRecognizers>
+                                     </Label>
+                                </StackLayout>
+                                
+                            </customcontrol:RoundedView>
+                           
+                        </StackLayout>
+
+
+                        <!--.................................Source...............................................-->
+                        <StackLayout Margin="10,10,10,0">
+
+                            <Label Text="{transalte:Translate sourcetext}" 
+                                             FontSize="16"  
+                                              TextColor="{StaticResource drakgrey2}"/>
+
+                            <customcontrol:RoundedView 
+                                            BorderColor="{StaticResource lightgrey2}"
+                                            BorderRadius="{x:OnPlatform Android='15',iOS='6'}"
+                                           BorderThickness="1"
+                                      BackgroundColor="White"
+                                        HeightRequest="50">
+                                <Grid Padding="0"   Margin="20,0,20,0" x:Name="GridSource">
+
+                                    <Grid.ColumnDefinitions>
+
+                                        <ColumnDefinition Width="0.8*"/>
+                                        <ColumnDefinition Width="0.2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Orientation="Horizontal" Grid.Column="0">
+
+                                        <Label  
+                        Text="{Binding Sourcename}" 
+                           
+                            VerticalTextAlignment="Center"
+                          HorizontalTextAlignment="Start"
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            TextColor="{StaticResource lightblue2}"
+                          
+                            HeightRequest="30"/>
+                                    </StackLayout>
+                                    <StackLayout  Grid.Column="1"
+                                              Margin="0,15,0,10" 
+                                              HorizontalOptions="FillAndExpand">
+                                        <customcontrol:CheckBoxMiniControl 
+                                HeightRequest="20"
+                                 WidthRequest="20"
+                                  HorizontalOptions="End"
+                            x:Name="arrowcheckdSource"
+                              Checked="{Binding arrowSourcecheck}"
+                           ImageUncheck="arrowdownkey"
+                          ImageChecked="ExpandArrowUp">
+
+                                            <customcontrol:CheckBoxMiniControl.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ToggleSourceCommand}"
+                                                        BindingContext="{Binding Source={x:Reference GridSource}, Path=BindingContext}" 
+                                                              CommandParameter="{Binding Source={x:Reference arrowcheckdSource},Path=BindingContext}"/>
+                                            </customcontrol:CheckBoxMiniControl.GestureRecognizers>
+                                        </customcontrol:CheckBoxMiniControl>
+                                    </StackLayout>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ToggleSourceCommand}"
+                                                          CommandParameter="1"/>
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </customcontrol:RoundedView>
+                            <ActivityIndicator HorizontalOptions="Center" IsRunning="True" IsVisible="{Binding IsLoadingSource}"/>
+                            <customcontrol:RoundedView  
+                      BackgroundColor="{StaticResource WhiteColor2}"
+                                             BorderRadius="{x:OnPlatform Android='15',iOS='6'}"
+                                           BorderThickness="1"
+                     BorderColor="{StaticResource lightgrey2}"
+                     IsVisible="{Binding Sourcelist, Mode=TwoWay}">
+                                <ListView x:Name="listSource"
+                      HasUnevenRows="False"   
+                          HeightRequest="{Binding SourceListHeight}"
+                      SeparatorVisibility="None"
+                             
+                      ItemsSource="{Binding SourcesDataList}">
+                                    <ListView.Behaviors>
+                                        <behaviors:DisableListItemSelectionBehavior />
+                                    </ListView.Behaviors>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Grid Padding="0" x:Name="gridProj" >
+                                                    <Grid.GestureRecognizers>
+
+                                                        <TapGestureRecognizer
+                                                Command="{Binding CheckSourceCommand}"
+                                                 BindingContext="{Binding Source={x:Reference listSource}, Path=BindingContext}" 
+                                                              CommandParameter="{Binding Source={x:Reference gridProj},Path=BindingContext}"/>
+                                                    </Grid.GestureRecognizers>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto"/>
+
+                                                        <ColumnDefinition Width="auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Image Grid.Column="0"  HeightRequest="20"  Grid.Row="0"
+                                                           WidthRequest="20" Margin="5,20,5,0" Source="{Binding IsChecked,Converter={StaticResource Key=CheckBool}}"/>
+
+                                                   
+                                                    <Label Grid.Column="1"   
+                                            Grid.Row="0"
+                                           Margin="0,20,0,0" FontSize="14"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Start"
+                                                       LineBreakMode="TailTruncation"
+                                               HorizontalOptions="CenterAndExpand"
+                                           Text="{Binding name}" 
+                                           TextColor="{StaticResource drakgrey}"/>
+
+
+                                                </Grid>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </customcontrol:RoundedView>
+                        </StackLayout>
+
+                        <!--.................................SearchTitle...............................................-->
+                        <StackLayout Margin="10,10,10,0"  IsVisible="{Binding IsDashboardFilter,Converter={StaticResource Key=switch}}" >
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{transalte:Translate searchtitletext}" FontSize="16"  TextColor="{StaticResource drakgrey2}"/>
+                            </StackLayout>
+
+                            <customcontrol:RoundedView 
+                                            BorderColor="{StaticResource lightgrey2}"
+                                             BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                           BorderThickness="1"
+                                      BackgroundColor="White"
+                                        HeightRequest="50">
+                                <customcontrol:CustomEntry 
+                        FlowDirection="LeftToRight"
+                                         HorizontalTextAlignment="Start"
+                                           Margin="10,10,10,5"
+                                           HorizontalOptions="FillAndExpand"
+                                           x:Name="TasknameEntry"
+                                           Text="{Binding SearchTitle}"
+                                           Placeholder="{transalte:Translate searchtitleplaceholder}"
+                                           ReturnType="Next"
+                                           PlaceholderColor="{StaticResource lightgrey2}"
+                                           HeightRequest="50">
+
+
+                                </customcontrol:CustomEntry>
+                            </customcontrol:RoundedView>
+                        </StackLayout>
+
+                        <!--...................................start data and end date........................................-->
+                        <Grid   Margin="10,10,10,0" HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Start Date-->
+                            <StackLayout Grid.Row="0" Grid.Column="0">
+                                <Label Text="{transalte:Translate fromtext}" 
+                                   HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center"
+                                              FontSize="16" 
+                                              TextColor="{StaticResource drakgrey2}"/>
+
+
+
+                                <customcontrol:RoundedView 
+                                        BorderColor="{StaticResource lightgrey2}"
+                                             BorderRadius="{x:OnPlatform Android='15',iOS='6'}"
+                                           BorderThickness="1"
+                                      BackgroundColor="White"
+                                        HeightRequest="50">
+                                    <Grid Padding="0"   >
+                                        <!--<Grid.GestureRecognizers> Date="{Binding StartDate}"
+                                            <TapGestureRecognizer Command="{Binding OnSelectStarDateCommand}"/>
+                                        </Grid.GestureRecognizers>-->
+                                        <Grid.ColumnDefinitions>
+
+                                            <ColumnDefinition Width="0.7*"/>
+                                            <ColumnDefinition Width="0.3*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                            <Label     Margin="5,0,0,0" Grid.Column="0"
+                                       HorizontalTextAlignment="Start"  
+                                       VerticalTextAlignment="Center"
+                                        TextColor="{StaticResource lightgrey2}"
+                                       Text="{Binding StartDate,Converter={StaticResource Key=ToShortDateString}}"
+                                        HorizontalOptions="FillAndExpand"/>
+                                           
+
+                                        <StackLayout Grid.Column="1" 
+                                                 Padding="0"
+                                    
+                                                 BackgroundColor="{StaticResource  lightblue4}">
+                                            <Image  
+                                            Aspect="AspectFit"
+                                           Source="calnder"
+                                            Margin="0,15,0,10"   
+                                
+                                           HeightRequest="20"
+                                           WidthRequest="20"/>
+                                        </StackLayout>
+
+                                         <DatePicker   Grid.Column="0"  Margin="5,0,0,0" Grid.ColumnSpan="2"
+                                        TextColor="Transparent"
+                                       Date="{Binding StartDate}"
+                                        HorizontalOptions="FillAndExpand"/>
+
+                                    </Grid>
+                                </customcontrol:RoundedView>
+                            </StackLayout>
+                            <!--End Date-->
+                            <StackLayout Grid.Row="1" Grid.Column="0">
+                                <Label Text="{transalte:Translate totext}" 
+                                   HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center"
+                                   FontSize="16" 
+                                   TextColor="{StaticResource drakgrey2}"/>
+
+
+                                <customcontrol:RoundedView 
+                                        BorderColor="{StaticResource lightgrey2}"
+                                             BorderRadius="{x:OnPlatform Android='15',iOS='6'}"
+                                           BorderThickness="1"
+                                      BackgroundColor="White"
+                                        HeightRequest="50">
+                                    <Grid Padding="0"   >
+                                        <Grid.ColumnDefinitions>
+
+                                            <ColumnDefinition Width="0.7*"/>
+                                            <ColumnDefinition Width="0.3*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Orientation="Horizontal" Grid.Column="0">
+
+                                            <Label     HorizontalTextAlignment="Start"
+                                                   Margin="5,0,0,0"
+                                       VerticalTextAlignment="Center"
+                                        TextColor="{StaticResource lightgrey2}"
+                                       Text="{Binding EndDate,Converter={StaticResource Key=ToShortDateString}}"
+                                       HorizontalOptions="FillAndExpand"/>
+                                        </StackLayout>
+                                       
+                                        <StackLayout Grid.Column="1" 
+                                             Padding="0"
+                                     
+                                             BackgroundColor="{StaticResource  lightblue4}">
+                                            <Image  
+                                                Aspect="AspectFit"
+                                               Source="calnder"
+                               
+                                                  Margin="0,15,0,10"
+                                               HeightRequest="20"
+                                               WidthRequest="20"/>
+
+                                        </StackLayout>
+
+                                         <DatePicker   Grid.Column="0"  Margin="5,0,0,0" Grid.ColumnSpan="2"
+                                        TextColor="Transparent"
+                                       Date="{Binding EndDate}"
+                                        HorizontalOptions="FillAndExpand"/>
+                                    </Grid>
+                                </customcontrol:RoundedView>
+                            </StackLayout>
+                        </Grid>
+
+                    </StackLayout>
+                    <Grid IsVisible="{Binding isBusy}" 
+                         AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout
+                         Padding="0"
+                         Spacing="5"
+                                     Grid.Row="0"
+                           BackgroundColor="{StaticResource IndicatorBackground}"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand">
+                            <StackLayout Margin="0"
+                             Padding="0"
+                             Spacing="5"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand">
+
+                                <ActivityIndicator Color="#69CAF1"
+                                       WidthRequest="40"
+                                       Margin="0"
+                                       HeightRequest="40"
+                                       IsRunning="True"
+                                       IsVisible="True"/>
+                                <Label Text="{transalte:Translate indicatorloadingtext}"
+                           FontSize="12"
+                           Margin="0"
+                           TextColor="#fefefe"
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="Center"
+                           />
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                </AbsoluteLayout>
+            </ScrollView>
+
+            <!--............................................Button filter............................................-->
+            <StackLayout Orientation="Horizontal">
+                <Button Text="{transalte:Translate Filter}" 
+                            
+                             BackgroundColor="{StaticResource lightblue1}"
+                           TextColor="{StaticResource WhiteColor}"
+                          BorderRadius="{x:OnPlatform iOS='6',Android='7'}" 
+                            VerticalOptions="End"
+                             HorizontalOptions="FillAndExpand" 
+                            Margin="10,10,20,0"
+                             BorderColor="Transparent"
+                            Command="{Binding FilterCommand}"/>
+
+                <Image Source="delete"
+                   Margin="5,10,0,0"
+                       HeightRequest="25"
+                       WidthRequest="25">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ClearCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+
+        </StackLayout>
+    </Frame>
+
+</pages:PopupPage>

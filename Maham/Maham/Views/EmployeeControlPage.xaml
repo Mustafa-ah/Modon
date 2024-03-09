@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+      xmlns:customcontrol="clr-namespace:Maham.CustomControl"
+      xmlns:behaviors="clr-namespace:Maham.Behaviors"
+      xmlns:transalte="clr-namespace:Maham.Helpers"
+      xmlns:transformation="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+      x:Class="Maham.Views.EmployeeControlPage"
+         x:Name="RootItem">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="0.2*"/>
+        <RowDefinition Height="0.8*"/>
+        <RowDefinition Height="60"/>
+       
+    </Grid.RowDefinitions>
+
+
+    <StackLayout Grid.Row="0" Margin="10,0,10,0" Padding="0" Spacing="0">
+        <Label Margin="0,0,0,5"   
+                       VerticalOptions="Center" Text="{transalte:Translate assigntotext}" 
+                           TextColor="Gray"
+                       FontSize="18"
+                       
+                       
+                          />
+                   
+
+        <customcontrol:RoundedView  HeightRequest="56"
+                                        BorderColor="{StaticResource lightgrey2}"
+                                           BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                           BorderThickness="1"
+                                      BackgroundColor="White"
+                                        >
+            <Grid Padding="0"   >
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0">
+
+                    <customcontrol:CustomEntry 
+                                PlaceholderColor="{StaticResource lightgrey2}"
+                                HeightRequest="30"
+                                 ReturnType="Next"
+                                HorizontalOptions="FillAndExpand"
+                                x:Name="assignlable"
+                                HorizontalTextAlignment="Start"
+                                  Margin="10,10,10,5"
+                                Text="{Binding Searchtext,Source={x:Reference RootItem}}"
+                                Placeholder="{transalte:Translate enterresponsiblenametext}"/>
+                </StackLayout>
+                <StackLayout Grid.Column="1" 
+                                     Padding="0" 
+                                     BackgroundColor="{StaticResource  lightblue4}">
+                    <Image  
+                            Aspect="AspectFit"
+                           Source="search"
+                            
+                               Margin="0,20,0,10" 
+                           HeightRequest="20"
+                           WidthRequest="20"/>
+
+
+                </StackLayout>
+            </Grid>
+        </customcontrol:RoundedView>
+
+
+
+    </StackLayout>
+    <ListView x:Name="searchlist" Grid.Row="1"
+                      HasUnevenRows="True"    SeparatorVisibility="None"          
+                      ItemsSource="{Binding ListSource,Source={x:Reference RootItem}}">
+        <ListView.Behaviors>
+            <behaviors:DisableListItemSelectionBehavior />
+        </ListView.Behaviors>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid Margin="10" x:Name="searchemp">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ItemCheckedCommand,Source={x:Reference RootItem}}"
+                                                                  BindingContext="{Binding Source={x:Reference searchlist}, Path=BindingContext}" 
+                                                              CommandParameter="{Binding Source={x:Reference searchemp},Path=BindingContext}"/>
+                        </Grid.GestureRecognizers>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <customcontrol:CheckBoxControl Grid.Column="0"
+                                                                       Margin="0,10,0,0"
+                                   Checked="{Binding IsCheckedemployee}"
+                                      x:Name="checkedsearch" 
+                                       ImageUncheck="uncheck"
+                                       ImageChecked="circlechecked"
+                                       HeightRequest="25"
+                                       WidthRequest="25">
+
+                            <customcontrol:CheckBoxControl.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ItemCheckedCommand,Source={x:Reference RootItem}}"
+                                                                BindingContext="{Binding Source={x:Reference searchlist}, Path=BindingContext}" 
+                                                              CommandParameter="{Binding Source={x:Reference checkedsearch},Path=BindingContext}"/>
+                            </customcontrol:CheckBoxControl.GestureRecognizers>
+                        </customcontrol:CheckBoxControl>
+                        <StackLayout Grid.Column="1"  VerticalOptions="Center">
+                            <Label Text="{Binding Text}"
+                                           TextColor="{StaticResource drakgrey2}"
+                                          HorizontalOptions="StartAndExpand" 
+                                           HorizontalTextAlignment="Start"
+                                           VerticalTextAlignment="Center"/>
+                            <!--<Label Text="{Binding Description}"
+                                           TextColor="{StaticResource lightblue3}"
+                                           HorizontalOptions="StartAndExpand"
+                                           HorizontalTextAlignment="Start"
+                                           VerticalTextAlignment="Center"/>-->
+                        </StackLayout>
+
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    <customcontrol:DisconnectedView IsVisible="{Binding NotConnected}"
+                                    Grid.Row="2"
+                                    Text="{Binding NotConnectedMsg}"/>
+</Grid>

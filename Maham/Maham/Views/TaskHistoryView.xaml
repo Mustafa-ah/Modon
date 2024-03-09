@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:customcontrol="clr-namespace:Maham.CustomControl"
+             prism:ViewModelLocator.AutowireViewModel="True"
+               NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="False"
+             xmlns:transalte="clr-namespace:Maham.Helpers"
+             x:Class="Maham.Views.TaskHistoryView">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" x:Name="toolbar"
+                      Margin="0,0,20,0">
+
+            <StackLayout HeightRequest="40" 
+                             WidthRequest="40"
+                             HorizontalOptions="Start">
+                <Image Source="arrowleftgrey" 
+                       Margin="5,0"
+                       Aspect="AspectFit"  VerticalOptions="CenterAndExpand"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BacknavigationCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+
+            <Label Text="{transalte:Translate TaskHistory}"  
+                   
+                   VerticalOptions="CenterAndExpand" 
+                       FontSize="16"
+                       FontAttributes="Bold"
+                   HorizontalOptions="FillAndExpand"
+                   HorizontalTextAlignment="Center"
+                   TextColor="{StaticResource drakgrey}" 
+                   VerticalTextAlignment="Center" />
+        </StackLayout>
+
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" BackgroundColor="#FAFAFA" x:Name="RootStackLayout">
+            <Label Text="{Binding TaskName}"  
+                       FontSize="16"
+                   Margin="25, 0" 
+                       FontAttributes="Bold"
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Start"
+                   TextColor="Black"
+                   VerticalTextAlignment="Center" />
+
+            <AbsoluteLayout  VerticalOptions="FillAndExpand"
+                             HorizontalOptions="FillAndExpand">
+                <ScrollView x:Name="HistoryScroll" 
+                AbsoluteLayout.LayoutFlags="All"
+                     AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+                    
+                </ScrollView>
+            
+
+            <Label IsVisible="{Binding NoHistory}" 
+                           Text="{transalte:Translate NoHistory}"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                          AbsoluteLayout.LayoutFlags="All"
+                     AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                           TextColor="{StaticResource lightblue1}"/>
+
+            <StackLayout Margin="0"
+                         Padding="0"
+                         Spacing="5"
+                         BackgroundColor="{StaticResource IndicatorBackground}"
+                         AbsoluteLayout.LayoutFlags="All"
+                     AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                         IsVisible="{Binding IsBusy}">
+                <StackLayout Margin="0"
+                             Padding="0"
+                             Spacing="5"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand">
+
+                    <ActivityIndicator Color="#69CAF1"
+                                       WidthRequest="40"
+                                       Margin="0"
+                                       HeightRequest="40"
+                                       IsRunning="True"
+                                       IsVisible="True"/>
+                    <Label Text="{transalte:Translate indicatorloadingtext}"
+                           FontSize="12"
+                           Margin="0"
+                           TextColor="#fefefe"
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="Center"
+                           />
+                </StackLayout>
+            </StackLayout>
+
+
+            <customcontrol:DisconnectedView 
+                AbsoluteLayout.LayoutFlags="All"
+                     AbsoluteLayout.LayoutBounds="0, 1, 1, 0.1"
+                Text="{Binding NotConnectedMsg}"
+                IsVisible="{Binding NotConnected}"/>
+        </AbsoluteLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

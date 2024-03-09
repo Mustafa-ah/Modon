@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
+             xmlns:converters="clr-namespace:Maham.Converters"
+             x:Class="Maham.App">
+	<Application.Resources>
+
+		<!-- Application resource dictionary -->
+        <!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Color x:Key="WhiteColor" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#FFFFFF</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="backgroundcolors" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#F1F4F4</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="textcolorgrey" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#99303C56</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="WhiteColor2" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#F9F9F9</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="drakgrey" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#303C56</x:String>
+                </x:Arguments>
+            </Color>
+
+            <Color x:Key="drakgrey2" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#273D52</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="grey4" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#8D9090</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="grey5" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#59E5ECED</x:String>
+                </x:Arguments>
+            </Color>
+
+            <Color x:Key="lightgrey1" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#E5ECED</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="lightblue1" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#69CAF1</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="lightgrey2" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#B7BCBD</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="redcolor" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#D0021B</x:String>
+                </x:Arguments>
+            </Color>
+
+
+
+            <Color x:Key="lightgrey3" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#DBE1E2</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="lightgreen" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#00D6B1</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="orange" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#FF5F2E</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="lightorange" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#FF9700</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="HeaderBackGround" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#5890FF</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="purple" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#B1812BD3</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="lightblue3" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#2196F3</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="lightblue2" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#2196F3</x:String>
+                </x:Arguments>
+            </Color>
+            <!--<Color x:Key="lightblue4" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#0F69CAF1</x:String>
+                </x:Arguments>
+            </Color>-->
+            <Color x:Key="lightblue4" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#0F69CAF1</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="lightgrey4" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#8D9090</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="lightgrey5" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#787993</x:String>
+                </x:Arguments>
+            </Color>
+            
+
+            <Color x:Key="BackgroundGrey" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#F1F4F4</x:String>
+                </x:Arguments>
+            </Color>
+            <Color
+                 x:Key="IndicatorBackground">
+                <x:Arguments>
+                    <x:Double>0</x:Double>
+                    <x:Double>0</x:Double>
+                    <x:Double>0</x:Double>
+                    <x:Double>0.55</x:Double>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="Greenlight1" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#317752</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="darkred" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#B3D0021B</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="Greenlight2" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#44B15C</x:String>
+                </x:Arguments>
+            </Color>
+
+            <Color x:Key="BlueDark" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#085e81</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="GreyLite" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#B7BCBD</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="CriticalColor" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#FF5F2E</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="HighColor" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#FF9700</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="LowColor" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#B1812BD3</x:String>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="NormalColor" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#5890FF</x:String>
+                </x:Arguments>
+            </Color>
+
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="White"></Setter>
+                <Setter Property="BarTextColor" Value="Black"></Setter>
+            </Style>
+            
+            <Style TargetType="Button">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="macOS" Value="The Sans Arabic" />
+                            <On Platform="Android" Value="TheSansArabic.ttf#TheSansArabic" />
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="macOS" Value="The Sans Arabic" />
+                            <On Platform="Android" Value="TheSansArabic.ttf#TheSansArabic" />
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <converters:UriToImageConverter x:Key="UriToImageConverter" />
+        </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>

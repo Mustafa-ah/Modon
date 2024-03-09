@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:transalte="clr-namespace:Maham.Helpers"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="Maham.Views.StarterPage">
+    <Grid RowSpacing="0" BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
+        <Grid  Grid.Row="0">
+            <Image Source="Group13" Aspect="AspectFill" />
+        </Grid>
+        <StackLayout BackgroundColor="White" Grid.Row="1" VerticalOptions="CenterAndExpand">
+            <Button BorderRadius="{x:OnPlatform Android='7',iOS='5'}"
+                            Text="{transalte:Translate existclienttext}"
+                            TextColor="White"
+                            Margin="20,5,20,0"
+                            HeightRequest="50"
+                          Command="{Binding NewClientcommand}"
+                            BackgroundColor="#69CAF1"/>
+            <Button BorderRadius="7"
+                            Text="{transalte:Translate newClientText}"
+                            TextColor="#69CAF1"
+                            Margin="20,5,20,0" BorderWidth="1"
+                            HeightRequest="50" BorderColor="#69CAF1"
+                          Command="{Binding OldClientCommand}"
+                            BackgroundColor="White"/>
+        </StackLayout>
+        <Image Grid.Row="2"
+                      Source="waves"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="End"
+                       Aspect="AspectFill"/>
+    </Grid>
+</ContentPage>

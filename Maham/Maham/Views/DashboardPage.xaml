@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<forms:TopTabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             x:Class="Maham.Views.DashboardPage"
+             xmlns:Views="clr-namespace:Maham.Views"
+                   BarIndicatorColor="#4a9ffa"
+                      x:Name="DashTabs"
+                       BarTextColor="#2699F2"
+           xmlns:forms="clr-namespace:Naxam.Controls.Forms;assembly=Naxam.TopTabbedPage.Forms"
+            CurrentPageChanged="TabbedPage_CurrentPageChanged"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             ItemsSource="{Binding DashboardChildModels}">
+    <!--CurrentPageChanged="TabbedPage_CurrentPageChanged"-->
+
+    <forms:TopTabbedPage.Behaviors>
+        <b:EventToCommandBehavior EventName="CurrentPageChanged" 
+                                      Command="{Binding CurrentPageChangedCommand}"/>
+    </forms:TopTabbedPage.Behaviors>
+    <forms:TopTabbedPage.ItemTemplate>
+        <DataTemplate>
+            <Views:DashboardChildPage Title="{Binding TabName, StringFormat=' {0}'}">
+                <Views:DashboardChildPage.Behaviors>
+                    <b:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"  />
+                </Views:DashboardChildPage.Behaviors>
+            </Views:DashboardChildPage>
+        </DataTemplate>
+    </forms:TopTabbedPage.ItemTemplate>
+</forms:TopTabbedPage>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<forms:TopTabbedPage   xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:CustomControl="clr-namespace:Maham.CustomControl"
+             xmlns:Views="clr-namespace:Maham.Views"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Maham.Views.TasksPage"
+               x:Name="TasksTabs"        
+                      BarIndicatorColor="#4a9ffa"
+                      
+                       BarTextColor="#2699F2"
+           xmlns:forms="clr-namespace:Naxam.Controls.Forms;assembly=Naxam.TopTabbedPage.Forms"
+            CurrentPageChanged="TabbedPage_CurrentPageChanged"
+             xmlns:floating="clr-namespace:SuaveControls.Views;assembly=SuaveControls.FloatingActionButton"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             ItemTemplate="{StaticResource ExtDataTemplateSelector}"
+             ItemsSource="{Binding TaskTabbedPages}">
+
+
+    <forms:TopTabbedPage.Behaviors>
+        <b:EventToCommandBehavior EventName="CurrentPageChanged" 
+                                      Command="{Binding CurrentPageChangedCommand}"
+                                       />
+    </forms:TopTabbedPage.Behaviors>
+    <forms:TopTabbedPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="Priorities">
+                <Views:PrioritiesPage Title="{Binding TabName, StringFormat='  {0}'}">
+                    <Views:PrioritiesPage.Behaviors>
+                        <b:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"  />
+                    </Views:PrioritiesPage.Behaviors>
+                </Views:PrioritiesPage>
+            </DataTemplate>
+            <DataTemplate x:Key="NotPriorities">
+                <Views:NotPrioritiesPage Title="{Binding TabName, StringFormat='  {0}'}">
+                    <Views:NotPrioritiesPage.Behaviors>
+                        <b:EventToCommandBehavior EventName="Appearing" Command="{Binding AppearingCommand}"/>
+                    </Views:NotPrioritiesPage.Behaviors>
+                </Views:NotPrioritiesPage>
+            </DataTemplate>
+            <CustomControl:ExtDataTemplateSelector 
+                x:Key="ExtDataTemplateSelector"
+                Priorities="{StaticResource Priorities}"
+                NotPriorities="{StaticResource NotPriorities}"/>
+        </ResourceDictionary>
+    </forms:TopTabbedPage.Resources>
+    
+</forms:TopTabbedPage>
+

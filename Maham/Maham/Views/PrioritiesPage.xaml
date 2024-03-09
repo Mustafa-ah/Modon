@@ -1,0 +1,944 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:viewModelss="clr-namespace:Maham.ViewModels"
+             xmlns:customcontrol="clr-namespace:Maham.CustomControl"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Maham.Views.PrioritiesPage"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             xmlns:floating="clr-namespace:SuaveControls.Views;assembly=SuaveControls.FloatingActionButton"
+             BackgroundColor="{StaticResource lightgrey1}"
+             xmlns:transalte="clr-namespace:Maham.Helpers"
+             >
+   
+
+    <AbsoluteLayout Padding="0"
+              Margin="0"
+              VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand"
+              BackgroundColor="#FAFAFA">
+
+            <customcontrol:PullToRefreshLayout IsPullToRefreshEnabled="True"
+                                                AbsoluteLayout.LayoutFlags="All"
+                                               Margin="{OnPlatform Android='0,0,0,0', iOS='0,0,0,74'}"
+                     AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                             RefreshCommand="{Binding ViewModel.RefreshCommand}"
+                            IsRefreshing="{Binding ViewModel.IsRefreshing}">
+                <Grid  VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand"
+              RowSpacing="0" Padding="5">
+                    <Grid.RowDefinitions >
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="0.5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <customcontrol:RoundedView  Grid.Column="0"
+                                    Grid.Row="0"
+                                     Margin="3"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                        BackgroundColor="{StaticResource WhiteColor}"
+                       BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                     BorderColor="{StaticResource lightgrey1 }"
+                       BorderThickness="1">
+                        <Grid Margin="0,0,0,3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="0.9*"/>
+                            </Grid.ColumnDefinitions>
+                            <customcontrol:RoundedView  Grid.Column="0"
+                                      WidthRequest="1"
+                                             BorderRadius="10"
+                                            BorderThickness="3"
+                                            Padding="0"
+                                        BackgroundColor="{StaticResource orange}"
+                                       />
+                            <StackLayout Grid.Column="1" Padding="0" Spacing="0">
+                                <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="0,6,0,0"
+                           HorizontalTextAlignment="Center"
+                           Text="{Binding ViewModel.Critical.SectionName}"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource drakgrey}"/>
+                                <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{Binding ViewModel.Critical.TasksCount}"
+                           FontSize="48"
+                           FontFamily="Cairo-Regular"
+                           TextColor="{StaticResource orange}"/>
+                                <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="0,-5,0,0"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="16"
+                           TextColor="{StaticResource orange}"/>
+                                <Grid RowSpacing="0" VerticalOptions="FillAndExpand"
+                          >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+
+                                    <customcontrol:RoundedView
+                       Grid.Row="0"
+                         Margin="10,5,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                        VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate DidnotStarted}"
+                             
+                           FontSize="9.6"
+                           Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                            VerticalTextAlignment="Center"
+                           Text= "{Binding ViewModel.Critical.NotStarted}"
+                           
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                    <customcontrol:RoundedView
+                        Grid.Row="1"
+                         Margin="10,3,10,0"
+                         
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                       VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           
+                           FontSize="9.6"
+                           Text="{transalte:Translate InProgress}"
+                           Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="End"
+                            Text= "{Binding ViewModel.Critical.InProgress}"
+                            
+                            FontSize="8.4"
+                          
+                           TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                    <customcontrol:RoundedView
+                        Grid.Row="2"
+                         Margin="10,3,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                        VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate returnedTask}"
+                            
+                           FontSize="9.6"
+                                   Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text= "{Binding ViewModel.Critical.Returned}"
+                            
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                    <customcontrol:RoundedView
+                        Grid.Row="3"
+                         Margin="10,3,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                       VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate Completed}"
+                           
+                           FontSize="9.6"
+                           Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text= "{Binding ViewModel.Critical.Completed}"
+                           
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                    <customcontrol:RoundedView
+                        Grid.Row="4"
+                         Margin="10,5,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                        VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate Delayed}"
+                           
+                           FontSize="9.6"
+                           Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            Text= "{Binding ViewModel.Critical.Delayed}"
+                            
+                            FontSize="8.4"
+                            TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+
+                                </Grid>
+
+                            </StackLayout>
+                        </Grid>
+                        <customcontrol:RoundedView.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding ViewModel.TapCommand}" CommandParameter="{Binding ViewModel.Critical}"/>
+                        </customcontrol:RoundedView.GestureRecognizers>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView  Grid.Column="1"
+                                    Grid.Row="0"
+                                     Margin="5"
+                     BorderColor="{StaticResource lightgrey1 }"
+               BackgroundColor="{StaticResource WhiteColor}"
+                   BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                    BorderThickness="1">
+                        <Grid  Margin="0,0,0,3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="0.9*"/>
+                            </Grid.ColumnDefinitions>
+                            <customcontrol:RoundedView  Grid.Column="0"
+                                      WidthRequest="1"
+                                             BorderRadius="10"
+                                            BorderThickness="3"
+                                        BackgroundColor="{StaticResource lightorange}"
+                                       />
+                            <StackLayout Grid.Column="1" Padding="0" Spacing="0">
+                                <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="0,6,0,0"
+                           HorizontalTextAlignment="Center"
+                           Text="{Binding ViewModel.High.SectionName}"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource drakgrey}"/>
+                                <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{Binding ViewModel.High.TasksCount}"
+                           FontSize="48"
+                           FontFamily="Cairo-Regular"
+                           TextColor="{StaticResource lightorange}"/>
+                                <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="0,-5,0,0"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="16"
+                           TextColor="{StaticResource lightorange}"/>
+                                <Grid RowSpacing="0" VerticalOptions="FillAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <customcontrol:RoundedView
+                            Grid.Row="0"
+                         Margin="10,5,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                        VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate DidnotStarted}"
+                             
+                           FontSize="9.6"
+                                   Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
+                               Text= "{Binding ViewModel.High.NotStarted}"
+                               
+                               FontSize="8.4"
+                               TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                    <customcontrol:RoundedView
+                            Grid.Row="1"
+                         Margin="10,3,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                      VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate InProgress}"
+                            
+                           FontSize="9.6"
+                                   Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text= "{Binding ViewModel.High.InProgress}"
+                           
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                    <customcontrol:RoundedView
+                            Grid.Row="2"
+                         Margin="10,3,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                        VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate returnedTask}"
+                           
+                           FontSize="9.6"
+                           Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text= "{Binding ViewModel.High.Returned}"
+                           
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                    <customcontrol:RoundedView
+                            Grid.Row="3"
+                         Margin="10,3,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                       VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate Completed}"
+                           
+                           FontSize="9.6"
+                           Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text= "{Binding ViewModel.High.Completed}"
+                            
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                    <customcontrol:RoundedView
+                            Grid.Row="4"
+                         Margin="10,5,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                       VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate Delayed}"
+                             
+                           FontSize="9.6"
+                                   Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text= "{Binding ViewModel.High.Delayed}"
+                           
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                </Grid>
+                            </StackLayout>
+                        </Grid>
+                        <customcontrol:RoundedView.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding ViewModel.TapCommand}" CommandParameter="{Binding ViewModel.High}"/>
+                        </customcontrol:RoundedView.GestureRecognizers>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView  Grid.Column="0"
+                                    Grid.Row="1"
+                                     Margin="5"
+               BackgroundColor="{StaticResource WhiteColor}"
+                   BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+             BorderColor="{StaticResource lightgrey1 }"
+                    BorderThickness="1">
+                        <Grid  Margin="0,0,0,3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="0.9*"/>
+                            </Grid.ColumnDefinitions>
+                            <customcontrol:RoundedView  Grid.Column="0"
+                                      WidthRequest="1"
+                                             BorderRadius="10"
+                                            BorderThickness="3"
+                                        BackgroundColor="{StaticResource lightblue2}"
+                                       />
+                            <StackLayout Grid.Column="1" Padding="0" Spacing="0">
+                                <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="0,6,0,0"
+                           HorizontalTextAlignment="Center"
+                           Text="{Binding ViewModel.Normal.SectionName}"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource drakgrey}"/>
+                                <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{Binding ViewModel.Normal.TasksCount}"
+                           FontSize="48"
+                           FontFamily="Cairo-Regular"
+                           TextColor="{StaticResource lightblue2}"/>
+                                <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="0,-5,0,0"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="16"
+                           TextColor="{StaticResource lightblue2}"/>
+                                <Grid RowSpacing="0" VerticalOptions="FillAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <customcontrol:RoundedView
+                            Grid.Row="0"
+                         Margin="10,5,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                        VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate DidnotStarted}"
+                             
+                           FontSize="9.6"
+                                   Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   Text= "{Binding ViewModel.Normal.NotStarted}"
+                                   
+                                   FontSize="8.4"
+                                   TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                    <customcontrol:RoundedView
+                            Grid.Row="1"
+                         Margin="10,3,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                        VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate InProgress}"
+                             
+                           FontSize="9.6"
+                           Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
+                               Text= "{Binding ViewModel.Normal.InProgress}"
+                               
+                               FontSize="8.4"
+                               TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                    <customcontrol:RoundedView
+                            Grid.Row="2"
+                         Margin="10,3,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                       VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate returnedTask}"
+                             
+                           FontSize="9.6"
+                                   Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
+                               Text= "{Binding ViewModel.Normal.Returned}"
+                               
+                               FontSize="8.4"
+                               TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                    <customcontrol:RoundedView
+                            Grid.Row="3"
+                         Margin="10,3,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                        VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate Completed}"
+                             
+                           FontSize="9.6"
+                                   Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text= "{Binding ViewModel.Normal.Completed}"
+                           
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                    <customcontrol:RoundedView
+                            Grid.Row="4"
+                         Margin="10,5,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                       VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate Delayed}"
+                            
+                           FontSize="9.6"
+                                   Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
+                               Text= "{Binding ViewModel.Normal.Delayed}"
+                               
+                               FontSize="8.4"
+                               TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                </Grid>
+
+                            </StackLayout>
+                        </Grid>
+                        <customcontrol:RoundedView.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding ViewModel.TapCommand}" CommandParameter="{Binding ViewModel.Normal}"/>
+                        </customcontrol:RoundedView.GestureRecognizers>
+                    </customcontrol:RoundedView>
+                    <customcontrol:RoundedView  Grid.Column="1"
+                                    Grid.Row="1"
+                                    Margin="5"
+                   BorderColor="{StaticResource lightgrey1 }"
+                         BackgroundColor="{StaticResource WhiteColor}"
+                   BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                    BorderThickness="1">
+                        <Grid  Margin="0,0,0,3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="0.9*"/>
+                            </Grid.ColumnDefinitions>
+                            <customcontrol:RoundedView  Grid.Column="0"
+                                      WidthRequest="1"
+                                            BorderRadius="10"
+                                            BorderThickness="3"
+                                        BackgroundColor="{StaticResource purple}"
+                                       />
+                            <StackLayout Grid.Column="1" Padding="0" Spacing="0">
+                                <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="0,6,0,0"
+                           HorizontalTextAlignment="Center"
+                           Text="{Binding ViewModel.Low.SectionName}"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource drakgrey}"/>
+                                <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{Binding ViewModel.Low.TasksCount}"
+                           FontSize="48"
+                           FontFamily="Cairo-Regular"
+                           TextColor="{StaticResource purple}"/>
+                                <Label HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="0,-5,0,0"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="16"
+                           TextColor="{StaticResource purple}"/>
+                                <Grid RowSpacing="0" VerticalOptions="FillAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <customcontrol:RoundedView
+                         Grid.Row="0"
+                         Margin="10,5,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                       VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate DidnotStarted}"
+                             
+                           FontSize="9.6"
+                                   Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text= "{Binding ViewModel.Low.NotStarted}"
+                           
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                    <customcontrol:RoundedView
+                            Grid.Row="1"
+                         Margin="10,3,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                        VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate InProgress}"
+                             
+                           FontSize="9.6"
+                                   Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text= "{Binding ViewModel.Low.InProgress}"
+                           
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                    <customcontrol:RoundedView
+                            Grid.Row="2"
+                         Margin="10,3,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                        VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate returnedTask}"
+                             
+                           FontSize="9.6"
+                                   Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text= "{Binding ViewModel.Low.Returned}"
+                           
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                    <customcontrol:RoundedView
+                            Grid.Row="3"
+                         Margin="10,3,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                        VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate Completed}"
+                             
+                           FontSize="9.6"
+                                   Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text= "{Binding ViewModel.Low.Completed}"
+                           
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                    <customcontrol:RoundedView
+                            Grid.Row="4"
+                         Margin="10,5,10,0"
+                        BorderRadius="{x:OnPlatform Android='10',iOS='5'}"
+                        VerticalOptions="FillAndExpand"
+                        BorderThickness="1"
+                        BorderColor="{StaticResource lightgrey1}">
+                                        <StackLayout Orientation="Horizontal" Spacing="1">
+
+                                            <Label HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{transalte:Translate Delayed}"
+                             
+                           FontSize="9.6"
+                                   Margin="5,0,5,0"
+                           TextColor="{StaticResource drakgrey}"/>
+                                            <Label HorizontalOptions="EndAndExpand"
+                            VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text= "{Binding ViewModel.Low.Delayed}"
+                           
+                                   
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                            <Label HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="1,0,5,0"
+                           VerticalTextAlignment="Center"
+                           Text="{transalte:Translate task}"
+                           FontSize="8.4"
+                           TextColor="{StaticResource grey4}"/>
+                                        </StackLayout>
+                                    </customcontrol:RoundedView>
+                                </Grid>
+
+                            </StackLayout>
+                        </Grid>
+                        <customcontrol:RoundedView.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding ViewModel.TapCommand}" CommandParameter="{Binding ViewModel.Low}"/>
+                        </customcontrol:RoundedView.GestureRecognizers>
+                    </customcontrol:RoundedView>
+                </Grid>
+            </customcontrol:PullToRefreshLayout>
+            <customcontrol:DisconnectedView 
+                AbsoluteLayout.LayoutFlags="All"
+                     AbsoluteLayout.LayoutBounds="0, 1, 1, 0.1"
+                Text="{Binding NotConnectedMsg}"
+                IsVisible="{Binding ViewModel.NotConnected}"/>
+        </AbsoluteLayout>
+    
+</ContentPage>

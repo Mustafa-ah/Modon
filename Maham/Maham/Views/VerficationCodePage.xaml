@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:customcontrol="clr-namespace:Maham.CustomControl"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:transalte="clr-namespace:Maham.Helpers"
+             x:Class="Maham.Views.VerficationCodePage">
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.6*"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0"
+               Margin="30,0,30,0"
+               HeightRequest="100"
+               WidthRequest="100"
+               Source="art_verification"
+               />
+        <ScrollView Grid.Row="1" Margin="30,10,30,0">
+            <StackLayout  >
+                <Label VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center" Text="Verification Code" 
+                              TextColor="{StaticResource drakgrey}"
+                              FontSize="20"
+                              FontAttributes="Bold"/>
+                <Label VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center" Text="We sent you a verification code to your E-mail" 
+                              TextColor="{StaticResource lightblue3}"
+                              FontSize="20"
+                           />
+
+                <customcontrol:RoundedView   BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                       BorderColor="{StaticResource lightblue1}"
+                                       WidthRequest="100"
+                                      HorizontalOptions="Start"
+                                   BackgroundColor="{StaticResource lightblue1}"
+                                       Margin="10,0,0,0"
+                                       BorderThickness="5">
+                    <Label Text="Code" 
+                           TextColor="White"
+                        HeightRequest="35"
+                           FontSize="16"
+                          HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           />
+                </customcontrol:RoundedView>
+                <customcontrol:RoundedView    BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                                  Margin="0,-16,0,0"
+                                                 BorderThickness="5" 
+                                                HeightRequest="53"
+                                                 BorderColor="{StaticResource lightblue1}">
+                    <StackLayout Orientation="Horizontal" Spacing="0" Padding="0">
+                        <Image Source="code" 
+                                                Margin="10,5,10,5"
+                                                HeightRequest="22"
+                                                WidthRequest="22"/>
+                        <customcontrol:CustomEntry 
+                      x:Name="username" ReturnType="Next"
+                        Margin="0,8,0,0"
+                    HorizontalOptions="FillAndExpand"        
+                    TextColor="{StaticResource drakgrey}"
+                       Text="{Binding verficationcode}"
+                   HorizontalTextAlignment="Start"
+                        VerticalOptions="Center"
+                        HeightRequest="50"/>
+
+                    </StackLayout>
+                </customcontrol:RoundedView>
+
+                <Button   BorderRadius="{x:OnPlatform iOS='5',Android='7'}"
+                            Text="Submit"
+                            TextColor="White"
+                            Margin="0,15,0,0"
+                            HeightRequest="50"
+                          Command="{Binding SubmitVerificationcodeCommand}"
+                            BackgroundColor="{StaticResource lightblue1}"/>
+                <Label  Margin="10,15,10,0"
+                            HorizontalOptions="Center" 
+                            VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="I didn't receive an e-mail " FontSize="16"  TextColor="{StaticResource drakgrey}"/>
+                            <Span Text=" Send Again!" FontSize="16" TextDecorations="Underline" LineHeight="20"  TextColor="{StaticResource lightblue1}">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SendVerificationcodeCommand}" CommandParameter="{Binding .}" />
+                                </Span.GestureRecognizers>
+                            </Span>
+
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </ScrollView>
+       
+        <StackLayout Margin="0"
+                         Padding="0"
+                         Spacing="5"
+                             Grid.RowSpan="2"
+                           BackgroundColor="{StaticResource IndicatorBackground}"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         IsVisible="{Binding IsBusy}">
+            <StackLayout Margin="0"
+                             Padding="0"
+                             Spacing="5"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand">
+
+                <ActivityIndicator Color="#69CAF1"
+                                       WidthRequest="40"
+                                       Margin="0"
+                                       HeightRequest="40"
+                                       IsRunning="True"
+                                       IsVisible="True"/>
+                <Label Text="{transalte:Translate indicatorloadingtext}"
+                           FontSize="12"
+                           Margin="0"
+                           TextColor="#fefefe"
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="Center"
+                           />
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+</ContentPage>

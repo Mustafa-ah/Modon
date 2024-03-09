@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             NavigationPage.HasNavigationBar="False"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:customcontrol="clr-namespace:Maham.CustomControl"
+             xmlns:transalte="clr-namespace:Maham.Helpers"
+             x:Class="Maham.Views.ProfilePage">
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.6*"/>
+        </Grid.RowDefinitions>
+        <Grid  Grid.Row="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.8*"/>
+
+            </Grid.RowDefinitions>
+            <Image Source="Group13"  Aspect="AspectFill" Grid.RowSpan="2" />
+
+            <Image Source="arrowleftgrey"
+                   Grid.Row="0"
+                   Margin="5,19,0,0"
+                  
+                   HorizontalOptions="Start"
+                   VerticalOptions="Start"
+                   HeightRequest="30"
+                      
+                   WidthRequest="30">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <!--<ffimageloadingsvg:SvgCachedImage
+              Source="edite"
+                   Grid.Row="0"
+                   Margin="0,19,10,0"
+                 HorizontalOptions="End"
+                    IsVisible="{Binding IsEdit}"
+                   HeightRequest="30"
+                      
+                   WidthRequest="30">
+                <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding EditCommand}"/>
+                </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+
+            </ffimageloadingsvg:SvgCachedImage>
+            <ffimageloadingsvg:SvgCachedImage
+              Source="save.svg"
+                IsVisible="{Binding Issaved}"
+                   Grid.Row="0"
+                   Margin="0,19,10,0"
+                 HorizontalOptions="End"
+                  
+                   HeightRequest="30"
+                      
+                   WidthRequest="30">
+                <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SaveCommand}"/>
+                </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+
+            </ffimageloadingsvg:SvgCachedImage>-->
+            <StackLayout  HorizontalOptions="FillAndExpand"
+                          VerticalOptions="FillAndExpand" Grid.Row="1">
+                <Image Source="{Binding MyImage}"
+                                              HeightRequest="100"
+                                              Margin="25,0,0,0"
+                                              WidthRequest="100"/>
+               
+                <!--<customcontrol:RoundedView   
+                HorizontalOptions="Center"
+                             Padding="5"
+                HeightRequest="30"
+                WidthRequest="30"
+                Margin="100,-100,0,0"
+                BorderColor="#69CAF1"
+                BackgroundColor="White"
+            BorderThickness="{x:OnPlatform Android='10',iOS='5'}"
+                BorderRadius="{x:OnPlatform Android='200',iOS='20'}"
+                             VerticalOptions="Center">
+
+                    <ffimageloadingsvg:SvgCachedImage Source="camera" 
+                        
+                        HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           HeightRequest="20"
+                           WidthRequest="20">
+                        <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TakePhoto}"/>
+                        </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                    </ffimageloadingsvg:SvgCachedImage>
+
+                </customcontrol:RoundedView>-->
+              
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center" 
+                         Padding="25"
+                         VerticalOptions="End" Spacing="0"
+                         Grid.Row="1">
+                <Label Text="{Binding name} "
+                           TextColor="White"
+                           FontSize="24"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"/>
+            <!--<Label Text="Role"
+                           TextColor="{StaticResource drakgrey}"
+                           FontSize="24"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"/>-->
+
+            </StackLayout>
+        </Grid>
+        <Grid Grid.Row="1" x:Name="gridemail">
+            <StackLayout Margin="18,10,18,0" Spacing="0">
+                <Label Text="{transalte:Translate fullnametext}"
+                     TextColor="{StaticResource drakgrey}"
+                       HorizontalOptions="Start"
+                       FontSize="15"/>
+                <customcontrol:CustomEntry
+                    Margin="0,0,0,7"
+                    Text="{Binding fullName}"
+                    IsEnabled="{Binding isenabled}"
+                   TextColor="{StaticResource lightblue3}"
+                   FontSize="16"/>
+                <customcontrol:RoundedView 
+                   HeightRequest="2"
+                    Margin="0,-20,0,6"
+                   BackgroundColor="{StaticResource lightgrey5}"
+                   />
+                <Label Text="{transalte:Translate emailtext}"
+                     TextColor="{StaticResource drakgrey}"
+                       HorizontalOptions="Start"
+                       FontSize="15"/>
+                <customcontrol:CustomEntry
+                    Margin="0,0,0,7"
+                    Text="{Binding email}"
+                    IsEnabled="{Binding isenabled}"
+                   TextColor="{StaticResource lightblue3}"
+                   FontSize="16"/>
+                <customcontrol:RoundedView 
+                   HeightRequest="2"
+                    Margin="0,-20,0,6"
+                   BackgroundColor="{StaticResource lightgrey5}"
+                   />
+                <Label Text="{transalte:Translate phonenumbertext}"
+                     TextColor="{StaticResource drakgrey}"
+                       HorizontalOptions="Start"
+                       FontSize="15"/>
+                <customcontrol:CustomEntry
+                    Margin="0,0,0,7"
+                    Text="{Binding phoneNumber}"
+                    IsEnabled="{Binding isenabled}"
+                   TextColor="{StaticResource lightblue3}"
+                   FontSize="16"/>
+                <Label Text="{Binding VersionNumber}"
+                         IsEnabled="False"
+                     TextColor="{StaticResource lightblue3}"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       VerticalTextAlignment="End"
+                       HorizontalTextAlignment="Center"
+                       FontSize="15"/>
+            </StackLayout>
+
+        </Grid>
+        <StackLayout Margin="0"
+                         Padding="0"
+                         Spacing="5"
+                             Grid.RowSpan="2"
+                           BackgroundColor="{StaticResource IndicatorBackground}"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         IsVisible="{Binding IsBusy}">
+            <StackLayout Margin="0"
+                             Padding="0"
+                             Spacing="5"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand">
+
+                <ActivityIndicator Color="#69CAF1"
+                                       WidthRequest="40"
+                                       Margin="0"
+                                       HeightRequest="40"
+                                       IsRunning="True"
+                                       IsVisible="True"/>
+                <Label Text="{transalte:Translate indicatorloadingtext}"
+                           FontSize="12"
+                           Margin="0"
+                           TextColor="#fefefe"
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="Center"
+                           />
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+            <customcontrol:DisconnectedView 
+            VerticalOptions="EndAndExpand"
+                Text="{Binding NotConnectedMsg}"
+                IsVisible="{Binding NotConnected}"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>
+
+    
+    

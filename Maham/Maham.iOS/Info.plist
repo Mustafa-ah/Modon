@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>MinimumOSVersion</key>
+	<string>9.0</string>
+	<key>CFBundleDisplayName</key>
+	<string>Maham</string>
+	<key>CFBundleIdentifier</key>
+	<string>sa.gov.modon.maham</string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
+	<key>UIMainStoryboardFile</key>
+	<string>LaunchScreen</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Maham will use your camera so you can change your profile photo</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Maham will use your gallery to change your profile photo</string>
+	<key>CFBundleName</key>
+	<string>Maham</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.2.1</string>
+	<key>FirebaseAppDelegateProxyEnabled </key>
+	<false/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Maham use your calendar to set task start and end date.</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>ATSApplicationFontsPath</key>
+	<string>Fonts</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Modon need Location access</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Modon need Location access</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Modon need Location access</string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+</dict>
+</plist>

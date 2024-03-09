@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <item name="SelectedTab" type="color">#69CAF1</item>
+  <item name="TabTextColor" type="color">#303C56</item>
+
+  
+</resources>

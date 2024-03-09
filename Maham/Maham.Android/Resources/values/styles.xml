@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+
+  <style name="MainTheme" parent="MainTheme.Base">
+  </style>
+  <!-- Base theme applied no matter what API -->
+  <style name="MainTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
+    <item name="windowNoTitle">true</item>
+    <!--We will be using the toolbar so no need to show ActionBar-->
+    <item name="windowActionBar">false</item>
+    <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette -->
+    <!-- colorPrimary is used for the default action bar background -->
+    <item name="colorPrimary">#69CAF1</item>
+    <!-- colorPrimaryDark is used for the status bar -->
+    <item name="colorPrimaryDark">#69CAF1</item>
+
+    <!-- colorAccent is used as the default value for colorControlActivated
+         which is used to tint widgets -->
+    <item name="colorAccent">#69CAF1</item>
+    <!-- You can also set colorControlNormal, colorControlActivated
+         colorControlHighlight and colorSwitchThumbNormal. -->
+    <item name="windowActionModeOverlay">true</item>
+
+    <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
+  </style>
+
+  <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+    <!--<item name="colorAccent">#FF4081</ite-->m>
+    <item name="colorAccent">#69CAF1</item>
+  </style>
+
+  <style name="Your.TabText.Style" parent="@style/Widget.AppCompat.Light.ActionBar.TabText">
+    <item name="textAllCaps">false</item>
+  </style>
+
+  <style
+         name  ="MainTheme.Splash"
+         parent="Theme.AppCompat.Light.NoActionBar">
+    <item
+        name="android:windowBackground">@drawable/bgsplash</item>
+  </style>
+<style name="tabCustomStyle" parent="Widget.Design.TabLayout">
+            <item name="tabGravity">fill</item>
+            <item name="tabMaxWidth">0dp</item>
+            <item name="tabIndicatorColor">#FFFEEFC4</item>
+            <item name="tabIndicatorHeight">2dp</item>
+            <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
+            <item name="tabSelectedTextColor">@color/ListViewSelected</item>
+        </style>
+
+        <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+            <!--<item name="android:textAppearance">@style/TextAppearance.roboto_medium</item>-->
+            <item name="textAllCaps">true</item>
+        </style>
+        <!--<style name="TextAppearance.roboto_medium" parent="android:TextAppearance">
+            <item name="android:fontFamily">sans-serif-medium</item>
+        </style>-->
+
+ 
+  <style name="MyTheme" parent="@android:style/TextAppearance.Widget.TabWidget">
+    <item name="android:colorPressedHighlight">@color/ListViewSelected</item>
+    <item name="android:colorLongPressedHighlight">@color/ListViewHighlighted</item>
+    <item name="android:colorFocusedHighlight">@color/ListViewSelected</item>
+    <item name="android:colorActivatedHighlight">@color/ListViewSelected</item>
+    <item name="android:activatedBackgroundIndicator">@color/ListViewSelected</item>
+  </style>
+  <color name="ListViewSelected">#69CAF1</color>
+  <color name="ListViewHighlighted">#69CAF1</color>
+  <item name="SelectedTab" type="color">#69CAF1</item>
+
+
+
+</resources>

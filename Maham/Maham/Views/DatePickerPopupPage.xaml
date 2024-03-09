@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                         xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+            xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+            xmlns:customcontrol="clr-namespace:Maham.CustomControl"
+          xmlns:translate="clr-namespace:Maham.Helpers"
+            xmlns:transalte="clr-namespace:Maham.Helpers"
+                 CloseWhenBackgroundIsClicked="True"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                
+                 x:Class="Maham.Views.DatePickerPopupPage">
+     <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Bottom"
+            PositionOut="Bottom"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+    <customcontrol:RoundedView >
+
+            <StackLayout Orientation="Horizontal" VerticalOptions="End" BackgroundColor="White">
+                <DatePicker x:Name="DatePicker"  HorizontalOptions="StartAndExpand" Unfocused="DatePicker_Unfocused" IsVisible="False" IsEnabled="False" DateSelected="DatePicker_DateSelected" />
+                 <Button x:Name="CancelBtn"  TextColor="Red" Text="cancel" Clicked="CancelBtn_Clicked" Margin="10"/>
+                <StackLayout.IsVisible>
+                    <OnPlatform x:TypeArguments="x:Boolean"
+                      iOS="True"
+                      Android="False"/>
+                </StackLayout.IsVisible>
+            </StackLayout>
+
+    </customcontrol:RoundedView>
+</pages:PopupPage>

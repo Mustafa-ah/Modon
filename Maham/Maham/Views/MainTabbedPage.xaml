@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CustomControl:ExtCustomTabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+            xmlns:Views="clr-namespace:Maham.Views"
+            x:Class="Maham.Views.MainTabbedPage"
+            xmlns:CustomControl="clr-namespace:Maham.CustomControl"
+            prism:ViewModelLocator.AutowireViewModel="True"
+            xmlns:contentViews="clr-namespace:Maham.Views.ContentViews"
+            x:Name="page"
+           xmlns:il8n="clr-namespace:Maham.Helpers"
+           xmlns:Converters="clr-namespace:Maham.Converters"
+            CurrentPageChanged="ExtCustomTabbedPage_CurrentPageChanged"
+                                   xmlns:plugin="clr-namespace:Plugin.Badge.Abstractions;assembly=Plugin.Badge.Abstractions" >
+    <CustomControl:ExtCustomTabbedPage.Resources>
+        <ResourceDictionary>
+            <Converters:NotificationCount x:Key="NotificationCount"/>
+        </ResourceDictionary>
+    </CustomControl:ExtCustomTabbedPage.Resources>
+
+    <NavigationPage.TitleView>
+        <AbsoluteLayout  BindingContext="{x:Reference page}" x:Name="filtertoolbar"
+                      BackgroundColor="White" 
+                      HeightRequest="40"
+                      HorizontalOptions="FillAndExpand" 
+                      VerticalOptions="FillAndExpand" >
+            <Label Text="{Binding MainTitle}" 
+                   TextColor="#303C56"
+                   
+                   FontSize="20"
+                    AbsoluteLayout.LayoutFlags="All"
+                    AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                   VerticalTextAlignment="Center"
+                   
+                   HorizontalTextAlignment="Center"
+                   />
+             <StackLayout HeightRequest="40"
+                             WidthRequest="40"
+                         Margin="0,0,0,6"
+                         IsVisible="{Binding MenuIsVisible}"
+                             AbsoluteLayout.LayoutFlags="PositionProportional"
+                    AbsoluteLayout.LayoutBounds="0, 0, 40, 40">
+                <Image Source="ic_more_vert" Aspect="AspectFit" 
+                       WidthRequest="20"
+                       HeightRequest="20"
+                       VerticalOptions="CenterAndExpand"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Menu_Tapped"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         IsVisible="{Binding FullModeIsVisiable}"
+                         AbsoluteLayout.LayoutFlags="PositionProportional"
+                         VerticalOptions="Center"
+                         AbsoluteLayout.LayoutBounds="0.15, 0, 150, 40">
+                <Switch x:Name="fullModeSwich" IsToggled="{Binding OnFullMode}" VerticalOptions="Center"/>
+                <Label Text="{il8n:Translate FullMode}" VerticalOptions="Center" TextColor="Black" FontSize="8"/>
+            </StackLayout>
+            <StackLayout HeightRequest="40" 
+                             WidthRequest="40"
+                         Margin="0,0,0,6"
+                         IsVisible="{Binding FilterIsVisible}"
+                             AbsoluteLayout.LayoutFlags="PositionProportional"
+                    AbsoluteLayout.LayoutBounds="0.99, 0, 40, 40">
+                <Image Source="FiltterIcon" Aspect="AspectFit" 
+                       WidthRequest="20"
+                       HeightRequest="20"
+                       VerticalOptions="CenterAndExpand"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ClickCommad}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <StackLayout HeightRequest="40"
+                             WidthRequest="40"
+                         Margin="0,0,0,6"
+                         IsVisible="{Binding SearchIsVisible}"
+                             AbsoluteLayout.LayoutFlags="PositionProportional"
+                    AbsoluteLayout.LayoutBounds="0.83, 0, 40, 40">
+                <Image Source="SearchIcon" Aspect="AspectFit" 
+                       WidthRequest="20"
+                       HeightRequest="20"
+                       VerticalOptions="CenterAndExpand"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SearchCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+        </AbsoluteLayout>
+    </NavigationPage.TitleView>
+
+    <!--<Views:NotificationsPage TabIndex="0" plugin:TabBadge.BadgeText="{Binding NotificationCount}" Title="{il8n:Translate Notification}"  Icon="notification_0.png"    BackgroundColor="{StaticResource lightgrey1}"/>
+    <Views:TasksPage TabIndex="1" Title="{il8n:Translate Tasks}" Icon="TasksIcon.png"  BackgroundColor="{StaticResource lightgrey1}" />
+    <Views:DashboardPage TabIndex="2" Title="{il8n:Translate Dashboard}" Icon="DashboardIcon.png"  BackgroundColor="{StaticResource lightgrey1}" />
+    <Views:SetttingsPage TabIndex="3" Title="{il8n:Translate Settings}" Icon="SettingIcon.png"  BackgroundColor="{StaticResource lightgrey1}" />-->
+   
+</CustomControl:ExtCustomTabbedPage>
+

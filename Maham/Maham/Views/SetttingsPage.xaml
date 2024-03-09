@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:customcontrol="clr-namespace:Maham.CustomControl"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:il8n="clr-namespace:Maham.Helpers"
+             xmlns:local="clr-namespace:Maham.Behaviors"
+             x:Class="Maham.Views.SetttingsPage">
+    <!--<NavigationPage.TitleView>
+        <Label HorizontalOptions="Center"
+               VerticalOptions="Center"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               TextColor="{StaticResource drakgrey}"
+               FontSize="18"
+               FontAttributes="Bold"
+               Text="Settings"/>
+    </NavigationPage.TitleView>-->
+        
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <!--<RowDefinition Height="auto"/>-->
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions> 
+        <customcontrol:RoundedView  Grid.Row="0" Margin="20,10,20,5"
+                                   
+                                    BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                    HeightRequest="70"
+                                    BorderThickness="1"
+                                    BackgroundColor="#FFFFFF">
+            <customcontrol:RoundedView.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ProfileCommand}"/>
+            </customcontrol:RoundedView.GestureRecognizers>
+            <Grid>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ProfileCommand}"/>
+                </Grid.GestureRecognizers>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                </Grid.ColumnDefinitions>
+               
+                <Image   
+                                    Grid.Column="0"
+                                   Source="usercircle"
+                                              HeightRequest="45"
+                                              Margin="10,0,0,0"
+                                              WidthRequest="45"/>
+
+                <Label Grid.Column="1" Grid.ColumnSpan="2"
+                       Text="{il8n:Translate profilesettingtext}"
+                      FontAttributes="Bold"
+                       HorizontalTextAlignment="Start"
+                       VerticalTextAlignment="Center"
+                         HorizontalOptions="StartAndExpand"
+                         FontSize="16"
+                       TextColor="{StaticResource lightblue3}"
+                       />
+            </Grid>
+            
+        </customcontrol:RoundedView>
+        <!--<customcontrol:RoundedView  Grid.Row="1" Margin="20,3,20,5"
+                                    HeightRequest="70"
+                                 
+                                    BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                    BackgroundColor="#FFFFFF"
+                                    BorderThickness="1">
+            <customcontrol:RoundedView.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ResetPasswordCommand}"/>
+            </customcontrol:RoundedView.GestureRecognizers>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                </Grid.ColumnDefinitions>
+                <forms:SvgCachedImage   Grid.Column="0"
+                                   Source="newreset"
+                                              HeightRequest="45"
+                                              Margin="10,0,0,0"
+                                              WidthRequest="45">
+                    <forms:SvgCachedImage.Transformations>
+                        <imagetransform:CircleTransformation BorderHexColor="#8D9090" BorderSize="0"/>
+                    </forms:SvgCachedImage.Transformations>
+
+                </forms:SvgCachedImage>
+                <Label Grid.Column="1"
+                       Text= "{il8n:Translate Resetpasstext}"
+                      FontAttributes="Bold"
+                       HorizontalTextAlignment="Start"
+                       VerticalTextAlignment="Center"
+                         FontSize="16"
+                       TextColor="{StaticResource lightblue3}"
+                       />
+                -->
+        <!--<Switch Grid.Column="2"
+                       
+                      
+                        HorizontalOptions="End"/>--><!--
+            </Grid>
+
+        </customcontrol:RoundedView>-->
+        <customcontrol:RoundedView  Grid.Row="1" Margin="20,3,20,5"
+                                    HeightRequest="70"
+                                 
+                                    BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                    BackgroundColor="#FFFFFF"
+                                    BorderThickness="1">
+            <customcontrol:RoundedView.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding LanguageCommand}"/>
+            </customcontrol:RoundedView.GestureRecognizers>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                </Grid.ColumnDefinitions>
+                <Image   Grid.Column="0"
+                                   Source="language2"
+                                              HeightRequest="45"
+                                              Margin="10,0,0,0"
+                                              WidthRequest="45"/>
+                <Label Grid.Column="1"
+                       Text= "{il8n:Translate Language}"
+                      FontAttributes="Bold"
+                       HorizontalTextAlignment="Start"
+                       VerticalTextAlignment="Center"
+                         FontSize="16"
+                       TextColor="{StaticResource lightblue3}"
+                       />
+                <!--<Switch Grid.Column="2"
+                       
+                      
+                        HorizontalOptions="End"/>-->
+            </Grid>
+
+        </customcontrol:RoundedView>
+        <customcontrol:RoundedView  Grid.Row="2" Margin="20,3,20,5"
+                                    HeightRequest="70"
+                                 
+                                    BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                    BackgroundColor="#FFFFFF"
+                                    BorderThickness="1">
+            <customcontrol:RoundedView.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding logoutCommand}"/>
+            </customcontrol:RoundedView.GestureRecognizers>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                </Grid.ColumnDefinitions>
+                <Image   Grid.Column="0"
+                                   Source="newlogout"
+                                              HeightRequest="45"
+                                              Margin="10,0,0,0"
+                                              WidthRequest="45"/>
+
+                <Label Grid.Column="1"
+                       Text= "{il8n:Translate logouttext}"
+                      FontAttributes="Bold"
+                       HorizontalTextAlignment="Start"
+                       VerticalTextAlignment="Center"
+                         FontSize="16"
+                       TextColor="{StaticResource lightblue3}"
+                       />
+                <!--<Switch Grid.Column="2"
+                       
+                      
+                        HorizontalOptions="End"/>-->
+            </Grid>
+
+        </customcontrol:RoundedView>
+        <customcontrol:RoundedView  Grid.Row="3" Margin="20,3,20,5"
+                                    HeightRequest="70"
+                                 
+                                    BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                    BackgroundColor="#FFFFFF"
+                                    BorderThickness="1">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Switch Grid.Column="0" IsToggled="{Binding AllowPushNotification}" VerticalOptions="Center" Margin="5, 0"
+                        HorizontalOptions="End">
+                    <Switch.Behaviors>
+                        <local:EventToCommandBehavior EventName="Toggled" Command="{Binding ToggleNotificationCommand}" />
+                    </Switch.Behaviors>
+                </Switch>
+                <Label Grid.Column="1"
+                       Text= "{il8n:Translate AllowPushNotification}"
+                      FontAttributes="Bold"
+                       HorizontalTextAlignment="Start"
+                       VerticalTextAlignment="Center"
+                         FontSize="16"
+                       TextColor="{StaticResource lightblue3}"
+                       />
+               
+            </Grid>
+
+        </customcontrol:RoundedView>
+        <StackLayout Grid.Row="4" VerticalOptions="FillAndExpand">
+            <customcontrol:DisconnectedView 
+            VerticalOptions="EndAndExpand"
+                Text="{Binding NotConnectedMsg}"
+                IsVisible="{Binding NotConnected}"/>
+        </StackLayout>
+        <Image   Grid.Row="4"
+                        Aspect="AspectFit"
+                        HeightRequest="80" 
+                        WidthRequest="80"
+                 HorizontalOptions="End"   
+                        VerticalOptions="End"
+                        Source="FloatingButton.png">
+            <Image.Margin>
+                <OnPlatform x:TypeArguments="Thickness"
+                                                    iOS ="0,0,0,60"
+                                                    Android ="0,0,0,0">
+                </OnPlatform>
+            </Image.Margin>
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding AddTaskCommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
+        <StackLayout Margin="0"
+                         Padding="0"
+                         Spacing="5"
+                             Grid.RowSpan="5"
+                           BackgroundColor="{StaticResource IndicatorBackground}"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         IsVisible="{Binding IsBusy}">
+            <StackLayout Margin="0"
+                             Padding="0"
+                             Spacing="5"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand">
+
+                <ActivityIndicator Color="#69CAF1"
+                                       WidthRequest="40"
+                                       Margin="0"
+                                       HeightRequest="40"
+                                       IsRunning="True"
+                                       IsVisible="True"/>
+                <Label Text="{il8n:Translate indicatorloadingtext}"
+                           FontSize="12"
+                           Margin="0"
+                           TextColor="#fefefe"
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="Center"
+                           />
+            </StackLayout>
+        </StackLayout>
+
+    </Grid>
+  
+</ContentPage>

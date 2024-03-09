@@ -1,0 +1,792 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!--
+      Microsoft ResX Schema
+
+      Version 2.0
+
+      The primary goals of this format is to allow a simple XML format
+      that is mostly human readable. The generation and parsing of the
+      various data types are done through the TypeConverter classes
+      associated with the data types.
+
+      Example:
+
+      ... ado.net/XML headers & schema ...
+      <resheader name="resmimetype">text/microsoft-resx</resheader>
+      <resheader name="version">2.0</resheader>
+      <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+      <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+      <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+      <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+      <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+          <value>[base64 mime encoded serialized .NET Framework object]</value>
+      </data>
+      <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+          <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+          <comment>This is a comment</comment>
+      </data>
+
+      There are any number of "resheader" rows that contain simple
+      name/value pairs.
+
+      Each data row contains a name, and value. The row also contains a
+      type or mimetype. Type corresponds to a .NET class that support
+      text/value conversion through the TypeConverter architecture.
+      Classes that don't support this are serialized and stored with the
+      mimetype set.
+
+      The mimetype is used for serialized objects, and tells the
+      ResXResourceReader how to depersist the object. This is currently not
+      extensible. For a given mimetype the value must be set accordingly:
+
+      Note - application/x-microsoft.net.object.binary.base64 is the format
+      that the ResXResourceWriter will generate, however the reader can
+      read any of the formats listed below.
+
+      mimetype: application/x-microsoft.net.object.binary.base64
+      value   : The object must be serialized with
+              : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+              : and then encoded with base64 encoding.
+
+      mimetype: application/x-microsoft.net.object.soap.base64
+      value   : The object must be serialized with
+              : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+              : and then encoded with base64 encoding.
+
+      mimetype: application/x-microsoft.net.object.bytearray.base64
+      value   : The object must be serialized into a byte array
+              : using a System.ComponentModel.TypeConverter
+              : and then encoded with base64 encoding.
+      -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string" />
+                            <xsd:attribute name="type" type="xsd:string" />
+                            <xsd:attribute name="mimetype" type="xsd:string" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string" />
+                            <xsd:attribute name="name" type="xsd:string" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" />
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="addcommentbutton" xml:space="preserve">
+    <value>+ Add Comment</value>
+  </data>
+    <data name="addcommentfail" xml:space="preserve">
+    <value>Something Wrong Happened In Add Comment</value>
+  </data>
+    <data name="addtextalerttitle" xml:space="preserve">
+    <value>Add Task</value>
+  </data>
+    <data name="alertfilledalldata" xml:space="preserve">
+    <value>Please Enter Missing Filled</value>
+  </data>
+    <data name="alerttext" xml:space="preserve">
+    <value>Alert</value>
+  </data>
+    <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+    <data name="AllowPushNotification" xml:space="preserve">
+    <value>Allow Notifications</value>
+  </data>
+    <data name="ApplyText" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+    <data name="Approve" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+    <data name="Approved" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+    <data name="arabic" xml:space="preserve">
+    <value>Arabic</value>
+  </data>
+    <data name="assignalerttext" xml:space="preserve">
+    <value>Without Project You Should Only Assign To Yourself</value>
+  </data>
+    <data name="assignbutton" xml:space="preserve">
+    <value>Assign Employee</value>
+  </data>
+    <data name="Assigneetext" xml:space="preserve">
+    <value>Assignee</value>
+  </data>
+    <data name="assigntotext" xml:space="preserve">
+    <value>Responsible</value>
+  </data>
+    <data name="asusergroup" xml:space="preserve">
+    <value>As User Group</value>
+  </data>
+    <data name="browsfiletext" xml:space="preserve">
+    <value>Browse Files To Upload</value>
+  </data>
+    <data name="buttonaddtext" xml:space="preserve">
+    <value>Add</value>
+  </data>
+    <data name="buttoncleartext" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+    <data name="canceltext" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+    <data name="canreaasignpopuptext" xml:space="preserve">
+    <value>You Can't Reassign Task </value>
+  </data>
+    <data name="CantReassignmessage" xml:space="preserve">
+    <value>Error In Reassign Employee</value>
+  </data>
+    <data name="ChangeDueDateRequesttxt" xml:space="preserve">
+    <value>Change Due Date Request</value>
+  </data>
+    <data name="choosereassignemp" xml:space="preserve">
+    <value>You Have To Choose Employee First</value>
+  </data>
+    <data name="choosereftext" xml:space="preserve">
+    <value>Choose Reference</value>
+  </data>
+    <data name="ChooseSource" xml:space="preserve">
+    <value>Choose Source</value>
+  </data>
+    <data name="ChooseTasksMode" xml:space="preserve">
+    <value>Choose Tasks Mode:</value>
+  </data>
+    <data name="Closed" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+    <data name="closedTask" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+    <data name="closedtext" xml:space="preserve">
+    <value>Close</value>
+  </data>
+    <data name="closequestion" xml:space="preserve">
+    <value>Do You Want To Complete</value>
+  </data>
+    <data name="commentstask" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+    <data name="CommenttextMessage" xml:space="preserve">
+    <value>Comment Can't Be Empty</value>
+  </data>
+    <data name="communitynameplceholder" xml:space="preserve">
+    <value>Enter Community Name</value>
+  </data>
+    <data name="Comparedatetext" xml:space="preserve">
+    <value>End Date Should Be Greater Than Start Date</value>
+  </data>
+    <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+    <data name="comunitynametext" xml:space="preserve">
+    <value>Community Name</value>
+  </data>
+    <data name="CrashMessage" xml:space="preserve">
+    <value>Something Went Wrong, App Restarted, And  A Report Sent To Administrator</value>
+  </data>
+    <data name="crtiticlenumtext" xml:space="preserve">
+    <value>Critical</value>
+  </data>
+    <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+    <data name="Delayed" xml:space="preserve">
+    <value>Delayed</value>
+  </data>
+    <data name="deletebuttontext" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+    <data name="DeleteMsg" xml:space="preserve">
+    <value>Are You Sure You Want To Delete?</value>
+  </data>
+    <data name="deletetasktext2popup" xml:space="preserve">
+    <value>Your Tasks List</value>
+  </data>
+    <data name="deletetasktextpopup" xml:space="preserve">
+    <value>After Deleting This Task, It Will Not Appear In Your Tasks List</value>
+  </data>
+    <data name="departmenttext" xml:space="preserve">
+    <value>Department</value>
+  </data>
+    <data name="descriptiontext" xml:space="preserve">
+    <value>Description</value>
+  </data>
+    <data name="detettaskpopuptext" xml:space="preserve">
+    <value>Delete Task</value>
+  </data>
+    <data name="DidnotStarted" xml:space="preserve">
+    <value>Not Started</value>
+  </data>
+    <data name="discardtext" xml:space="preserve">
+    <value>Discard</value>
+  </data>
+    <data name="dowlnoadSucessfully" xml:space="preserve">
+    <value>Sucessfully Downloaded</value>
+  </data>
+    <data name="DueDate" xml:space="preserve">
+    <value>Due Date</value>
+  </data>
+    <data name="DueDateRequired" xml:space="preserve">
+    <value>Please Select Due Date</value>
+  </data>
+    <data name="DueDate_Now" xml:space="preserve">
+    <value>Due Date Shouldn't Be Smaller Than Now</value>
+  </data>
+    <data name="DueDate_StartDate" xml:space="preserve">
+    <value>Due Date Shouldn't Be Smaller Than Start Date</value>
+  </data>
+    <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+    <data name="Editbutton" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+    <data name="edittaskfailuretext" xml:space="preserve">
+    <value>Something Wrong In Edit Task</value>
+  </data>
+    <data name="edittasksuccesstext" xml:space="preserve">
+    <value>Task Edited Successfully </value>
+  </data>
+    <data name="edittasktitle" xml:space="preserve">
+    <value>Edit Task</value>
+  </data>
+    <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+    <data name="emailtext" xml:space="preserve">
+    <value>Email Address</value>
+  </data>
+    <data name="emailtextnew" xml:space="preserve">
+    <value>Email</value>
+  </data>
+    <data name="emergencycalltext" xml:space="preserve">
+    <value>Emergency Call</value>
+  </data>
+    <data name="enddatetext" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+    <data name="EndDate_Now" xml:space="preserve">
+    <value>End Date Shouldn't Be Smaller Than Now</value>
+  </data>
+    <data name="EndDate_Original" xml:space="preserve">
+    <value>End Date Shouldn't Be Smaller Than Original End Date</value>
+  </data>
+    <data name="english" xml:space="preserve">
+    <value>English</value>
+  </data>
+    <data name="enterresponsiblenametext" xml:space="preserve">
+    <value>Enter Responsible Name</value>
+  </data>
+    <data name="entertasknameplaceholder" xml:space="preserve">
+    <value>Enter Task Name</value>
+  </data>
+    <data name="EvedinceError" xml:space="preserve">
+    <value>Please Upload Completion Evedince</value>
+  </data>
+    <data name="Evidence" xml:space="preserve">
+    <value>Select Evidence</value>
+  </data>
+    <data name="exisrcodeTitle" xml:space="preserve">
+    <value>Code</value>
+  </data>
+    <data name="ExistClient" xml:space="preserve">
+    <value>Exist Client</value>
+  </data>
+    <data name="existclienttext" xml:space="preserve">
+    <value>Client</value>
+  </data>
+    <data name="existcodebtn" xml:space="preserve">
+    <value>Send</value>
+  </data>
+    <data name="existcoetext" xml:space="preserve">
+    <value>Enter The Code </value>
+  </data>
+    <data name="failuretext" xml:space="preserve">
+    <value>Failure</value>
+  </data>
+    <data name="filenametext" xml:space="preserve">
+    <value>File Name</value>
+  </data>
+    <data name="filestext" xml:space="preserve">
+    <value>Files</value>
+  </data>
+    <data name="filiterpoptitile" xml:space="preserve">
+    <value>Filter By</value>
+  </data>
+    <data name="Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+    <data name="findemployeetext" xml:space="preserve">
+    <value>Find Employee</value>
+  </data>
+    <data name="Forget" xml:space="preserve">
+    <value>Forgot password?</value>
+  </data>
+    <data name="fromtext" xml:space="preserve">
+    <value>From</value>
+  </data>
+    <data name="FullMode" xml:space="preserve">
+    <value>Full Mode</value>
+  </data>
+    <data name="fullnametext" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+    <data name="GeneralErorr" xml:space="preserve">
+    <value>Someting Went Wrong! Please Contact Administration</value>
+  </data>
+    <data name="GoodMorning" xml:space="preserve">
+    <value>Good Morning</value>
+  </data>
+    <data name="hidetext" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+    <data name="highenumtext" xml:space="preserve">
+    <value>High</value>
+  </data>
+    <data name="Iagree" xml:space="preserve">
+    <value>I Agree With </value>
+  </data>
+    <data name="IhaveNoAccount" xml:space="preserve">
+    <value>I Have No Account </value>
+  </data>
+    <data name="imageuploadfilled" xml:space="preserve">
+    <value>Error In Uploading Image</value>
+  </data>
+    <data name="indicatorloadingtext" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+    <data name="InProgress" xml:space="preserve">
+    <value>In Progress</value>
+  </data>
+    <data name="inProgressTask" xml:space="preserve">
+    <value>In Progress</value>
+  </data>
+    <data name="invailddate" xml:space="preserve">
+    <value>Invalid Date</value>
+  </data>
+    <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+    <data name="loading" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+    <data name="loadTaskErorr" xml:space="preserve">
+    <value>Task Loading Error! Please Contact Administration</value>
+  </data>
+    <data name="logouttext" xml:space="preserve">
+    <value>Log Out</value>
+  </data>
+    <data name="lowenumtext" xml:space="preserve">
+    <value>Low</value>
+  </data>
+    <data name="NameOrEmail" xml:space="preserve">
+    <value>Username</value>
+  </data>
+    <data name="nametext" xml:space="preserve">
+    <value>Name</value>
+  </data>
+    <data name="newClientText" xml:space="preserve">
+    <value>New Client</value>
+  </data>
+    <data name="newpassplaceholder" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+    <data name="newtasktitle" xml:space="preserve">
+    <value>New Task</value>
+  </data>
+    <data name="nofiletext" xml:space="preserve">
+    <value>No Files</value>
+  </data>
+    <data name="NoHistory" xml:space="preserve">
+    <value>No History For This Task</value>
+  </data>
+    <data name="NoNewNotificationsLabel" xml:space="preserve">
+    <value>You Have No New Notifications</value>
+  </data>
+    <data name="NoNotifications" xml:space="preserve">
+    <value>No Notifications</value>
+  </data>
+    <data name="noreassignlist" xml:space="preserve">
+    <value>There Is No Employee </value>
+  </data>
+    <data name="noresultsearch" xml:space="preserve">
+    <value>No Result For Search</value>
+  </data>
+    <data name="normalenumtext" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+    <data name="notConnectedMsg" xml:space="preserve">
+    <value>No Internet Connection</value>
+  </data>
+    <data name="Notification" xml:space="preserve">
+    <value>Notification</value>
+  </data>
+    <data name="notificationsettingtext" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+    <data name="notStartedTask" xml:space="preserve">
+    <value>Not Started </value>
+  </data>
+    <data name="notSupportedFile" xml:space="preserve">
+    <value>Not Supported File!</value>
+  </data>
+    <data name="oktext" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+    <data name="oldpasswordplaceholder" xml:space="preserve">
+    <value>Old Password</value>
+  </data>
+    <data name="passwordtext" xml:space="preserve">
+    <value>Password</value>
+  </data>
+    <data name="Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+    <data name="phonenumberplaceholder" xml:space="preserve">
+    <value>Enter Phone Number</value>
+  </data>
+    <data name="phonenumbertext" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+    <data name="positiontext" xml:space="preserve">
+    <value>Position</value>
+  </data>
+    <data name="Position_Validation" xml:space="preserve">
+    <value>Select Position</value>
+  </data>
+    <data name="prioritytext" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+    <data name="profilesettingtext" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+    <data name="progressnotupdatedtext" xml:space="preserve">
+    <value>Something Wrong Happened.Kindly, Retry</value>
+  </data>
+    <data name="projectaletmessage" xml:space="preserve">
+    <value>You Have To Choose Project</value>
+  </data>
+    <data name="projecttext" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+    <data name="reaasigneetext" xml:space="preserve">
+    <value>Press Here To Re Assign Employee</value>
+  </data>
+    <data name="ReassignSucess" xml:space="preserve">
+    <value>Sucess</value>
+  </data>
+    <data name="Reassignsucessmessage" xml:space="preserve">
+    <value>Reassign Sucessfully</value>
+  </data>
+    <data name="ReassignText" xml:space="preserve">
+    <value>Re Assign</value>
+  </data>
+    <data name="referencestext" xml:space="preserve">
+    <value>References</value>
+  </data>
+    <data name="Reject" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+    <data name="Rejected" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
+    <data name="reminderdatetext" xml:space="preserve">
+    <value>Reminder Date</value>
+  </data>
+    <data name="ReminderDate_End" xml:space="preserve">
+    <value>Reminder Date Shouldn't Be Greater Than End Date</value>
+  </data>
+    <data name="ReminderDate_Start" xml:space="preserve">
+    <value>Reminder Date Shouldn't Be Smaller Than Start Date</value>
+  </data>
+    <data name="reminderenabledtext" xml:space="preserve">
+    <value>Remainder Enabled</value>
+  </data>
+    <data name="RequestChangeDueDate" xml:space="preserve">
+    <value>Request Change Due Date</value>
+  </data>
+    <data name="RequestFail" xml:space="preserve">
+    <value>Something Wrong Happened</value>
+  </data>
+    <data name="RequestSuccess" xml:space="preserve">
+    <value>Your Request Has Been Successfully</value>
+  </data>
+    <data name="ResetMessageSucess" xml:space="preserve">
+    <value>You Have Successfully Modified Your Registration Password</value>
+  </data>
+    <data name="ResetmessageTitle" xml:space="preserve">
+    <value>Sucessfully</value>
+  </data>
+    <data name="resetpalceholder" xml:space="preserve">
+    <value>Enter Username Or Email</value>
+  </data>
+    <data name="resetpassfail" xml:space="preserve">
+    <value>Wrong Password Or Username</value>
+  </data>
+    <data name="Resetpasstext" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+    <data name="resetpasswordtext" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+    <data name="resetpasswordtext2" xml:space="preserve">
+    <value>Your Account Has Been Verified</value>
+  </data>
+    <data name="returnedTask" xml:space="preserve">
+    <value>Returned</value>
+  </data>
+    <data name="returnedtext" xml:space="preserve">
+    <value>Return</value>
+  </data>
+    <data name="returnquestion" xml:space="preserve">
+    <value>Do You Want To Return To </value>
+  </data>
+    <data name="saerchplaceholder" xml:space="preserve">
+    <value>Taskname ,Employee Or Sector,..</value>
+  </data>
+    <data name="saerchplaceholdertype2" xml:space="preserve">
+    <value>Taskname ,Employee Or Department,..</value>
+  </data>
+    <data name="SearchText" xml:space="preserve">
+    <value>Search</value>
+  </data>
+    <data name="Sectortext" xml:space="preserve">
+    <value>Sector</value>
+  </data>
+    <data name="SelectFiles" xml:space="preserve">
+    <value>Select Files...</value>
+  </data>
+    <data name="selectPosition" xml:space="preserve">
+    <value>Select Position</value>
+  </data>
+    <data name="selectpriority" xml:space="preserve">
+    <value>Select Priority</value>
+  </data>
+    <data name="selectProject" xml:space="preserve">
+    <value>Select Project</value>
+  </data>
+    <data name="selectReference" xml:space="preserve">
+    <value>Select Reference</value>
+  </data>
+    <data name="selectSource" xml:space="preserve">
+    <value>Select Source</value>
+  </data>
+    <data name="selectUserGroup" xml:space="preserve">
+    <value>Select User Group</value>
+  </data>
+    <data name="serachnamemessage" xml:space="preserve">
+    <value>You Have To Enter Taskname</value>
+  </data>
+    <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+    <data name="showmoretext" xml:space="preserve">
+    <value>Showmore</value>
+  </data>
+    <data name="showtext" xml:space="preserve">
+    <value>Show</value>
+  </data>
+    <data name="SignIn" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+    <data name="SignUp" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+    <data name="SignUpHere" xml:space="preserve">
+    <value>Sign Up Here!</value>
+  </data>
+    <data name="sourcetext" xml:space="preserve">
+    <value>Source</value>
+  </data>
+    <data name="startdatetext" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+    <data name="StartDate_Now" xml:space="preserve">
+    <value>Start Date Shouldn't Be Smaller Than Now</value>
+  </data>
+    <data name="Statustext" xml:space="preserve">
+    <value>Status</value>
+  </data>
+    <data name="submittext" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+    <data name="task" xml:space="preserve">
+    <value>Tasks</value>
+  </data>
+    <data name="taskaddedtext" xml:space="preserve">
+    <value>Task Is Added Sucessfully</value>
+  </data>
+    <data name="taskDelayed" xml:space="preserve">
+    <value>Delayed</value>
+  </data>
+    <data name="taskDetals" xml:space="preserve">
+    <value>Task Details</value>
+  </data>
+    <data name="TaskHistory" xml:space="preserve">
+    <value>Task History</value>
+  </data>
+    <data name="TaskList" xml:space="preserve">
+    <value>Task List</value>
+  </data>
+    <data name="TaskListUserGroub" xml:space="preserve">
+    <value>Task List User Group</value>
+  </data>
+    <data name="tasknametext" xml:space="preserve">
+    <value>Task Name</value>
+  </data>
+    <data name="tasknotadded" xml:space="preserve">
+    <value>Task  Not Added Sucessfully</value>
+  </data>
+    <data name="Tasks" xml:space="preserve">
+    <value>Tasks</value>
+  </data>
+    <data name="TodayLabel" xml:space="preserve">
+    <value>Today</value>
+  </data>
+    <data name="totext" xml:space="preserve">
+    <value>To</value>
+  </data>
+    <data name="TremsAndConditions" xml:space="preserve">
+    <value>Terms And Conditions</value>
+  </data>
+    <data name="uploadagintext" xml:space="preserve">
+    <value>Upload Again</value>
+  </data>
+    <data name="uploadfileagaintext" xml:space="preserve">
+    <value>Stop Uploading</value>
+  </data>
+    <data name="urgentsupporttext" xml:space="preserve">
+    <value>Urgent Support</value>
+  </data>
+    <data name="urgentsupporttext2" xml:space="preserve">
+    <value>Check This If The Task Needs An Urgent Support From</value>
+  </data>
+    <data name="usergrouptext" xml:space="preserve">
+    <value>User Group</value>
+  </data>
+    <data name="UserGroup_Position_Validation" xml:space="preserve">
+    <value>Select One Of User Groups Or Positions</value>
+  </data>
+    <data name="UserGroup_Validation" xml:space="preserve">
+    <value>Select User Group</value>
+  </data>
+    <data name="UserName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+    <data name="usernameplaceholder" xml:space="preserve">
+    <value>Enter User Name</value>
+  </data>
+    <data name="usernametext" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+    <data name="WaltDesinyLabel" xml:space="preserve">
+    <value>The Way To Get Statrted Is To Quit Talking And Being Doing, Walt Desiny</value>
+  </data>
+    <data name="welcometext" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+    <data name="WrongCredentials" xml:space="preserve">
+    <value>Wrong Credentials!</value>
+  </data>
+    <data name="WrongUserOrPass" xml:space="preserve">
+    <value>Wrong Username Or Password</value>
+  </data>
+    <data name="Reason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+    <data name="Reasonreq" xml:space="preserve">
+    <value>Please State Your Reason</value>
+  </data>
+    <data name="searchtitleplaceholder" xml:space="preserve">
+    <value>Title</value>
+  </data>
+    <data name="searchtitletext" xml:space="preserve">
+    <value>Search</value>
+  </data>
+    <data name="FilteredDateIncorrect" xml:space="preserve">
+    <value>The filtered date is not correct</value>
+  </data>
+    <data name="NoData" xml:space="preserve">
+    <value>No Data</value>
+  </data>
+    <data name="NoTasksFound" xml:space="preserve">
+    <value>No Tasks Found!</value>
+  </data>
+    <data name="ClosedTasksLists" xml:space="preserve">
+    <value> completed Tasks Lists</value>
+  </data>
+    <data name="BusinessUnit" xml:space="preserve">
+    <value>Business unit-department</value>
+  </data>
+    <data name="completedTask" xml:space="preserve">
+    <value>Completion Request</value>
+  </data>
+    <data name="completeText" xml:space="preserve">
+    <value>Complete</value>
+  </data>
+    <data name="LoadMore" xml:space="preserve">
+    <value>Load More...</value>
+  </data>
+    <data name="SelectSupportingDocument" xml:space="preserve">
+    <value>Select Supporting Document</value>
+  </data>
+    <data name="RejectTask" xml:space="preserve">
+    <value>Reject Task</value>
+  </data>
+    <data name="RejectMsg" xml:space="preserve">
+    <value>Are you sure you want to reject this task?</value>
+  </data>
+    <data name="UniqueTaskName" xml:space="preserve">
+    <value>Task name should be unique</value>
+  </data>
+    <data name="TaskMode" xml:space="preserve">
+    <value>Task Mode</value>
+  </data>
+</root>

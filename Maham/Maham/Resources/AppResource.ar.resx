@@ -1,0 +1,783 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!--
+      Microsoft ResX Schema
+
+      Version 2.0
+
+      The primary goals of this format is to allow a simple XML format
+      that is mostly human readable. The generation and parsing of the
+      various data types are done through the TypeConverter classes
+      associated with the data types.
+
+      Example:
+
+      ... ado.net/XML headers & schema ...
+      <resheader name="resmimetype">text/microsoft-resx</resheader>
+      <resheader name="version">2.0</resheader>
+      <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+      <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+      <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+      <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+      <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+          <value>[base64 mime encoded serialized .NET Framework object]</value>
+      </data>
+      <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+          <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+          <comment>This is a comment</comment>
+      </data>
+
+      There are any number of "resheader" rows that contain simple
+      name/value pairs.
+
+      Each data row contains a name, and value. The row also contains a
+      type or mimetype. Type corresponds to a .NET class that support
+      text/value conversion through the TypeConverter architecture.
+      Classes that don't support this are serialized and stored with the
+      mimetype set.
+
+      The mimetype is used for serialized objects, and tells the
+      ResXResourceReader how to depersist the object. This is currently not
+      extensible. For a given mimetype the value must be set accordingly:
+
+      Note - application/x-microsoft.net.object.binary.base64 is the format
+      that the ResXResourceWriter will generate, however the reader can
+      read any of the formats listed below.
+
+      mimetype: application/x-microsoft.net.object.binary.base64
+      value   : The object must be serialized with
+              : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+              : and then encoded with base64 encoding.
+
+      mimetype: application/x-microsoft.net.object.soap.base64
+      value   : The object must be serialized with
+              : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+              : and then encoded with base64 encoding.
+
+      mimetype: application/x-microsoft.net.object.bytearray.base64
+      value   : The object must be serialized into a byte array
+              : using a System.ComponentModel.TypeConverter
+              : and then encoded with base64 encoding.
+      -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string" />
+                            <xsd:attribute name="type" type="xsd:string" />
+                            <xsd:attribute name="mimetype" type="xsd:string" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string" />
+                            <xsd:attribute name="name" type="xsd:string" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" />
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="emailtext" xml:space="preserve">
+    <value>عنوان بريد الكتروني</value>
+  </data>
+    <data name="Language" xml:space="preserve">
+    <value>اللغة</value>
+  </data>
+    <data name="passwordtext" xml:space="preserve">
+    <value>كلمه السر</value>
+  </data>
+    <data name="tasknametext" xml:space="preserve">
+    <value>اسم المهمة</value>
+  </data>
+    <data name="urgentsupporttext" xml:space="preserve">
+    <value>دعم عاجل</value>
+  </data>
+    <data name="urgentsupporttext2" xml:space="preserve">
+    <value>تحقق من هذا إذا كانت المهمة تحتاج إلى دعم عاجل من</value>
+  </data>
+    <data name="assigntotext" xml:space="preserve">
+    <value>المسؤول</value>
+  </data>
+    <data name="browsfiletext" xml:space="preserve">
+    <value>تصفح الملفات للتحميل</value>
+  </data>
+    <data name="buttonaddtext" xml:space="preserve">
+    <value>إضافة</value>
+  </data>
+    <data name="buttoncleartext" xml:space="preserve">
+    <value>مسح</value>
+  </data>
+    <data name="descriptiontext" xml:space="preserve">
+    <value>وصف</value>
+  </data>
+    <data name="enddatetext" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
+    <data name="enterresponsiblenametext" xml:space="preserve">
+    <value>أدخل اسم المسؤول</value>
+  </data>
+    <data name="filestext" xml:space="preserve">
+    <value>ملفات</value>
+  </data>
+    <data name="indicatorloadingtext" xml:space="preserve">
+    <value>جار التحميل</value>
+  </data>
+    <data name="usergrouptext" xml:space="preserve">
+    <value>مجموعة المستخدمين</value>
+  </data>
+    <data name="prioritytext" xml:space="preserve">
+    <value>أفضلية</value>
+  </data>
+    <data name="referencestext" xml:space="preserve">
+    <value>المراجع</value>
+  </data>
+    <data name="showmoretext" xml:space="preserve">
+    <value>عرض أكثر</value>
+  </data>
+    <data name="startdatetext" xml:space="preserve">
+    <value>تاريخ البدء</value>
+  </data>
+    <data name="reminderdatetext" xml:space="preserve">
+    <value>تاريخ التذكير</value>
+  </data>
+    <data name="reminderenabledtext" xml:space="preserve">
+    <value>تم تمكين التذكير</value>
+  </data>
+    <data name="asusergroup" xml:space="preserve">
+    <value>كمجموعة مستخدم</value>
+  </data>
+    <data name="crtiticlenumtext" xml:space="preserve">
+    <value>حرج</value>
+  </data>
+    <data name="highenumtext" xml:space="preserve">
+    <value>مرتفع</value>
+  </data>
+    <data name="lowenumtext" xml:space="preserve">
+    <value>ضعيف</value>
+  </data>
+    <data name="selectpriority" xml:space="preserve">
+    <value>اختر الأولوية</value>
+  </data>
+    <data name="normalenumtext" xml:space="preserve">
+    <value>عادي</value>
+  </data>
+    <data name="entertasknameplaceholder" xml:space="preserve">
+    <value>أدخل اسم المهمة</value>
+  </data>
+    <data name="deletebuttontext" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+    <data name="deletetasktext2popup" xml:space="preserve">
+    <value>قائمة المهام الخاصة بك</value>
+  </data>
+    <data name="deletetasktextpopup" xml:space="preserve">
+    <value>بعد حذف هذه المهمة ، لن تظهر في قائمة المهام الخاصة بك</value>
+  </data>
+    <data name="detettaskpopuptext" xml:space="preserve">
+    <value>حذف المهمة</value>
+  </data>
+    <data name="discardtext" xml:space="preserve">
+    <value>تجاهل</value>
+  </data>
+    <data name="addtextalerttitle" xml:space="preserve">
+    <value>إضافة مهمة</value>
+  </data>
+    <data name="alertfilledalldata" xml:space="preserve">
+    <value>من فضلك ادخل البيانات المفقوده</value>
+  </data>
+    <data name="alerttext" xml:space="preserve">
+    <value>احذر</value>
+  </data>
+    <data name="canceltext" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+    <data name="choosereftext" xml:space="preserve">
+    <value>اختر المرجع</value>
+  </data>
+    <data name="failuretext" xml:space="preserve">
+    <value>فشل</value>
+  </data>
+    <data name="filenametext" xml:space="preserve">
+    <value>اسم الملف</value>
+  </data>
+    <data name="nofiletext" xml:space="preserve">
+    <value>لا ملفات</value>
+  </data>
+    <data name="oktext" xml:space="preserve">
+    <value>حسنا</value>
+  </data>
+    <data name="taskaddedtext" xml:space="preserve">
+    <value>تتم إضافة المهمة بنجاح</value>
+  </data>
+    <data name="tasknotadded" xml:space="preserve">
+    <value>المهمة لم تتم إضافتها بنجاح</value>
+  </data>
+    <data name="uploadagintext" xml:space="preserve">
+    <value>تحميل مرة أخرى</value>
+  </data>
+    <data name="uploadfileagaintext" xml:space="preserve">
+    <value>توقف عن التحميل</value>
+  </data>
+    <data name="newtasktitle" xml:space="preserve">
+    <value>مهمة جديدة</value>
+  </data>
+    <data name="notificationsettingtext" xml:space="preserve">
+    <value>إخطارات</value>
+  </data>
+    <data name="profilesettingtext" xml:space="preserve">
+    <value>الملف الشخصي</value>
+  </data>
+    <data name="logouttext" xml:space="preserve">
+    <value>الخروج</value>
+  </data>
+    <data name="edittasksuccesstext" xml:space="preserve">
+    <value>مهمة تم تحريرها بنجاح</value>
+  </data>
+    <data name="edittaskfailuretext" xml:space="preserve">
+    <value>شيء خاطئ في مهمة التحرير</value>
+  </data>
+    <data name="edittasktitle" xml:space="preserve">
+    <value>تحرير المهمة</value>
+  </data>
+    <data name="closedtext" xml:space="preserve">
+    <value>اغلاق</value>
+  </data>
+    <data name="returnedtext" xml:space="preserve">
+    <value>إرجاع</value>
+  </data>
+    <data name="commentstask" xml:space="preserve">
+    <value>تعليقات</value>
+  </data>
+    <data name="Comparedatetext" xml:space="preserve">
+    <value>لا يجب أن يكون تاريخ الانتهاء أصغر من تاريخ البدء</value>
+  </data>
+    <data name="Editbutton" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+    <data name="invailddate" xml:space="preserve">
+    <value>تاريخ غير صالح</value>
+  </data>
+    <data name="addcommentbutton" xml:space="preserve">
+    <value>+ إضافة تعليق</value>
+  </data>
+    <data name="addcommentfail" xml:space="preserve">
+    <value>شيء خاطئ يحدث في إضافة تعليق</value>
+  </data>
+    <data name="inProgressTask" xml:space="preserve">
+    <value>جاري العمل</value>
+  </data>
+    <data name="notStartedTask" xml:space="preserve">
+    <value>لم تبدأ</value>
+  </data>
+    <data name="returnedTask" xml:space="preserve">
+    <value>مرتجعة </value>
+  </data>
+    <data name="startdatetext1" xml:space="preserve">
+    <value>تاريخ البدء</value>
+  </data>
+    <data name="GoodMorning" xml:space="preserve">
+    <value>صباح الخير </value>
+  </data>
+    <data name="NoNewNotificationsLabel" xml:space="preserve">
+    <value>لا اشعارات جديدة</value>
+  </data>
+    <data name="NoNotifications" xml:space="preserve">
+    <value>لا اشعارات</value>
+  </data>
+    <data name="WaltDesinyLabel" xml:space="preserve">
+    <value>لكي تبدأ عليك ان تكف عن الكلام وتبدا في العمل . والت ديزني</value>
+  </data>
+    <data name="CommenttextMessage" xml:space="preserve">
+    <value>لا يمكن أن يكون التعليق فارغًا</value>
+  </data>
+    <data name="All" xml:space="preserve">
+    <value>الكل</value>
+  </data>
+    <data name="Closed" xml:space="preserve">
+    <value>تم الغلق</value>
+  </data>
+    <data name="Completed" xml:space="preserve">
+    <value>مكتملة </value>
+  </data>
+    <data name="Delayed" xml:space="preserve">
+    <value>متأخرة</value>
+  </data>
+    <data name="DidnotStarted" xml:space="preserve">
+    <value>لم يتم البدأ</value>
+  </data>
+    <data name="InProgress" xml:space="preserve">
+    <value>في تقدم</value>
+  </data>
+    <data name="Statustext" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+    <data name="Filter" xml:space="preserve">
+    <value>فلتر</value>
+  </data>
+    <data name="loading" xml:space="preserve">
+    <value>جاري التحميل</value>
+  </data>
+    <data name="Edit" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+    <data name="Dashboard" xml:space="preserve">
+    <value>لوحة المعلومات</value>
+  </data>
+    <data name="Notification" xml:space="preserve">
+    <value>الإشعارات</value>
+  </data>
+    <data name="Settings" xml:space="preserve">
+    <value>الإعدادات</value>
+  </data>
+    <data name="Tasks" xml:space="preserve">
+    <value>المهام</value>
+  </data>
+    <data name="ApplyText" xml:space="preserve">
+    <value>تطبيق</value>
+  </data>
+    <data name="ReassignText" xml:space="preserve">
+    <value>إعادة تعيين</value>
+  </data>
+    <data name="CantReassignmessage" xml:space="preserve">
+    <value>خطأ في إعادة تعيين الموظف</value>
+  </data>
+    <data name="ReassignSucess" xml:space="preserve">
+    <value>النجاح</value>
+  </data>
+    <data name="Reassignsucessmessage" xml:space="preserve">
+    <value>أعاده تعيين بنجاح</value>
+  </data>
+    <data name="SearchText" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+    <data name="saerchplaceholder" xml:space="preserve">
+    <value>اسم المهمة ، الموظف أو القطاع ، ..</value>
+  </data>
+    <data name="imageuploadfilled" xml:space="preserve">
+    <value>خطأ في تحميل الصورة</value>
+  </data>
+    <data name="ResetMessageSucess" xml:space="preserve">
+    <value>لقد قمت بتعديل كلمة مرور التسجيل بنجاح</value>
+  </data>
+    <data name="ResetmessageTitle" xml:space="preserve">
+    <value>بنجاح</value>
+  </data>
+    <data name="resetpassfail" xml:space="preserve">
+    <value>اسم مستخدم أو كلمة مرور خاطئة</value>
+  </data>
+    <data name="choosereassignemp" xml:space="preserve">
+    <value>عليك أن تختار الموظف أولاً</value>
+  </data>
+    <data name="serachnamemessage" xml:space="preserve">
+    <value>يجب عليك إدخال اسم المهمة</value>
+  </data>
+    <data name="noreassignlist" xml:space="preserve">
+    <value>لا يوجد موظفون</value>
+  </data>
+    <data name="closequestion" xml:space="preserve">
+    <value> هل تريد إكمال </value>
+  </data>
+    <data name="Resetpasstext" xml:space="preserve">
+    <value>إعادة ضبط كلمة المرور</value>
+  </data>
+    <data name="returnquestion" xml:space="preserve">
+    <value>هل تريد العودة </value>
+  </data>
+    <data name="filiterpoptitile" xml:space="preserve">
+    <value>تصفية </value>
+  </data>
+    <data name="welcometext" xml:space="preserve">
+    <value>أهلا بك</value>
+  </data>
+    <data name="fromtext" xml:space="preserve">
+    <value>من</value>
+  </data>
+    <data name="totext" xml:space="preserve">
+    <value>الى</value>
+  </data>
+    <data name="exisrcodeTitle" xml:space="preserve">
+    <value>الشفرة</value>
+  </data>
+    <data name="existcodebtn" xml:space="preserve">
+    <value>إرسال</value>
+  </data>
+    <data name="existcoetext" xml:space="preserve">
+    <value>ادخل الكود</value>
+  </data>
+    <data name="existclienttext" xml:space="preserve">
+    <value>عميل</value>
+  </data>
+    <data name="newClientText" xml:space="preserve">
+    <value>عميل جديد</value>
+  </data>
+    <data name="projecttext" xml:space="preserve">
+    <value>مشروعات</value>
+  </data>
+    <data name="projectaletmessage" xml:space="preserve">
+    <value>عليك أن تختار المشروع</value>
+  </data>
+    <data name="Sectortext" xml:space="preserve">
+    <value>قطاع</value>
+  </data>
+    <data name="Assigneetext" xml:space="preserve">
+    <value>المعين للعمل</value>
+  </data>
+    <data name="hidetext" xml:space="preserve">
+    <value>إخفاء</value>
+  </data>
+    <data name="nametext" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+    <data name="newpassplaceholder" xml:space="preserve">
+    <value>كلمة المرور الجديدة</value>
+  </data>
+    <data name="oldpasswordplaceholder" xml:space="preserve">
+    <value>كلمة المرور القديمة</value>
+  </data>
+    <data name="resetpalceholder" xml:space="preserve">
+    <value>أدخل اسم المستخدم أو البريد  </value>
+  </data>
+    <data name="resetpasswordtext" xml:space="preserve">
+    <value>إعادة ضبط كلمة المرور</value>
+  </data>
+    <data name="resetpasswordtext2" xml:space="preserve">
+    <value>التحقق من حسابك</value>
+  </data>
+    <data name="showtext" xml:space="preserve">
+    <value>اظهر</value>
+  </data>
+    <data name="saerchplaceholdertype2" xml:space="preserve">
+    <value>اسم المهمة ، الموظف أو الإدارة ، ..</value>
+  </data>
+    <data name="departmenttext" xml:space="preserve">
+    <value>قسم</value>
+  </data>
+    <data name="dowlnoadSucessfully" xml:space="preserve">
+    <value>تم تنزيل الملف الخاص بك بنجاح</value>
+  </data>
+    <data name="assignbutton" xml:space="preserve">
+    <value>تعيين الموظف</value>
+  </data>
+    <data name="findemployeetext" xml:space="preserve">
+    <value>العثور على موظف</value>
+  </data>
+    <data name="sourcetext" xml:space="preserve">
+    <value>المصدر</value>
+  </data>
+    <data name="progressnotupdatedtext" xml:space="preserve">
+    <value>حدث خطأ ما. يرجى إعادة المحاولة</value>
+  </data>
+    <data name="canreaasignpopuptext" xml:space="preserve">
+    <value>لا يمكنك إعادة تعيين المهمة</value>
+  </data>
+    <data name="task" xml:space="preserve">
+    <value>مهمة</value>
+  </data>
+    <data name="taskDetals" xml:space="preserve">
+    <value>تفاصيل المهمة</value>
+  </data>
+    <data name="taskDelayed" xml:space="preserve">
+    <value>متأخرة</value>
+  </data>
+    <data name="ExistClient" xml:space="preserve">
+    <value>العميل الحالى</value>
+  </data>
+    <data name="noresultsearch" xml:space="preserve">
+    <value>لا توجد نتائج للبحث</value>
+  </data>
+    <data name="communitynameplceholder" xml:space="preserve">
+    <value>أدخل اسم المجموعة</value>
+  </data>
+    <data name="comunitynametext" xml:space="preserve">
+    <value>أسم المجموعة</value>
+  </data>
+    <data name="emailtextnew" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+    <data name="phonenumberplaceholder" xml:space="preserve">
+    <value>أدخل رقم الهاتف</value>
+  </data>
+    <data name="phonenumbertext" xml:space="preserve">
+    <value>رقم الهاتف</value>
+  </data>
+    <data name="submittext" xml:space="preserve">
+    <value>تسجيل</value>
+  </data>
+    <data name="usernameplaceholder" xml:space="preserve">
+    <value>ادخل اسم المستخدم</value>
+  </data>
+    <data name="usernametext" xml:space="preserve">
+    <value>اسم المستخدم</value>
+  </data>
+    <data name="loadTaskErorr" xml:space="preserve">
+    <value>يوجد مشكلة فى تحميل هذه المهمة برجاع الرجوع للادمن</value>
+  </data>
+    <data name="DeleteMsg" xml:space="preserve">
+    <value>هل بالتأكيد تريد الحذف ؟</value>
+  </data>
+    <data name="notSupportedFile" xml:space="preserve">
+    <value>ملف غير مدعوم !</value>
+  </data>
+    <data name="selectProject" xml:space="preserve">
+    <value>اختر مشروع</value>
+  </data>
+    <data name="selectReference" xml:space="preserve">
+    <value>اختر مرجع</value>
+  </data>
+    <data name="selectSource" xml:space="preserve">
+    <value>اختر مصدر</value>
+  </data>
+    <data name="selectPosition" xml:space="preserve">
+    <value>اختر مسمي وظيفي</value>
+  </data>
+    <data name="selectUserGroup" xml:space="preserve">
+    <value>اختر مجموعة المستخدمين</value>
+  </data>
+    <data name="notConnectedMsg" xml:space="preserve">
+    <value>لا يوجد اتصال بالإنترنت</value>
+  </data>
+    <data name="arabic" xml:space="preserve">
+    <value>عربى</value>
+  </data>
+    <data name="english" xml:space="preserve">
+    <value>إنجليزى</value>
+  </data>
+    <data name="CrashMessage" xml:space="preserve">
+    <value>حدث خط ما ، تم اعادة تشغيل التطبيق وارسال تقرير خطأ للإدارة</value>
+  </data>
+    <data name="TaskHistory" xml:space="preserve">
+    <value>تاريخ المهمة</value>
+  </data>
+    <data name="NoHistory" xml:space="preserve">
+    <value>لا يوجد تاريخ لهذه المهمة</value>
+  </data>
+    <data name="AllowPushNotification" xml:space="preserve">
+    <value>السماح باستلام اشعارات</value>
+  </data>
+    <data name="GeneralErorr" xml:space="preserve">
+    <value>يوجد مشكلة! برجاع الرجوع للادمن</value>
+  </data>
+    <data name="UserName" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+    <data name="Email" xml:space="preserve">
+    <value>البريد الالكترونى</value>
+  </data>
+    <data name="Iagree" xml:space="preserve">
+    <value> اوافق على </value>
+  </data>
+    <data name="TremsAndConditions" xml:space="preserve">
+    <value>الشروط والاحكام</value>
+  </data>
+    <data name="SignUp" xml:space="preserve">
+    <value>تسجيل</value>
+  </data>
+    <data name="ChooseSource" xml:space="preserve">
+    <value>اختر مصدر</value>
+  </data>
+    <data name="NameOrEmail" xml:space="preserve">
+    <value>اسم المستخدم</value>
+  </data>
+    <data name="SignIn" xml:space="preserve">
+    <value>تسجيل دخول</value>
+  </data>
+    <data name="Forget" xml:space="preserve">
+    <value>هل نسيت كلمه السر؟</value>
+  </data>
+    <data name="IhaveNoAccount" xml:space="preserve">
+    <value> ليس لديّ حساب </value>
+  </data>
+    <data name="SignUpHere" xml:space="preserve">
+    <value> التسجيل هنا! </value>
+  </data>
+    <data name="WrongCredentials" xml:space="preserve">
+    <value> خطا!</value>
+  </data>
+    <data name="WrongUserOrPass" xml:space="preserve">
+    <value> خطأ فى اسم المستخدم او كلمة المرور</value>
+  </data>
+    <data name="fullnametext" xml:space="preserve">
+    <value>الاسم الكامل</value>
+  </data>
+    <data name="EndDate_Now" xml:space="preserve">
+    <value>لا يجب أن يكون تاريخ الانتهاء أصغر من تاريخ الأن</value>
+  </data>
+    <data name="positiontext" xml:space="preserve">
+    <value>مسمي وظيفي</value>
+  </data>
+    <data name="ReminderDate_End" xml:space="preserve">
+    <value>لا يجب أن يكون تاريخ التذكير أكبر من تاريخ الانتهاء</value>
+  </data>
+    <data name="ReminderDate_Start" xml:space="preserve">
+    <value>لا يجب أن يكون تاريخ  التذكير أصغر من تاريخ البدء</value>
+  </data>
+    <data name="StartDate_Now" xml:space="preserve">
+    <value>لا يجب أن يكون تاريخ البدء أصغر من تاريخ الأن</value>
+  </data>
+    <data name="UserGroup_Position_Validation" xml:space="preserve">
+    <value>اختر واحدة من مجموعات المستخدمين أو المسميات الوظيفيه</value>
+  </data>
+    <data name="Position_Validation" xml:space="preserve">
+    <value>اختر مسمي وظيفي</value>
+  </data>
+    <data name="UserGroup_Validation" xml:space="preserve">
+    <value>اختر مجموعة المستخدمين</value>
+  </data>
+    <data name="FullMode" xml:space="preserve">
+    <value>عرض الكل</value>
+  </data>
+    <data name="TaskList" xml:space="preserve">
+    <value>مهام المستخدم</value>
+  </data>
+    <data name="TaskListUserGroub" xml:space="preserve">
+    <value>مهام مجموعة المستخدمين</value>
+  </data>
+    <data name="ChooseTasksMode" xml:space="preserve">
+    <value>اختر نوع المهام</value>
+  </data>
+    <data name="EndDate_Original" xml:space="preserve">
+    <value>لا يجب أن يكون تاريخ الانتهاء أصغر من تاريخ الانتهاء الأصلي</value>
+  </data>
+    <data name="emergencycalltext" xml:space="preserve">
+    <value>مكالمة طوارئ</value>
+  </data>
+    <data name="Approve" xml:space="preserve">
+    <value>وافق</value>
+  </data>
+    <data name="Approved" xml:space="preserve">
+    <value>موافق عليه</value>
+  </data>
+    <data name="ChangeDueDateRequesttxt" xml:space="preserve">
+    <value>تغيير طلب تاريخ الاستحقاق</value>
+  </data>
+    <data name="DueDate" xml:space="preserve">
+    <value>تاريخ الاستحقاق</value>
+  </data>
+    <data name="DueDateRequired" xml:space="preserve">
+    <value>برجاء اختيار تاريخ الاستحقاق</value>
+  </data>
+    <data name="DueDate_Now" xml:space="preserve">
+    <value>لا يجب أن يكون تاريخ الاستحقاق أصغر من تاريخ الأن</value>
+  </data>
+    <data name="DueDate_StartDate" xml:space="preserve">
+    <value>لا يجب أن يكون تاريخ الاستحقاق أصغر من تاريخ البدء</value>
+  </data>
+    <data name="Pending" xml:space="preserve">
+    <value>في انتظار المراجعة</value>
+  </data>
+    <data name="Reject" xml:space="preserve">
+    <value>رفض</value>
+  </data>
+    <data name="Rejected" xml:space="preserve">
+    <value>مرفوض</value>
+  </data>
+    <data name="RequestChangeDueDate" xml:space="preserve">
+    <value>طلب تغيير تاريخ الاستحقاق</value>
+  </data>
+    <data name="RequestFail" xml:space="preserve">
+    <value>حدث شيء خطأ</value>
+  </data>
+    <data name="RequestSuccess" xml:space="preserve">
+    <value>تم طلبك بنجاح</value>
+  </data>
+    <data name="EvedinceError" xml:space="preserve">
+    <value>يرجى تحميل دليل الإنجاز</value>
+  </data>
+    <data name="Evidence" xml:space="preserve">
+    <value>تحديد الدليل</value>
+  </data>
+    <data name="SelectFiles" xml:space="preserve">
+    <value>تحديد الملفات</value>
+  </data>
+    <data name="Reason" xml:space="preserve">
+    <value>السبب</value>
+  </data>
+    <data name="Reasonreq" xml:space="preserve">
+    <value>برجاء ادخال السبب</value>
+  </data>
+    <data name="searchtitleplaceholder" xml:space="preserve">
+    <value>المهمة</value>
+  </data>
+    <data name="searchtitletext" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+    <data name="FilteredDateIncorrect" xml:space="preserve">
+    <value>التاريخ المفلتر غير صحيح</value>
+  </data>
+    <data name="NoData" xml:space="preserve">
+    <value>لا يوجد بيانات</value>
+  </data>
+    <data name="NoTasksFound" xml:space="preserve">
+    <value>لم يتم العثور على مهام!</value>
+  </data>
+    <data name="ClosedTasksLists" xml:space="preserve">
+    <value> قوائم المهام المكتملة</value>
+  </data>
+    <data name="BusinessUnit" xml:space="preserve">
+    <value>وحدة الأعمال- الإدارة</value>
+  </data>
+    <data name="completedTask" xml:space="preserve">
+    <value>طلب إكمال</value>
+  </data>
+    <data name="completeText" xml:space="preserve">
+    <value> إكمال</value>
+  </data>
+    <data name="LoadMore" xml:space="preserve">
+    <value>تحميل المزيد...</value>
+  </data>
+    <data name="SelectSupportingDocument" xml:space="preserve">
+    <value>ارفاق ملف الاكتمال</value>
+  </data>
+    <data name="RejectTask" xml:space="preserve">
+    <value> رفض المهمة</value>
+  </data>
+    <data name="RejectMsg" xml:space="preserve">
+    <value>هل أنت متأكد أنك تريد رفض هذه المهمة؟</value>
+  </data>
+    <data name="UniqueTaskName" xml:space="preserve">
+    <value>يجب عدم تكرار اسم المهمة </value>
+  </data>
+    <data name="TaskMode" xml:space="preserve">
+    <value>نوع المهام</value>
+  </data>
+</root>

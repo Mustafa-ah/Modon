@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:behaviors="clr-namespace:Maham.Behaviors"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Maham.Views.popup">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+
+
+    <Frame CornerRadius="10"
+                                 HeightRequest="20"
+              HasShadow="False"
+                                   Margin="20,200,20,200"
+                                   BorderColor="{StaticResource lightgrey1}"
+                                   OutlineColor="{StaticResource lightgrey1}">
+        <ListView   HasUnevenRows="True" 
+                    SeparatorVisibility="None"
+                    x:Name="list"
+                     
+                    ItemsSource="{Binding file}"
+                   >
+            <ListView.Behaviors>
+                <behaviors:DisableListItemSelectionBehavior />
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid RowSpacing="0" x:Name="PopUpgrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.15*"/>
+                                <ColumnDefinition Width="0.7*"/>
+                                <ColumnDefinition Width="0.15*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding downloadfilecommand}"  BindingContext="{Binding Source={x:Reference list}, Path=BindingContext}" 
+                                                              CommandParameter="{Binding Source={x:Reference PopUpgrid},Path=BindingContext}"/>
+                            </Grid.GestureRecognizers>
+                            <Image Grid.Column="0"
+                                           Margin="5,0,5,0"
+                                           HeightRequest="25"
+                                           WidthRequest="25"
+                                        Source="{Binding image}"/>
+                            <StackLayout Grid.Column="1">
+                                <Label Text="{Binding FileName}"
+                                            Margin="0,-3,0,0"
+                                               HorizontalTextAlignment="Start"
+                                               VerticalTextAlignment="Center"
+                                               TextColor="{StaticResource drakgrey}"
+                                               FontSize="15"/>
+                                <Label Text="{Binding FileTime}"
+                                            Margin="0,-3,0,0"
+                                               HorizontalTextAlignment="Start"
+                                               VerticalTextAlignment="Center"
+                                               TextColor="{StaticResource lightgrey2}"
+                                               FontSize="13"/>
+                                <Label Text="{Binding FileSize}"
+                                            Margin="0,-3,0,0"
+                                               HorizontalTextAlignment="Start"
+                                               VerticalTextAlignment="Center"
+                                               TextColor="{StaticResource lightgrey2}"
+                                               FontSize="13"/>
+                            </StackLayout>
+                            <Image Grid.Column="2"
+                                           Source="closeblue"
+                                           WidthRequest="25"
+                                           HeightRequest="25"
+                                                              x:Name="imagedelete"
+                                           HorizontalOptions="End"
+                                           Margin="0,5,10,0">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding deletcommand}"
+                                                          BindingContext="{Binding Source={x:Reference list}, Path=BindingContext}" 
+                                                              CommandParameter="{Binding Source={x:Reference imagedelete},Path=BindingContext}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <BoxView HeightRequest="1" 
+                                                 BackgroundColor="{StaticResource lightgrey1}"
+                                             VerticalOptions="End"
+                                             Grid.ColumnSpan="3"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+    </Frame>
+
+
+</pages:PopupPage>

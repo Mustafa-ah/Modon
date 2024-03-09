@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:view="clr-namespace:Maham.Views"
+             prism:ViewModelLocator.AutowireViewModel="True"
+              xmlns:transalte="clr-namespace:Maham.Helpers"
+             NavigationPage.HasBackButton="False"
+             x:Class="Maham.Views.EditSearchPage">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" x:Name="toolbar"
+                      Margin="0,0,20,0">
+
+            <StackLayout HeightRequest="40" 
+                             WidthRequest="40"
+                             HorizontalOptions="Start">
+                <Image Source="arrowleftgrey" 
+                       Margin="5,0"
+                       Aspect="AspectFit"  VerticalOptions="CenterAndExpand"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding back}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+
+            <Label Text="{transalte:Translate findemployeetext}"
+                   
+                   VerticalOptions="CenterAndExpand" 
+                       FontSize="16"
+                       FontAttributes="Bold"
+                   HorizontalOptions="FillAndExpand"
+                   HorizontalTextAlignment="Center"
+                   TextColor="{StaticResource drakgrey}" 
+                   VerticalTextAlignment="Center" />
+        </StackLayout>
+
+    </NavigationPage.TitleView>
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="0.9*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <view:EmployeeControlPage Grid.Row="0"
+                                  Searchtext="{Binding Employeename}"
+                                  ListSource="{Binding Myemployeelist}"
+                          ItemCheckedCommand="{Binding chooseemp}"/>
+
+
+        <Button Grid.Row="1" Margin="10,0,10,10"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"
+                  BorderRadius="10"
+                        HeightRequest="56"
+                        WidthRequest="150"
+                        BorderWidth="1" BorderColor="Transparent"
+                        BackgroundColor="{StaticResource lightblue1}"
+                        TextColor="{StaticResource WhiteColor}"
+                Command="{Binding Search}"
+                Text="{transalte:Translate assignbutton}"
+                />
+    </Grid>
+</ContentPage> 

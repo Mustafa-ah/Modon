@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             xmlns:transalte="clr-namespace:Maham.Helpers"
+             xmlns:customcontrol="clr-namespace:Maham.CustomControl"
+             
+             x:Class="Maham.Views.NewClientPage">
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid RowSpacing="0" Grid.Row="0"   BackgroundColor="White" HeightRequest="56">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="0.9*"/>
+                <ColumnDefinition Width="0.1*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout HeightRequest="56" Grid.Column="0"
+                             WidthRequest="56"
+                          Margin="10,0,10,6"
+                             HorizontalOptions="Start">
+                <Image Source="arrowleftgrey" Aspect="AspectFit" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NaviagtionBackCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <Label Text="{transalte:Translate newClientText}"
+                   Grid.Column="1"
+                      FontAttributes="Bold"
+                   VerticalOptions="Center" 
+                   FontSize="20"
+                   HorizontalOptions="Center" 
+                   HorizontalTextAlignment="Center"
+                   TextColor="{StaticResource drakgrey}" 
+                   VerticalTextAlignment="Center" />
+
+        </Grid>
+        <ScrollView Grid.Row="1" BackgroundColor="{StaticResource WhiteColor2}">
+            <StackLayout>
+                <StackLayout  Margin="10,10,10,0"  >
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{transalte:Translate usernametext}" 
+                               FontSize="14"  
+                               TextColor="{StaticResource drakgrey2}"/>
+                                   
+                    </StackLayout>
+
+                    <customcontrol:RoundedView 
+                                            BorderColor="{StaticResource lightgrey2}"
+                                           BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                           BorderThickness="1"
+                                      BackgroundColor="White"
+                                        HeightRequest="56">
+                        <customcontrol:CustomEntry 
+                                         HorizontalTextAlignment="Start"
+                                           Margin="10,10,10,5"
+                                           HorizontalOptions="FillAndExpand"
+                                           x:Name="username"
+                                           Text="{Binding name}"
+                                           Placeholder="{transalte:Translate usernameplaceholder}"
+                                           ReturnType="Next"
+                                           PlaceholderColor="{StaticResource lightgrey2}"
+                                           HeightRequest="56">
+
+
+                        </customcontrol:CustomEntry>
+                    </customcontrol:RoundedView>
+                </StackLayout>
+                <StackLayout  Margin="10,10,10,0"  >
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{transalte:Translate comunitynametext}" 
+                               FontSize="14"  
+                               TextColor="{StaticResource drakgrey2}"/>
+
+                    </StackLayout>
+
+                    <customcontrol:RoundedView 
+                                            BorderColor="{StaticResource lightgrey2}"
+                                          BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                           BorderThickness="1"
+                                      BackgroundColor="White"
+                                        HeightRequest="56">
+                        <customcontrol:CustomEntry 
+                                         HorizontalTextAlignment="Start"
+                                           Margin="10,10,10,5"
+                                           HorizontalOptions="FillAndExpand"
+                                           x:Name="OrganizationName"
+                                           Text="{Binding organizationName}"
+                                           Placeholder="{transalte:Translate communitynameplceholder}"
+                                           ReturnType="Next"
+                                           PlaceholderColor="{StaticResource lightgrey2}"
+                                           HeightRequest="56">
+
+
+                        </customcontrol:CustomEntry>
+                    </customcontrol:RoundedView>
+                </StackLayout>
+                <StackLayout  Margin="10,10,10,0"  >
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{transalte:Translate emailtextnew}" 
+                               FontSize="14"  
+                               TextColor="{StaticResource drakgrey2}"/>
+
+                    </StackLayout>
+
+                    <customcontrol:RoundedView 
+                                            BorderColor="{StaticResource lightgrey2}"
+                                             BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                           BorderThickness="1"
+                                      BackgroundColor="White"
+                                        HeightRequest="56">
+                        <customcontrol:CustomEntry 
+                                         HorizontalTextAlignment="Start"
+                                           Margin="10,10,10,5"
+                                           HorizontalOptions="FillAndExpand"
+                                           x:Name="email"
+                                           Text="{Binding email}"
+                                           Placeholder="{transalte:Translate emailtextnew}"
+                                           ReturnType="Next"
+                                           PlaceholderColor="{StaticResource lightgrey2}"
+                                           HeightRequest="56">
+
+
+                        </customcontrol:CustomEntry>
+                    </customcontrol:RoundedView>
+                </StackLayout>
+                <StackLayout  Margin="10,10,10,0"  >
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{transalte:Translate phonenumbertext}" 
+                               FontSize="14"  
+                               TextColor="{StaticResource drakgrey2}"/>
+
+                    </StackLayout>
+
+                    <customcontrol:RoundedView 
+                                            BorderColor="{StaticResource lightgrey2}"
+                                             BorderRadius="{x:OnPlatform iOS='6',Android='15'}"
+                                           BorderThickness="1"
+                                      BackgroundColor="White"
+                                        HeightRequest="56">
+                        <customcontrol:CustomEntry 
+                                         HorizontalTextAlignment="Start"
+                                           Margin="10,10,10,5"
+                                           HorizontalOptions="FillAndExpand"
+                                           x:Name="mobile"
+                                           Text="{Binding mobile}"
+                                           Placeholder="{transalte:Translate phonenumberplaceholder}"
+                                           ReturnType="Next"
+                                           PlaceholderColor="{StaticResource lightgrey2}"
+                                           HeightRequest="56">
+
+
+                        </customcontrol:CustomEntry>
+                    </customcontrol:RoundedView>
+                </StackLayout>
+                <Button BorderRadius="{x:OnPlatform Android='7',iOS='5'}"
+                            Text="{transalte:Translate submittext}"
+                            TextColor="White"
+                            Margin="20,15,20,0"
+                            HeightRequest="50"
+                          Command="{Binding RequestCodeCommand}"
+                            BackgroundColor="#69CAF1"/>
+            </StackLayout>
+        </ScrollView>
+        <Image Grid.Row="2"
+                      Source="waves"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="End"
+                       Aspect="AspectFill"/>
+        <StackLayout Margin="0"
+                         Padding="0"
+                         Spacing="5"
+                             Grid.RowSpan="3"
+                           BackgroundColor="{StaticResource IndicatorBackground}"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         IsVisible="{Binding isbusy}">
+            <StackLayout Margin="0"
+                             Padding="0"
+                             Spacing="5"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand">
+
+                <ActivityIndicator Color="#69CAF1"
+                                       WidthRequest="40"
+                                       Margin="0"
+                                       HeightRequest="40"
+                                       IsRunning="True"
+                                       IsVisible="True"/>
+                <Label Text="{transalte:Translate indicatorloadingtext}"
+                           FontSize="12"
+                           Margin="0"
+                           TextColor="#fefefe"
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="Center"
+                           />
+            </StackLayout>
+        </StackLayout>
+        <customcontrol:DisconnectedView IsVisible="{Binding NotConnected}"
+                                    Grid.Row="2"
+                                    Text="{Binding NotConnectedMsg}"/>
+    </Grid>
+  
+</ContentPage>

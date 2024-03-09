@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "763589725136",
+    "firebase_url": "https://taskylive.firebaseio.com",
+    "project_id": "taskylive",
+    "storage_bucket": "taskylive.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763589725136:android:e71b2d70d7d16029f0c7d5",
+        "android_client_info": {
+          "package_name": "com.modon.Tasky"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "763589725136-fp74bghbfiard4qnj2jp5h5pekbgrtnm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCETX-WGnIFFiG-zokb_FCZbE-0RXuxN44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "763589725136-fp74bghbfiard4qnj2jp5h5pekbgrtnm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "763589725136-pi2c529s2873dn3uuv8g9852000veosm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.modon.Tasky"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763589725136:android:3704ef1bf345bf58f0c7d5",
+        "android_client_info": {
+          "package_name": "com.modon.sa.maham"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "763589725136-fp74bghbfiard4qnj2jp5h5pekbgrtnm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCETX-WGnIFFiG-zokb_FCZbE-0RXuxN44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "763589725136-fp74bghbfiard4qnj2jp5h5pekbgrtnm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "763589725136-pi2c529s2873dn3uuv8g9852000veosm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.modon.Tasky"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

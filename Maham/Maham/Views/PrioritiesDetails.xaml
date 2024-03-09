@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:Maham.Behaviors"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:gauge="clr-namespace:Syncfusion.SfGauge.XForms;assembly=Syncfusion.SfGauge.XForms"
+             xmlns:converters="clr-namespace:Maham.Converters"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             BackgroundColor="#FAFAFA"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="True"
+             x:Name="rootitem"
+             x:Class="Maham.Views.PrioritiesDetails"
+             xmlns:transalte="clr-namespace:Maham.Helpers"
+             xmlns:customcontrol="clr-namespace:Maham.CustomControl">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ConvertDoubleToInt x:Key="DoubleToInt" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" x:Name="toolbar"
+                      Margin="0,0,20,0">
+
+            <StackLayout HeightRequest="40" 
+                             WidthRequest="40"
+                             HorizontalOptions="Start">
+                <Image Source="arrowleftgrey" 
+                       Margin="5,0"
+                       Aspect="AspectFit"  VerticalOptions="CenterAndExpand"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding backnavigationCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+
+            <Label Text="{Binding SectionName}" 
+                   
+                   VerticalOptions="CenterAndExpand" 
+                       FontSize="16"
+                       FontAttributes="Bold"
+                   HorizontalOptions="FillAndExpand"
+                   HorizontalTextAlignment="Center"
+                   TextColor="{StaticResource drakgrey}" 
+                   VerticalTextAlignment="Center" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+                <Label
+                 Text="{Binding TasksCount}"
+                
+                Margin="5,10,5,0"
+                FontSize="14"/>
+                <Label
+                 Text="{transalte:Translate task}"
+                
+                Margin="5,10,0,0"
+                FontSize="14"/>
+            </StackLayout>
+            <AbsoluteLayout Padding="0"
+              Margin="0,5,0,0"
+              VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand"
+              BackgroundColor="#FAFAFA">
+                <Grid AbsoluteLayout.LayoutFlags="All"
+                     AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListView  
+                    BackgroundColor="#FAFAFA"
+                    RowHeight="120"
+                    x:Name="tasklist"
+                    CachingStrategy = "RecycleElement"
+                        RefreshCommand="{Binding RefreshTasksCommand}"
+                          IsPullToRefreshEnabled="True"
+                          IsRefreshing="{Binding IsRefreshing}"
+                    ItemsSource="{Binding Tasks}" >
+                        <ListView.Behaviors>
+                            <behaviors:DisableListItemSelectionBehavior/>
+                        </ListView.Behaviors>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame  Padding="0"  
+                                        x:Name="framecell"
+                                                 BorderColor="#50D3D3D3"
+                                                 HorizontalOptions="FillAndExpand"                                   
+                                                 VerticalOptions="FillAndExpand"                                       
+                                                 CornerRadius="5">
+                                        <Frame.Margin>
+                                            <OnPlatform x:TypeArguments="Thickness"
+                                                    iOS ="15,7,15,7"
+                                                    Android ="15,0,15,7">
+                                            </OnPlatform>
+                                        </Frame.Margin>
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding taskdetailsCommand} "
+                                                BindingContext="{Binding Source={x:Reference tasklist}, Path=BindingContext}" 
+                                                              CommandParameter="{Binding Source={x:Reference framecell},Path=BindingContext}"/>
+                                        </Frame.GestureRecognizers>
+                                        <AbsoluteLayout 
+                                                 HorizontalOptions="FillAndExpand"                                   
+                                                 VerticalOptions="FillAndExpand">
+                                            <Grid 
+                                          Padding="0"
+                                          RowSpacing="9"
+                                          Margin="0,0,0,0"  
+                                                  AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                          AbsoluteLayout.LayoutFlags="All">
+
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="4"/>
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <!--Status Color Column-->
+                                                <StackLayout BackgroundColor="{Binding ColumnColor}" 
+                                                HorizontalOptions="FillAndExpand" 
+                                                VerticalOptions="FillAndExpand"
+                                                Grid.RowSpan="2"
+                                                Grid.Column="0"/>
+
+                                                <StackLayout HorizontalOptions="FillAndExpand" 
+                                                                 VerticalOptions="FillAndExpand"
+                                                                 Grid.Row="0"
+                                                                 Grid.Column="1"
+                                                                 Orientation="Horizontal">
+
+                                                    <AbsoluteLayout      
+                                                Margin="0"
+                                                WidthRequest="75" 
+                                                HeightRequest="75">
+
+                                                        <gauge:SfCircularGauge
+                                                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                                       AbsoluteLayout.LayoutFlags="All" 
+                                                    Margin="0,5,0,0">
+                                                         
+                                                            <gauge:SfCircularGauge.Scales>
+                                                                <gauge:Scale StartValue="0" 
+                                                                 EndValue="100"
+                                                                 Interval="5" 
+                                                                 StartAngle="90"   
+                                                                 SweepAngle="360" 
+                                                                 RimThickness="20"
+                                                                 RimColor="#F1F2F2" 
+                                                                 ShowLabels="false" 
+                                                                 MinorTicksPerInterval="0"
+                                                                 ShowRim="true"
+                                                                 ShowTicks="false" 
+                                                                 ScaleEndOffset="0.8" 
+                                                                 ScaleStartOffset="1">
+
+                                                                    <gauge:Scale.Pointers>
+                                                                        <gauge:RangePointer Value="{Binding progress }"
+                                                            x:Name="progress1"  
+                                                            Color="{Binding ProgressColor}">
+                                                                            <gauge:RangePointer.StartOffset>
+                                                                                <OnPlatform x:TypeArguments="x:Double" iOS="1" Android="1"  />
+                                                                            </gauge:RangePointer.StartOffset>
+                                                                            <gauge:RangePointer.EndOffset>
+                                                                                <OnPlatform x:TypeArguments="x:Double" iOS="0.8" Android="0.8" />
+                                                                            </gauge:RangePointer.EndOffset>
+                                                                        </gauge:RangePointer>
+                                                                    </gauge:Scale.Pointers>
+                                                                </gauge:Scale>
+
+                                                            </gauge:SfCircularGauge.Scales>
+
+                                                        </gauge:SfCircularGauge>
+                                                        <Label Text="{Binding progress,  Converter={StaticResource DoubleToInt }, StringFormat=' {0}%'}" 
+                                                       FontSize="12" 
+                                                       TextColor="{Binding ProgressColor}"
+                                                       AbsoluteLayout.LayoutBounds="0.5,0.5,40,30"
+                                                       HorizontalTextAlignment="Center"
+                                                       VerticalTextAlignment="Center"
+                                                       AbsoluteLayout.LayoutFlags="PositionProportional" />
+                                                    </AbsoluteLayout>
+
+
+                                                <StackLayout Orientation="Vertical" WidthRequest="150">
+                                                        <Label Text="{Binding title}"
+                                                                   FontSize="14"
+                                                                   LineBreakMode="TailTruncation"
+                                                                   Margin="3,18,3,0"
+                                                                   
+                                                                   TextColor="#2196F3"/>
+
+                                                        <Label Text="{Binding description}"
+                                                                   FontSize="14"
+                                                                   LineBreakMode="TailTruncation" 
+                                                                   
+                                                                   TextColor="#303C56"/>
+                                                    </StackLayout>
+
+                                                    <StackLayout Orientation="Vertical"
+                                                     HorizontalOptions="EndAndExpand"
+                                                     Margin="0,8,10,0">
+                                                        <Image 
+                                                            HorizontalOptions="Center"
+                                                            Source="AssignToDefult.png"
+                                                            Margin="0,3,0,0"
+                                                            HeightRequest="30"
+                                                            WidthRequest="40"
+                                                            Aspect="AspectFill"/>
+
+                                                        <Label Text="{Binding assignedTo}"
+                                                                   FontSize="11"  LineBreakMode="TailTruncation"
+                                                                   
+                                                                    HorizontalTextAlignment="Center"
+                                                                   TextColor="#303C56"/>
+                                                    </StackLayout>
+
+                                                </StackLayout>
+                                                <!--second row-->
+                                                <StackLayout
+                                                        HorizontalOptions="FillAndExpand"
+                                                        VerticalOptions="FillAndExpand"
+                                                        Orientation="Horizontal"
+                                                        Grid.Row="1"
+                                                        Grid.Column="1" 
+                                                        Margin="0,0,0,5">
+                                                    <StackLayout Orientation="Horizontal" Spacing="5">
+                                                        <Image Source="{Binding StatusImage}"
+                                                               HeightRequest="10"
+                                                               WidthRequest="15"
+                                                               Aspect="AspectFit"/>
+
+                                                        <Label Text="{Binding status}"
+                                                               
+                                                               FontSize="14"
+                                                               Margin="0,0,0,2"
+                                                               HorizontalTextAlignment="Center"
+                                                               LineBreakMode="NoWrap"
+                                                               VerticalTextAlignment="Center"
+                                                               VerticalOptions="Center"
+                                                               TextColor="{Binding TextColor}"/>
+                                                    </StackLayout>
+
+                                                    <StackLayout Orientation="Horizontal" Spacing="5" Margin="15,0,15,0">
+                                                        <Image Source="CalendarIcon.png"
+                                                               HeightRequest="10"
+                                                               WidthRequest="15"
+                                                               Aspect="AspectFit"/>
+
+                                                        <Label Text="{Binding endDate}"
+                                                              
+                                                               FontSize="14"
+                                                               Margin="0,0,0,2"
+                                                              HorizontalTextAlignment="Center"
+                                                               LineBreakMode="NoWrap"
+                                                               VerticalOptions="Center"
+                                                               TextColor="{Binding TextColor}"/>
+              
+                                                </StackLayout>
+
+                                                <Image Source="{Binding UrgentSupport}"
+                                                               HeightRequest="13"
+                                                               WidthRequest="15"
+                                                               Aspect="AspectFit"
+                                                               Margin="20,0,0,0"/>
+                                                    <Image Source="{Binding ArrowImage}"
+                                                            HorizontalOptions="EndAndExpand"
+                                                               HeightRequest="10"
+                                                               WidthRequest="10"
+                                                               Aspect="AspectFit"
+                                                               Margin="10,0,10,0"/>
+                                                </StackLayout>
+                                            </Grid>
+                                        <StackLayout
+                                                     HorizontalOptions="FillAndExpand"                                   
+                                                     VerticalOptions="FillAndExpand"
+                                                     BackgroundColor="#50E5E5E5"
+                                                     IsVisible="{Binding IsClosed}"
+                                                     AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                                     AbsoluteLayout.LayoutFlags="All">
+
+                                        </StackLayout>
+                                        </AbsoluteLayout>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+                <StackLayout Margin="0"
+                         Padding="0"
+                         Spacing="5"
+                         BackgroundColor="{StaticResource IndicatorBackground}"
+                         AbsoluteLayout.LayoutFlags="All"
+                     AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                         IsVisible="{Binding IsBusy}">
+                    <StackLayout Margin="0"
+                             Padding="0"
+                             Spacing="5"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand">
+
+                        <ActivityIndicator Color="#69CAF1"
+                                       WidthRequest="40"
+                                       Margin="0"
+                                       HeightRequest="40"
+                                       IsRunning="True"
+                                       IsVisible="True"/>
+                        <Label Text="{transalte:Translate indicatorloadingtext}"
+                           FontSize="12"
+                           Margin="0"
+                           TextColor="#fefefe"
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="Center"
+                           />
+                    </StackLayout>
+                </StackLayout>
+                <customcontrol:DisconnectedView 
+                AbsoluteLayout.LayoutFlags="All"
+                     AbsoluteLayout.LayoutBounds="0, 1, 1, 0.1"
+                Text="{Binding NotConnectedMsg}"
+                IsVisible="{Binding NotConnected}"/>
+            </AbsoluteLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
