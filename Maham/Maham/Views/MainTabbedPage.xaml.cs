@@ -123,6 +123,11 @@ namespace Maham.Views
 
             tabNotification.SetBinding(TabBadge.BadgeTextProperty, new Binding("NotificationCount"));
 
+            //TabBadge.SetBadgeText(tabNotification, "99+");
+            TabBadge.SetBadgeColor(tabNotification, Color.Red);
+            TabBadge.SetBadgePosition(tabNotification, BadgePosition.PositionCenter);
+           // TabBadge.SetBadgeMargin(tabNotification, new Thickness(5, 15, 6, 0));
+
             TasksPage tabTasks = new TasksPage
             {
                 Title = Maham.Resources.AppResource.Tasks,

@@ -26,6 +26,7 @@ using System.Net.Http.Headers;
 using Maham.Enums;
 using Maham.Views;
 using Maham.Service.Model.Request.Tasks;
+using Maham.Helpers;
 
 namespace Maham.ViewModels
 {
@@ -229,6 +230,8 @@ namespace Maham.ViewModels
                 Settings.TaskId = record.Id.ToString();
                 // IsBusy = true;
                 //UnExpandAllItems();
+                //  await StoragPremissionGranted();
+                DependencyService.Get<IFileHelper>().GetPermission();
                 await navService.NavigateToAsync<TaskDetailsPageViewModel>();
                 // await _navigationService.NavigateAsync("TaskDetailsPage");
                 // await _navigationService.NavigateAsync("MainTabbedPage?selectedTab=TasksPage/TaskDetailsPage");
@@ -320,7 +323,8 @@ namespace Maham.ViewModels
 
                     CanLoadMoreSections = result.ListData[1] > (pageSize * (page + 1));//page start from 0
 
-                   List<Section> sections = (result.ListData[0]).ToObject<List<Section>>();
+                   //List<Section> sections = (result.ListData[0]).ToObject<List<Section>>();
+                    List<Section> sections = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Section>>(Convert.ToString(result.ListData[0]));
 
                     foreach (var item in sections)
                     {
@@ -526,28 +530,28 @@ namespace Maham.ViewModels
                         {
                             if (IsRTL)
                             {
-                                taskItem.status = Helpers.QuickTranslator.TranslateStatus(taskItem.status_Id);
+                              //  taskItem.status = Helpers.QuickTranslator.TranslateStatus(taskItem.status_Id);
                             }
                             TaskItem Inastance = new TaskItem()
                             {
-                                AssignedTo = taskItem.assignedTo,
-                                AssignedTo_ID = taskItem.assignedTo_ID,
-                                Average_progress = taskItem.average_progress,
-                                Description = taskItem.description,
-                                FK_UrgentSupportID = taskItem.fK_UrgentSupportID,
-                                Flag = taskItem.flag,
-                                Flag_id = taskItem.flag_id,
-                                Id = taskItem.id,
-                                Priority = taskItem.priority,
-                                Priority_Id = taskItem.priority_Id,
-                                Progress = taskItem.progress,
-                                Sector = taskItem.sector,
-                                Status = taskItem.status,
-                                Status_Id = taskItem.status_Id,
-                                Title = taskItem.title,
+                                AssignedTo = taskItem.Assignee,
+                                //AssignedTo_ID = taskItem.assignedTo_ID,
+                                Average_progress = taskItem.Progress,
+                                Description = taskItem.Description,
+                                FK_UrgentSupportID = "taskItem.fK_UrgentSupportID",
+                                Flag = taskItem.ArabicName,
+                                //Flag_id = taskItem.flag_id,
+                                Id = taskItem.Id,
+                                Priority = taskItem.PriorityId.ToString(),
+                                Priority_Id = taskItem.PriorityId,
+                                Progress = taskItem.Progress.ToString(),
+                                Sector = taskItem.Sector,
+                                Status = taskItem.StatusId.ToString(),
+                                Status_Id = taskItem.StatusId,
+                                Title = taskItem.Title,
                             };
-                            Inastance.StartDate = taskItem.startDate.ToShortDateStringForView();//.ToShortDateStringFromApIDateTime();// DateTime.Parse(taskItem.startDate, CultureInfo.InvariantCulture).ToShortDateString();
-                            Inastance.EndDate = taskItem.endDate.ToShortDateStringForView();//.ToShortDateStringFromApIDateTime();// DateTime.Parse(taskItem.endDate, CultureInfo.InvariantCulture).ToShortDateString();
+                            Inastance.StartDate = taskItem.StartDate.ToShortDateStringForView();//.ToShortDateStringFromApIDateTime();// DateTime.Parse(taskItem.startDate, CultureInfo.InvariantCulture).ToShortDateString();
+                            Inastance.EndDate = taskItem.EndDate.ToShortDateStringForView();//.ToShortDateStringFromApIDateTime();// DateTime.Parse(taskItem.endDate, CultureInfo.InvariantCulture).ToShortDateString();
                             tabContent.Tasks.Add(Inastance);
                         }
                     }
@@ -709,7 +713,7 @@ namespace Maham.ViewModels
                             return true;
                         pageNumber = count / pageSize;
                         var api = RestService.For<ITaskyApi>(new System.Net.Http.HttpClient(new HttpLoggingHandler()) { BaseAddress = new Uri(Settings.ApiUrl) });
-                        List<Service.Model.Response.Tasks.Task> tasks = new List<Service.Model.Response.Tasks.Task>();
+                        List<TaskDto> tasks = new List<TaskDto>();
 
                         var tasksDetails = await GetTasks(new Section() { Id = _oldTabContentViewModel.SectionID, FieldType = _oldTabContentViewModel.FieldType }, pageNumber);
                         tasks = tasksDetails.Data;
@@ -729,28 +733,28 @@ namespace Maham.ViewModels
                         {
                             if (IsRTL)
                             {
-                                taskItem.status = Helpers.QuickTranslator.TranslateStatus(taskItem.status_Id);
+                               // taskItem.status = Helpers.QuickTranslator.TranslateStatus(taskItem.status_Id);
                             }
                             TaskItem Inastance = new TaskItem()
                             {
-                                AssignedTo = taskItem.assignedTo,
-                                AssignedTo_ID = taskItem.assignedTo_ID,
-                                Average_progress = taskItem.average_progress,
-                                Description = taskItem.description,
-                                FK_UrgentSupportID = taskItem.fK_UrgentSupportID,
-                                Flag = taskItem.flag,
-                                Flag_id = taskItem.flag_id,
-                                Id = taskItem.id,
-                                Priority = taskItem.priority,
-                                Priority_Id = taskItem.priority_Id,
-                                Progress = taskItem.progress,
-                                Sector = taskItem.sector,
-                                Status = taskItem.status,
-                                Status_Id = taskItem.status_Id,
-                                Title = taskItem.title,
+                                AssignedTo = taskItem.Assignee,
+                                //AssignedTo_ID = taskItem.assignedTo_ID,
+                                Average_progress = taskItem.Progress,
+                                Description = taskItem.Description,
+                                FK_UrgentSupportID = "taskItem.fK_UrgentSupportID",
+                                Flag = taskItem.ArabicName,
+                                //Flag_id = taskItem.flag_id,
+                                Id = taskItem.Id,
+                                Priority = taskItem.PriorityId.ToString(),
+                                Priority_Id = taskItem.PriorityId,
+                                Progress = taskItem.Progress.ToString(),
+                                Sector = taskItem.Sector,
+                                Status = taskItem.StatusId.ToString(),
+                                Status_Id = taskItem.StatusId,
+                                Title = taskItem.Title,
                             };
-                            Inastance.StartDate = taskItem.startDate.ToShortDateStringForView();//.ToShortDateStringFromApIDateTime();// DateTime.Parse(taskItem.startDate, CultureInfo.InvariantCulture).ToShortDateString();
-                            Inastance.EndDate = taskItem.endDate.ToShortDateStringForView();//.ToShortDateStringFromApIDateTime();// DateTime.Parse(taskItem.endDate, CultureInfo.InvariantCulture).ToShortDateString();
+                            Inastance.StartDate = taskItem.StartDate.ToShortDateStringForView();//.ToShortDateStringFromApIDateTime();// DateTime.Parse(taskItem.startDate, CultureInfo.InvariantCulture).ToShortDateString();
+                            Inastance.EndDate = taskItem.EndDate.ToShortDateStringForView();//.ToShortDateStringFromApIDateTime();// DateTime.Parse(taskItem.endDate, CultureInfo.InvariantCulture).ToShortDateString();
                             tabContent.Tasks.Add(Inastance);
                         }
                         var x = new TabContentViewModel(this, tabContent);
@@ -802,7 +806,7 @@ namespace Maham.ViewModels
 
         //test
 
-        private async System.Threading.Tasks.Task<ResultData<Service.Model.Response.Tasks.Task>> GetTasks(Section item, int pageNumber)
+        private async Task<ResultData<TaskDto>> GetTasks(Section item, int pageNumber)
         {
             try
             {
@@ -833,11 +837,10 @@ namespace Maham.ViewModels
                 var api = RestService.For<ITaskyApi>(new System.Net.Http.HttpClient(new HttpLoggingHandler()) { BaseAddress = new Uri(Settings.ApiUrl) });
                 var result = await api.GetAllTaskListViewSectionData("Bearer " + Settings.AccessToken, filterDto, pageNumber, 10, item.Id, item.FieldType, Settings.UserId, FullMode);
 
-               
                 // string url = $"/api/View/GetAllTaskListViewSectionData?Page={pageNumber}&PageSize=10&ID={item.Id}&FieldType={item.FieldType}&UserID={Setting.Settings.UserId}&FullMode={FullMode}&StatusId={TaskFilter.StatusID}&PriorityId={TaskFilter.PriorityID}&Entities={entites}&SourceId={TaskFilter.SourceId}&UserGroupId={userGroupId}&SearchTask={TaskFilter.SearchTitle}&FromDate={startDateApi}&ToDate={entDateApi}&ResponsibleID.ID={TaskFilter.ResponsibleID.ID}&ResponsibleID.RoleID={TaskFilter.ResponsibleID.RoleID}&ResponsibleID.Type={TaskFilter.ResponsibleID.Type}";
                // string url = $"/api/View/GetAllTaskListViewSectionData?Page={pageNumber}&PageSize=10&ID={item.Id}&FieldType={item.FieldType}&UserID={Setting.Settings.UserId}&FullMode={FullMode}";
 
-              //  string json = Newtonsoft.Json.JsonConvert.SerializeObject(TaskFilter);
+               // string json = Newtonsoft.Json.JsonConvert.DeserializeObject<Service.Model.Response.Tasks.Task>(resu)
 
                 return result;
 
@@ -862,7 +865,7 @@ namespace Maham.ViewModels
                 Console.WriteLine(ex.Message);
             }
 
-            return new ResultData<Service.Model.Response.Tasks.Task>();
+            return new ResultData<TaskDto>();
         }
     }
 }

@@ -136,7 +136,8 @@ namespace Maham.ViewModels
                 var result = await api.GetCategoryCharts("Bearer " + Settings.AccessToken, tabId_, filterObj);
                 //var result = await api.GetCategoryCharts("Bearer " + Settings.AccessToken, tabId_, _Filter.FromDate, _Filter.ToDate, _Filter.StatusId, _Filter.PriorityId, _Filter.EntityId, _Filter.ResponsibleID.ID, _Filter.ResponsibleID.RoleID, _Filter.ResponsibleID.Type, _Filter.SourceId);
 
-                ApiData = (result.Data).ToObject<List<Chart>>();
+                //ApiData = (result.Data).ToObject<List<Chart>>();
+                ApiData = JsonConvert.DeserializeObject<List<Chart>>(Convert.ToString(result.Data));
             }
             catch (Exception exception)
             {

@@ -21,20 +21,21 @@
             EasingOut="SinIn"
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
-    <customcontrol:RoundedView >
+    <customcontrol:RoundedView>
         <Frame CornerRadius="10"
-               
+               HeightRequest="280"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
                HasShadow="False"  
                Margin="20,100,20,150"
-               BorderColor="White"
-               OutlineColor="White">
-            <Grid  HorizontalOptions="FillAndExpand">
+               BorderColor="White">
+            <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="Start">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="240"/>
                     
                 </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" HeightRequest="40" WidthRequest="40">
+                <StackLayout Grid.Row="0" WidthRequest="40">
                     <Image 
                        HorizontalOptions="EndAndExpand"
                       Margin="0,0,0,0"
@@ -66,7 +67,7 @@
                         HorizontalOptions="CenterAndExpand">
 
                         <Button BorderColor="{StaticResource lightblue1}"
-                        BorderRadius="8"
+                        CornerRadius="8"
                         HeightRequest="50"
                         WidthRequest="120"
                         BorderWidth="1" 
@@ -80,7 +81,7 @@
                         Margin="20,0,0,0"
                         BackgroundColor="{StaticResource lightblue1}"
                         TextColor="{StaticResource WhiteColor}"
-                        BorderRadius="8"
+                        CornerRadius="8"
                         Command="{Binding DeletebuttonCommand}"
                         HeightRequest="50"
                         WidthRequest="120"

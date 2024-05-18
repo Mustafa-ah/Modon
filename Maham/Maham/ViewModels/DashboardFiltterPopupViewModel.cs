@@ -16,6 +16,8 @@ using Refit;
 using Maham.Setting;
 using Maham.Service;
 using Microsoft.AppCenter.Crashes;
+using Maham.Service.Model.Request.Dashboard;
+using Newtonsoft.Json;
 
 namespace Maham.ViewModels
 {
@@ -374,7 +376,8 @@ namespace Maham.ViewModels
 
                 var result = await api.GetStatus("Bearer " + Settings.AccessToken);
                 List<ListPopUpModel> x = new List<ListPopUpModel>();
-                x = (result.Data).ToObject<List<ListPopUpModel>>();
+                //x = (result.Data).ToObject<List<ListPopUpModel>>();
+                x = JsonConvert.DeserializeObject<List<ListPopUpModel>>(Convert.ToString(result.Data));
                 foreach (var item in x)
                 {
                     MYlistDataStatus.Add(new ListPopUpModel { id = item.id, name = Settings.IsRtl ? item.nameAr : item.name, image2 = item.image2 });
@@ -399,7 +402,8 @@ namespace Maham.ViewModels
 
                 var result = await api.GetPriority("Bearer " + Settings.AccessToken);
                 List<ListPopUpModel> x = new List<ListPopUpModel>();
-                x = (result.Data).ToObject<List<ListPopUpModel>>();
+                //x = (result.Data).ToObject<List<ListPopUpModel>>();
+                x = JsonConvert.DeserializeObject<List<ListPopUpModel>>(Convert.ToString(result.Data));
                 foreach (var item in x)
                 {
                     MYlistData.Add(new ListPopUpModel { id = item.id, name = Settings.IsRtl ? item.nameAr : item.name, image2 = item.image2 });

@@ -13,6 +13,7 @@ using Maham.Service;
 using Maham.Service.Model.Request.Login;
 using Maham.Setting;
 using Xamarin.Forms;
+using Newtonsoft.Json;
 
 namespace Maham.ViewModels
 {
@@ -102,7 +103,8 @@ namespace Maham.ViewModels
                 if (result.Success)
                 {
                     var x = new List<DashboardContentApi>();
-                    x = (result.Data).ToObject<List<DashboardContentApi>>();
+                    //x = (result.Data).ToObject<List<DashboardContentApi>>();
+                    x = JsonConvert.DeserializeObject<List<DashboardContentApi>>(Convert.ToString(result.Data));
                     return x;
                 }
                 else return new List<DashboardContentApi>();

@@ -17,7 +17,6 @@ namespace Maham.Service.Model.Response.Tasks
         public double average_progress { get; set; }
         public int flag_id { get; set; }
         public string flag { get; set; }
-       // public int id { get; set; }
         public string title { get; set; }
         public string progress { get; set; }
         public string description { get; set; }

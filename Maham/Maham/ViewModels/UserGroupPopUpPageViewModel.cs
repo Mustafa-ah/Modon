@@ -16,6 +16,7 @@ using Maham.Service;
 using Maham.Setting;
 using Xamarin.Forms;
 using Maham.Models;
+using Newtonsoft.Json;
 
 namespace Maham.ViewModels
 {
@@ -67,7 +68,8 @@ namespace Maham.ViewModels
                 //GetUserGroupsList
                 var result = await api.GetUserGroupsList("Bearer " + Settings.AccessToken, Guid.Empty);
                 List<UserGroupListModel> _x = new List<UserGroupListModel>();
-                _x = (result.Data).ToObject<List<UserGroupListModel>>();
+                //_x = (result.Data).ToObject<List<UserGroupListModel>>();
+                _x = JsonConvert.DeserializeObject<List<UserGroupListModel>>(Convert.ToString(result.Data));
                 UserGroupList = new ObservableCollection<UserGroupListModel>();
                     foreach (var item in _x)
                 {

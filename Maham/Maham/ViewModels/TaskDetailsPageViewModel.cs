@@ -27,8 +27,7 @@ using Maham.Views;
 
 using Xamarin.Forms;
 using Maham.Extentions;
-using Plugin.Permissions.Abstractions;
-using Plugin.Permissions;
+
 using System.Threading.Tasks;
 using Maham.Service.General;
 using Task = System.Threading.Tasks.Task;
@@ -37,6 +36,11 @@ using System.Text;
 using System.Net;
 using Maham.Service.Model.Response;
 using Syncfusion.SfChart.XForms;
+using Newtonsoft.Json;
+using static SQLite.SQLite3;
+using Xamarin.Essentials;
+using Plugin.Permissions;
+using static Xamarin.Essentials.Permissions;
 
 namespace Maham.ViewModels
 {
@@ -372,7 +376,7 @@ namespace Maham.ViewModels
             try
             {
                 isBusy = true;
-                var result = new Result(true);
+                var result = new Service.Model.Response.Result(true);
                 bool changed = false;
                 if (EmergencyCallEnabled != task.NeedsErcall)
                 { result = await api.UpdateTaskERCallStatus("Bearer " + Settings.AccessToken, task.Id, EmergencyCallEnabled);
@@ -556,13 +560,7 @@ namespace Maham.ViewModels
         {
             try
             {
-                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
-                if (status != PermissionStatus.Granted)
-                {
-                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
-                    status = results[Permission.Storage];
-                }
-                if (status != PermissionStatus.Granted)
+                if (!await PremissionGranted())
                 {
                     return;
                 }
@@ -728,7 +726,8 @@ namespace Maham.ViewModels
                         if (result.Success)
                         {
                             ObservableCollection<CommentDto> commentDtos = new ObservableCollection<CommentDto>();
-                            commentDtos = (result.Data).ToObject<ObservableCollection<CommentDto>>();
+                            //commentDtos = (result.Data).ToObject<ObservableCollection<CommentDto>>();
+                            commentDtos = JsonConvert.DeserializeObject<ObservableCollection<CommentDto>>(Convert.ToString(result.Data));
                             foreach (var item in commentDtos)
                             {
                                 item.photoUrl = "user";
@@ -901,7 +900,8 @@ namespace Maham.ViewModels
 
                 var result = await api.GetPriority("Bearer " + Settings.AccessToken);
                 List<ListPopUpModel> x = new List<ListPopUpModel>();
-                x = (result.Data).ToObject<List<ListPopUpModel>>();
+                //  x = (result.Data).ToObject<List<ListPopUpModel>>();
+                x = JsonConvert.DeserializeObject <List<ListPopUpModel>>(Convert.ToString(result.Data));
                 foreach (var item in x)
                 {
                     PrioritiesListData.Add(new ListPopUpModel { id = item.id, name = IsRTL? item.nameAr : item.name, image2 = item.image2 });
@@ -920,20 +920,20 @@ namespace Maham.ViewModels
         public async Task GetTaskData()
         {
 
-
+            //await PremissionGranted();
             var api = RestService.For<ITaskyApi>(new System.Net.Http.HttpClient(new HttpLoggingHandler()) { BaseAddress = new Uri(Settings.ApiUrl) });
             try
             {
                 isBusy = true;
                 string language = IsRTL ? "sa" : "us";
                 var result = await api.GetTaskByIdForEdit("Bearer " + Settings.AccessToken, Settings.TaskId, language);
-                task = (result.Data).ToObject<TaskDto>();
+                //task = (result.Data).ToObject<TaskDto>();
                 if (result.Success)
                 {
                     isBusy = false;
 
                     task = new TaskDto();
-                    task = (result.Data).ToObject<TaskDto>();
+                    task = Newtonsoft.Json.JsonConvert.DeserializeObject<TaskDto>(Convert.ToString(result.Data));
                     StatusId = task.StatusId;
 
                     CanReassign = false;
@@ -990,7 +990,8 @@ namespace Maham.ViewModels
 
                     var _EmergencyCalls = await api.GetEntitiesERCallList("Bearer " + Settings.AccessToken);
                     List<EmergencyCallsDDL> _x = new List<EmergencyCallsDDL>();
-                    _x = (_EmergencyCalls.Data).ToObject<List<EmergencyCallsDDL>>();
+                    //_x = (_EmergencyCalls.Data).ToObject<List<EmergencyCallsDDL>>();
+                    _x = JsonConvert.DeserializeObject <List<EmergencyCallsDDL>>(Convert.ToString(_EmergencyCalls.Data));
                     Settings.EmergencyCallList = _x;
 
                     var EC = _x.FirstOrDefault(x=>Equal(x.Value3, EmergencyCall));
@@ -1016,7 +1017,7 @@ namespace Maham.ViewModels
                         FilelistData = new ObservableCollection<FileDataModel>();
                         FilelistData.Clear();
 
-                        if (!Directory.Exists(path))
+                        if (!Directory.Exists(path) && await PremissionGranted())
                         {
                             Directory.CreateDirectory(path);
                         }
@@ -1090,7 +1091,8 @@ namespace Maham.ViewModels
                     if (result.Success)
                     {
                         ObservableCollection<CommentDto> commentDtos = new ObservableCollection<CommentDto>();
-                        commentDtos = (result.Data).ToObject<ObservableCollection<CommentDto>>();
+                        //commentDtos = (result.Data).ToObject<ObservableCollection<CommentDto>>();
+                        commentDtos = JsonConvert.DeserializeObject <ObservableCollection<CommentDto>>(Convert.ToString(result.Data));
                         foreach (var item in commentDtos)
                         {
                             item.photoUrl = "user";
@@ -1171,8 +1173,8 @@ namespace Maham.ViewModels
             try
             {
                 var _DueDates = await api.GetTaskDueDateRequests("Bearer " + Settings.AccessToken, 0, 5, task.Id);
-                 DueDateslist = (_DueDates.Data).ToObject<List<TaskDueDateRequestDto>>();
-
+                // DueDateslist = (_DueDates.Data).ToObject<List<TaskDueDateRequestDto>>();
+                DueDateslist = JsonConvert.DeserializeObject <List<TaskDueDateRequestDto>>(Convert.ToString(_DueDates.Data));
                 foreach (var item in DueDateslist)
                 {
                     
@@ -1400,7 +1402,8 @@ namespace Maham.ViewModels
                             PreviousTaskProgress = TaskProgress;
                             TaskProgress = initilaizedTaskProgress = Value;
                             var ChangedTask = new TaskDto();
-                            ChangedTask = (result.Data).ToObject<TaskDto>();
+                            //ChangedTask = (result.Data).ToObject<TaskDto>();
+                            ChangedTask = JsonConvert.DeserializeObject<TaskDto>(Convert.ToString(result.Data));
                             StatusId = ChangedTask.StatusId;
                             SwitchStatus();
                         }
@@ -1570,14 +1573,17 @@ namespace Maham.ViewModels
         }
         private async Task<bool> PremissionGranted()
         {
-            var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+            var status = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
             if (status != PermissionStatus.Granted)
             {
-                var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
-                status = results[Permission.Storage];
+                status = await Permissions.RequestAsync<Permissions.StorageRead>();
+                status = await Permissions.RequestAsync<Permissions.StorageWrite>();
+               //var s = await CrossPermissions.Current.RequestPermissionAsync<StoragePermission>();
+                //return s == Plugin.Permissions.Abstractions.PermissionStatus.Granted;
             }
 
             return status == PermissionStatus.Granted;
+            //return true;
         }
         private async void uploadFileCommandExcute(object obj)
         {

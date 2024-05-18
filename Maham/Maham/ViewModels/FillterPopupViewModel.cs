@@ -25,6 +25,7 @@ using Maham.Setting;
 using Maham.Views;
 using Xamarin.Forms;
 using Maham.Service.Model.Response;
+using Newtonsoft.Json;
 
 namespace Maham.ViewModels
 {
@@ -900,7 +901,8 @@ namespace Maham.ViewModels
                 IsLoadingPriority = true;
                 var result = await api.GetPriority("Bearer " + Settings.AccessToken);
                 List<ListPopUpModel> x = new List<ListPopUpModel>();
-                x = (result.Data).ToObject<List<ListPopUpModel>>();
+                //x = (result.Data).ToObject<List<ListPopUpModel>>();
+                x = JsonConvert.DeserializeObject<List<ListPopUpModel>>(Convert.ToString(result.Data));
                 lst.Add(al);
                 foreach (var item in x)
                 {
@@ -930,7 +932,8 @@ namespace Maham.ViewModels
                 IsLoadingStatus = true;
                 var result = await api.GetStatus("Bearer " + Settings.AccessToken);
                 List<ListPopUpModel> x = new List<ListPopUpModel>();
-                x = (result.Data).ToObject<List<ListPopUpModel>>();
+                //x = (result.Data).ToObject<List<ListPopUpModel>>();
+                x = JsonConvert.DeserializeObject<List<ListPopUpModel>>(Convert.ToString(result.Data));
                 lst.Add(al);
                 foreach (var item in x)
                 {
@@ -962,7 +965,8 @@ namespace Maham.ViewModels
             {
                 var result = await api.GetSectors("Bearer " + Settings.AccessToken);
                 List<ListPopUpModel_Guid> x = new List<ListPopUpModel_Guid>();
-                x = (result.Data).ToObject<List<ListPopUpModel_Guid>>();
+                //x = (result.Data).ToObject<List<ListPopUpModel_Guid>>();
+                x = JsonConvert.DeserializeObject<List<ListPopUpModel_Guid>>(Convert.ToString(result.Data));
                 lst.Add(al);
                 foreach (var item in x)
                 {
@@ -1013,7 +1017,8 @@ namespace Maham.ViewModels
             {
                 var result = await api.GetUserGroupsList("Bearer " + Settings.AccessToken, Guid.Empty);
                 List<ListPopUpModel_Guid> x = new List<ListPopUpModel_Guid>();
-                x = (result.Data).ToObject<List<ListPopUpModel_Guid>>();
+                //x = (result.Data).ToObject<List<ListPopUpModel_Guid>>();
+                x = JsonConvert.DeserializeObject<List<ListPopUpModel_Guid>>(Convert.ToString(result.Data));
                 lst.Add(al);
                 foreach (var item in x)
                 {
@@ -1074,8 +1079,8 @@ namespace Maham.ViewModels
             {
                 var result = await api.GetEmployees("Bearer " + Settings.AccessToken, page, pageSize);
 
-                responsiblesDDLs = (result.Data).ToObject<List<ResponsiblesDDL>>();
-
+                //responsiblesDDLs = (result.Data).ToObject<List<ResponsiblesDDL>>();
+                responsiblesDDLs = JsonConvert.DeserializeObject<List<ResponsiblesDDL>>(Convert.ToString(result.Data));
             }
             catch (Exception exception)
             {
@@ -1101,7 +1106,8 @@ namespace Maham.ViewModels
                 IsLoadingSource = true;
                 var result = await api.GetSource("Bearer " + Settings.AccessToken);
                 List<ListPopUpModel> x = new List<ListPopUpModel>();
-                x = (result.Data).ToObject<List<ListPopUpModel>>();
+                //x = (result.Data).ToObject<List<ListPopUpModel>>();
+                x = JsonConvert.DeserializeObject<List<ListPopUpModel>>(Convert.ToString(result.Data));
                 lst.Add(al);
                 foreach (var item in x)
                 {

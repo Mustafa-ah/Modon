@@ -35,6 +35,7 @@ using Maham.Views;
 using Xamarin.Forms;
 using Maham.Service.Model.Response.Tasks;
 using Task = System.Threading.Tasks.Task;
+using Newtonsoft.Json;
 
 namespace Maham.ViewModels
 {
@@ -529,7 +530,8 @@ namespace Maham.ViewModels
                 MyList.Clear();
                 var result = await api.GetPositionAssignOnChange("Bearer " + Settings.AccessToken, IDs);
                 List<ResponsiblesDDL> x = new List<ResponsiblesDDL>();
-                x = (result.Data).ToObject<List<ResponsiblesDDL>>();
+                //x = (result.Data).ToObject<List<ResponsiblesDDL>>();
+                x = JsonConvert.DeserializeObject<List<ResponsiblesDDL>>(Convert.ToString(result.Data));
                 foreach (var item in x)
                 {
                     string txt = IsRTL ? item.ArabicText : item.Text;
@@ -561,7 +563,8 @@ namespace Maham.ViewModels
 
                 var result = await api.GetPriority("Bearer " + Settings.AccessToken);
                 List<ListPopUpModel> x = new List<ListPopUpModel>();
-                x = (result.Data).ToObject<List<ListPopUpModel>>();
+                //x = (result.Data).ToObject<List<ListPopUpModel>>();
+                x = JsonConvert.DeserializeObject<List<ListPopUpModel>>(Convert.ToString(result.Data));
                 foreach (var item in x)
                 {
                     PrioritiesListData.Add(new ListPopUpModel { id = item.id, name = IsRTL ? item.nameAr : item.name, image2 = item.image2 });
@@ -756,7 +759,8 @@ namespace Maham.ViewModels
                             }
 
                             TaskDto x = new TaskDto();
-                            x = (res.Data).ToObject<TaskDto>();
+                            //x = (res.Data).ToObject<TaskDto>();
+                            x = JsonConvert.DeserializeObject<TaskDto>(Convert.ToString(res.Data));
                             res = await api.UploadTaskAttachment("Bearer " + Settings.AccessToken, x.Id.ToString(), false, files);
 
                             if (res.Success)

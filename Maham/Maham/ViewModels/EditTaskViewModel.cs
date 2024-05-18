@@ -36,6 +36,7 @@ using Maham.Service.Model.Response.Tasks;
 using Task = System.Threading.Tasks.Task;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Newtonsoft.Json;
 
 namespace Maham.ViewModels
 {
@@ -472,7 +473,8 @@ namespace Maham.ViewModels
                 var result = await api.GetTaskAttachment("Bearer " + Settings.AccessToken, attachmentId.ToString());
 
                 AttachmentDto x = new AttachmentDto();
-                x = (result.Data).ToObject<AttachmentDto>();
+               // x = (result.Data).ToObject<AttachmentDto>();
+                x = JsonConvert.DeserializeObject<AttachmentDto>(Convert.ToString(result.Data));
                 return x;
             }
             catch (Exception ee)
@@ -495,7 +497,8 @@ namespace Maham.ViewModels
 
                 var result = await api.AddAttachment("Bearer " + Settings.AccessToken, attachment);
                 AttachmentDto x = new AttachmentDto();
-                x = (result.Data).ToObject<AttachmentDto>();
+                //x = (result.Data).ToObject<AttachmentDto>();
+                x = JsonConvert.DeserializeObject<AttachmentDto>(Convert.ToString(result.Data));
                 return x;
             }
             catch (Exception ee)
@@ -710,7 +713,8 @@ namespace Maham.ViewModels
                 MyList.Clear();
                 var result = await api.GetPositionAssignees("Bearer " + Settings.AccessToken, ID);
                 List<ResponsiblesDDL> x = new List<ResponsiblesDDL>();
-                x = (result.Data).ToObject<List<ResponsiblesDDL>>();
+                //x = (result.Data).ToObject<List<ResponsiblesDDL>>();
+                x = JsonConvert.DeserializeObject<ResponsiblesDDL>(Convert.ToString(result.Data));
                 foreach (var item in x)
                 {
                     var txt = IsRTL ? item.ArabicText : item.Text;
@@ -735,7 +739,8 @@ namespace Maham.ViewModels
                 MyList.Clear();
                 var result = await api.GetUserGroupAssignees("Bearer " + Settings.AccessToken, ID, (int)Enums.Privilege.Reassign);
                 List<ResponsiblesDDL> x = new List<ResponsiblesDDL>();
-             //   x = (result.Data).ToObject<List<ResponsiblesDDL>>();
+                //   x = (result.Data).ToObject<List<ResponsiblesDDL>>();
+                x = JsonConvert.DeserializeObject<List<ResponsiblesDDL>>(Convert.ToString(result.Data));
                 foreach (var item in x)
                 {
                     MyList.Add(new ResponsiblesDDL { Text = item.Text, Value2 = item.Value2 });
@@ -761,7 +766,8 @@ namespace Maham.ViewModels
 
                 var result = await api.GetPriority("Bearer " + Settings.AccessToken);
                 List<ListPopUpModel> x = new List<ListPopUpModel>();
-                x = (result.Data).ToObject<List<ListPopUpModel>>();
+                //x = (result.Data).ToObject<List<ListPopUpModel>>();
+                x = JsonConvert.DeserializeObject<List<ListPopUpModel>>(Convert.ToString(result.Data));
                 foreach (var item in x)
                 {
                     PrioritiesListData.Add(new ListPopUpModel { id = item.id, name = Settings.IsRtl ? item.nameAr : item.name, image2 = item.image2 });
@@ -1141,7 +1147,8 @@ namespace Maham.ViewModels
 
                     isBusy = false;
                     task = new TaskDto();
-                    task = (result.Data).ToObject<TaskDto>();
+                    //task = (result.Data).ToObject<TaskDto>();
+                    task = JsonConvert.DeserializeObject<TaskDto>(Convert.ToString(result.Data));
                     TaskName = task.Title;
                     StartDate = task.StartDate.ToShortDateStringForView();
                     StartDate_DT = task.StartDate;
@@ -1264,7 +1271,8 @@ namespace Maham.ViewModels
                 MyList.Clear();
                 var result = await api.GetPositionAssignOnChange("Bearer " + Settings.AccessToken, IDs);
                 List<ResponsiblesDDL> x = new List<ResponsiblesDDL>();
-                x = (result.Data).ToObject<List<ResponsiblesDDL>>();
+                //x = (result.Data).ToObject<List<ResponsiblesDDL>>();
+                x = JsonConvert.DeserializeObject<List<ResponsiblesDDL>>(Convert.ToString(result.Data));
                 foreach (var item in x)
                 {
                     string txt = IsRTL ? item.ArabicText : item.Text;

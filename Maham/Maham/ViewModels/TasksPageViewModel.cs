@@ -169,12 +169,15 @@ namespace Maham.ViewModels
               
                 var api = RestService.For<ITaskyApi>(new System.Net.Http.HttpClient(new HttpLoggingHandler()) { BaseAddress = new Uri(Settings.ApiUrl) });
 
+
                 ResultData<TabsResponse> result = null;
 
                 switch (Taskmode)
                 {
                     case TasksMode.TaskList:
-                        result = await api.GetAllTaskListViews("Bearer " + Settings.AccessToken);
+                        //result = await api.GetAllTaskListViews("Bearer " + Settings.AccessToken);
+                        var jsonData = await api.GetAllTaskListViewsTest("Bearer " + Settings.AccessToken);
+                        result = Newtonsoft.Json.JsonConvert.DeserializeObject<ResultData<TabsResponse>>(jsonData);
                         break;
                     case TasksMode.TaskListUserGroup:
                         result = await api.GetAllTaskListUserGroupViews("Bearer " + Settings.AccessToken);

@@ -16,6 +16,8 @@ using Maham.Service;
 using Maham.Setting;
 using Xamarin.Forms;
 using Maham.Models;
+using Maham.Service.Model.Response.User;
+using Newtonsoft.Json;
 
 namespace Maham.ViewModels
 {
@@ -68,7 +70,8 @@ namespace Maham.ViewModels
                 Isbusy = true;
                 var result = await api.GetSource("Bearer " + Settings.AccessToken, userid, privilege);
                 List<ListPopUpModel> _x = new List<ListPopUpModel>();
-                _x = (result.Data).ToObject<List<ListPopUpModel>>();
+                //_x = (result.Data).ToObject<List<ListPopUpModel>>();
+                _x = JsonConvert.DeserializeObject<List<ListPopUpModel>>(Convert.ToString(result.Data));
                 SourceList = new ObservableCollection<ListPopUpModel>();
                     foreach (var item in _x)
                 {

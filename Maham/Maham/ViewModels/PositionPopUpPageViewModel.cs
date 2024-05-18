@@ -16,6 +16,8 @@ using Maham.Service;
 using Maham.Setting;
 using Xamarin.Forms;
 using Maham.Models;
+using Maham.Service.Model.Response.Notification;
+using Newtonsoft.Json;
 
 namespace Maham.ViewModels
 {
@@ -67,7 +69,8 @@ namespace Maham.ViewModels
 
                 var result = await api.GetPositionsList("Bearer " + Settings.AccessToken, Guid.Empty);
                 List<PositionListModel> _x = new List<PositionListModel>();
-                _x = (result.Data).ToObject<List<PositionListModel>>();
+                //_x = (result.Data).ToObject<List<PositionListModel>>();
+                _x = JsonConvert.DeserializeObject<List<PositionListModel>>(Convert.ToString(result.Data));
                 PositionList = new ObservableCollection<ListModel>();
                     foreach (var item in _x)
                 {

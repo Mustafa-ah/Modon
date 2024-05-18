@@ -11,6 +11,8 @@ using Maham.Service.General;
 using Maham.Service.Model.Response.User;
 using Maham.Setting;
 using Xamarin.Forms;
+using Maham.Models.User;
+using Newtonsoft.Json;
 
 namespace Maham.ViewModels
 {
@@ -360,7 +362,8 @@ namespace Maham.ViewModels
                 var result = await api.GetProfileUser("Bearer " + Settings.AccessToken, Settings.UserId);
                 if (result != null)
                 {
-                    profiledata = (result.Data).ToObject<GetUserProfileResponse>();
+                    //profiledata = (result.Data).ToObject<GetUserProfileResponse>();
+                    profiledata = JsonConvert.DeserializeObject<GetUserProfileResponse>(Convert.ToString(result.Data));
                     if (profiledata.photoUrl == null)
                     {
                         MyImage = "user.svg";

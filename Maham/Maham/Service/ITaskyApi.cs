@@ -291,6 +291,9 @@ namespace Maham.Service
         [Get("/api/View/GetAllTaskListViews")]
         Task<ResultData<TabsResponse>> GetAllTaskListViews([Header("Authorization")] string accessToken);
 
+        [Get("/api/View/GetAllTaskListViews")]
+        Task<string> GetAllTaskListViewsTest([Header("Authorization")] string accessToken);
+
         [Get("/api/View/GetAllTaskListViewSections?ID={id}&Page={Page}&PageSize={PageSize}")]
         Task<Result> GetAllTaskListViewSections([Header("Authorization")] string accessToken, System.Guid id, int Page, int PageSize);
 
@@ -300,8 +303,7 @@ namespace Maham.Service
         //Task<ResultData<Model.Response.Tasks.Task>> GetAllTaskListViewSectionData([Header("Authorization")] string accessToken,int page, int pageSize, Guid sectionId, string fieldType, string userId, bool fullMode, int statusID , int priorityID, int sourceId, Guid userGroupId, string searchTitle, string FromDate, string ToDate, string ResponsibleID, string ResponsibleIDRoleID, int ResponsibleIDType, [Query(CollectionFormat.Multi)] Guid[] Entities);
 
         [Post("/api/View/GetAllTaskListViewSectionData?Page={page}&PageSize={pageSize}&ID={sectionId}&FieldType={fieldType}&UserID={userId}&FullMode={fullMode}")]
-        Task<ResultData<Model.Response.Tasks.Task>> GetAllTaskListViewSectionData([Header("Authorization")] string accessToken, [Body] FilterDto filterTask, int page, int pageSize, Guid sectionId, string fieldType, string userId, bool fullMode);
-
+        Task<ResultData<TaskDto>> GetAllTaskListViewSectionData([Header("Authorization")] string accessToken, [Body] FilterDto filterTask, int page, int pageSize, Guid sectionId, string fieldType, string userId, bool fullMode);
 
         // /api​/View​/GetAllTaskListUserGroupViews
         [Get("/api/View/GetAllTaskListUserGroupViews")]

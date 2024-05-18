@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Maham.Models;
 
 namespace Maham.Service.Model.Response.Tasks
 {
@@ -11,7 +12,7 @@ namespace Maham.Service.Model.Response.Tasks
         public string sectionNameAr { get; set; }
         public string tasksCount { get; set; }
         public string FieldType { get; set; }
-        public List<Task> tasks { get; set; }
+        public List<TaskDto> tasks { get; set; }
 
     }
 

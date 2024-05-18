@@ -235,7 +235,8 @@ namespace Maham.ViewModels
                 NotificationHistoryResponse x = new NotificationHistoryResponse();
                 try
                 {
-                    x = (NotificationHistory.Data).ToObject<NotificationHistoryResponse>();
+                    //x = (NotificationHistory.Data).ToObject<NotificationHistoryResponse>();
+                    x = JsonConvert.DeserializeObject<NotificationHistoryResponse>(Convert.ToString(NotificationHistory.Data));
                 }
                 catch (Exception e)
                 {
