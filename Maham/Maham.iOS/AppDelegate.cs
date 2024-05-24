@@ -95,38 +95,38 @@ namespace Maham.iOS
             return base.FinishedLaunching(app, options);
         }
 
-        private void Current_OnNotificationReceived(object source, Plugin.FirebasePushNotification.Abstractions.FirebasePushNotificationDataEventArgs p)
-        {
-            string title = "Maham";
-            string body = " ";
-            // int notificationType = 1;
-            try
-            {
-                if (!Maham.Setting.Settings.AllowPushNotification)
-                {
-                    return;
-                }
-                bool rtl = Maham.Setting.Settings.AppLang.Contains("ar");
-                if (rtl)
-                {
-                    title = p.Data["titleAr"].ToString();
-                    body = p.Data["messageBodyAr"].ToString();
-                }
-                else
-                {
-                    title = p.Data["title"].ToString();
-                    body = p.Data["messageBody"].ToString();
-                }
+        //private void Current_OnNotificationReceived(object source, Plugin.FirebasePushNotification.Abstractions.FirebasePushNotificationDataEventArgs p)
+        //{
+        //    string title = "Maham";
+        //    string body = " ";
+        //    // int notificationType = 1;
+        //    try
+        //    {
+        //        if (!Maham.Setting.Settings.AllowPushNotification)
+        //        {
+        //            return;
+        //        }
+        //        bool rtl = Maham.Setting.Settings.AppLang.Contains("ar");
+        //        if (rtl)
+        //        {
+        //            title = p.Data["titleAr"].ToString();
+        //            body = p.Data["messageBodyAr"].ToString();
+        //        }
+        //        else
+        //        {
+        //            title = p.Data["title"].ToString();
+        //            body = p.Data["messageBody"].ToString();
+        //        }
 
-                Maham.Setting.Settings.TaskId = p.Data["taskId"].ToString();
-                // Int32.TryParse(p.Data["NotificatonType"].ToString(), out notificationType);
-            }
-            catch
-            {
+        //        Maham.Setting.Settings.TaskId = p.Data["taskId"].ToString();
+        //        // Int32.TryParse(p.Data["NotificatonType"].ToString(), out notificationType);
+        //    }
+        //    catch
+        //    {
 
-            }
-            new Helper.NotificationHelper().Notify(title, body);
-        }
+        //    }
+        //    new Helper.NotificationHelper().Notify(title, body);
+        //}
 
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {

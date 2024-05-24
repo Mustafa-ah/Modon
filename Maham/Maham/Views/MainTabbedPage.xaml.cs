@@ -125,8 +125,8 @@ namespace Maham.Views
 
             //TabBadge.SetBadgeText(tabNotification, "99+");
             TabBadge.SetBadgeColor(tabNotification, Color.Red);
-            TabBadge.SetBadgePosition(tabNotification, BadgePosition.PositionCenter);
-           // TabBadge.SetBadgeMargin(tabNotification, new Thickness(5, 15, 6, 0));
+            TabBadge.SetBadgePosition(tabNotification, BadgePosition.PositionTopRight);
+            TabBadge.SetBadgeMargin(tabNotification, new Thickness(0, 8, 13, 0));
 
             TasksPage tabTasks = new TasksPage
             {

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
 
 namespace Maham.Helpers
 {
@@ -8,5 +6,8 @@ namespace Maham.Helpers
     {
         void FilePath( string filepath);
         string file(string name);
+        void GetStoragePermission();
+        //bool StoragePermissionGranted();
+       // void CreateAppSpecificDirectory();
     }
 }

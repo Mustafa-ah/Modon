@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-
+using Android;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using AndroidX.Core.Content;
 using Maham.Droid.Helpers;
 using Maham.Helpers;
 using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
 
 [assembly: Xamarin.Forms.Dependency(typeof(FileHelper))]
 
@@ -21,6 +24,9 @@ namespace Maham.Droid.Helpers
 {
     public class FileHelper : IFileHelper
     {
+        const int RequestStorageId = 0;
+        readonly string[] PermissionsStorage = {Manifest.Permission.ReadExternalStorage,Manifest.Permission.WriteExternalStorage};
+
         public FileHelper()
         {
 
@@ -28,10 +34,15 @@ namespace Maham.Droid.Helpers
 
         public string file(string name)
         {
-           // var path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-            var path = global::Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
+             var path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+           // var internalStorageDirectory = new Java.IO.File(Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity.ApplicationContext.FilesDir, name);
+            //var path = global::Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
+            //if (Build.VERSION.SdkInt >= BuildVersionCodes.Q)
+            //{
+            //    path = CreateAppSpecificDirectory();// Path.Combine(Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity.GetExternalFilesDir(Android.OS.Environment.DirectoryDocuments).AbsolutePath, "TaskDocs");
+            //}
             var filename1 = Path.Combine(path.ToString(), name);
-            return filename1;
+            return filename1;// internalStorageDirectory.AbsolutePath;
         }
 
         public void FilePath(string filePath)
@@ -85,11 +96,11 @@ namespace Maham.Droid.Helpers
             intent.SetDataAndType(uri, application);
             intent.SetFlags(ActivityFlags.ClearWhenTaskReset | ActivityFlags.NewTask | ActivityFlags.GrantReadUriPermission);
 
-           var ac =  intent.ResolveActivity(Forms.Context.PackageManager);
+           var ac =  intent.ResolveActivity(Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity.PackageManager);
             if (ac != null)
             {
                 //Android.App.Application.Context
-                Forms.Context.StartActivity(intent);
+                Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity.StartActivity(intent);
             }
             else
             {
@@ -97,7 +108,7 @@ namespace Maham.Droid.Helpers
                 string msg = Setting.Settings.IsRtl? "لا يوجد تطبيق يمكنه فتح هذا الملف" : "No application available to handle this file";
 
 
-                Android.App.AlertDialog.Builder alert = new Android.App.AlertDialog.Builder(Android.App.Application.Context);
+                AlertDialog.Builder alert = new AlertDialog.Builder(Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity);
                 //alert.SetTitle(dialogTitle);
                 alert.SetMessage(msg);
                 alert.SetPositiveButton(ok, (senderAlert, args) => {
@@ -114,6 +125,61 @@ namespace Maham.Droid.Helpers
 
             }
             //Forms.Context.StartActivity(Intent.CreateChooser(intent, "Your title"));
+        }
+
+        public void GetStoragePermission()
+        {
+            //if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
+            //{
+            //    if (ContextCompat.CheckSelfPermission(Plugin.CurrentActivity.CrossCurrentActivity.Current.AppContext, Manifest.Permission.ReadMediaImages) != PermissionChecker.PermissionGranted)
+            //    {
+            //        string[] permissions = new string[] { Manifest.Permission.ReadMediaImages, Manifest.Permission.ReadMediaVideo };
+
+            //        Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity.RequestPermissions(permissions, 101); // Request code
+            //        //await ((FormsAppCompatActivity)Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity).RequestPermissionsAsync(permissions, 101); // Request code
+            //    }
+            //}
+
+            if (ContextCompat.CheckSelfPermission(Plugin.CurrentActivity.CrossCurrentActivity.Current.AppContext, Manifest.Permission.WriteExternalStorage) != (int)Permission.Granted)
+            {
+                // Request permissions
+                Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity.RequestPermissions(PermissionsStorage, RequestStorageId);
+            }
+        }
+
+
+        //public string CreateAppSpecificDirectory()
+        //{
+        //    try
+        //    {
+        //        string externalFilesDirPath = Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity.GetExternalFilesDir(Android.OS.Environment.DirectoryDocuments)?.AbsolutePath;
+
+        //        //string externalFilesDir = "";
+        //        //Java.IO.File externalFilesDird = Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity.GetExternalFilesDir(Android.OS.Environment.DirectoryDocuments);
+        //        if (externalFilesDirPath != null)
+        //        {
+        //            return Path.Combine(externalFilesDirPath, "TaskDocs");
+        //            //if (!Directory.Exists(path))
+        //            //{
+        //            //    Directory.CreateDirectory(path);
+        //            //}
+        //            //else
+        //            //{
+        //            //    //
+        //            //}
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+
+        //    return global::Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
+        //}
+
+        public void fff()
+        {
+           // var ff = Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity.GetExternalFilesDir(Android.OS.Environment.DirectoryDocuments);
         }
     }
 }

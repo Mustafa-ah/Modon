@@ -151,7 +151,7 @@ namespace Maham.ViewModels
                 }
                 else
                 {
-                    NotificationCount = NotificationHistory.UnreadCount == 0 ? "" : $"{NotificationHistory.UnreadCount}";
+                    NotificationCount = NotificationHistory.UnreadCount == 0 ? "" : NotificationHistory.UnreadCount > 99 ? "+99" : $"{NotificationHistory.UnreadCount}";
                     IsThereNotifications = true;
                     IsThereNotNotifications = false;
                     //notificationsDTO.Reverse();

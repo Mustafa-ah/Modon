@@ -6,7 +6,6 @@
             x:Class="Maham.Views.MainTabbedPage"
             xmlns:CustomControl="clr-namespace:Maham.CustomControl"
             prism:ViewModelLocator.AutowireViewModel="True"
-            xmlns:contentViews="clr-namespace:Maham.Views.ContentViews"
             x:Name="page"
            xmlns:il8n="clr-namespace:Maham.Helpers"
            xmlns:Converters="clr-namespace:Maham.Converters"

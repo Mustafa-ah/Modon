@@ -39,8 +39,6 @@ using Syncfusion.SfChart.XForms;
 using Newtonsoft.Json;
 using static SQLite.SQLite3;
 using Xamarin.Essentials;
-using Plugin.Permissions;
-using static Xamarin.Essentials.Permissions;
 
 namespace Maham.ViewModels
 {
@@ -1020,6 +1018,7 @@ namespace Maham.ViewModels
                         if (!Directory.Exists(path) && await PremissionGranted())
                         {
                             Directory.CreateDirectory(path);
+                            //DependencyService.Get<IFileHelper>().CreateAppSpecificDirectory();
                         }
 
                         string filepath;
@@ -1111,9 +1110,11 @@ namespace Maham.ViewModels
                 }
                 isBusy = false;
 
+               // DependencyService.Get<IFileHelper>().GetStoragePermission();
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
+                    //DependencyService.Get<IFileHelper>().CreateAppSpecificDirectory();
                 }
             }
             catch (Exception exception)
@@ -1573,6 +1574,11 @@ namespace Maham.ViewModels
         }
         private async Task<bool> PremissionGranted()
         {
+            if (Device.RuntimePlatform == Device.Android && (int)DeviceInfo.Version.Major >= 29)
+            {
+                // Android 10 (API level 29) or greater
+                return true;
+            }
             var status = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
             if (status != PermissionStatus.Granted)
             {

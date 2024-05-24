@@ -37,7 +37,6 @@
     <PackageReference Include="Plugin.FirebasePushNotification" Version="3.4.35" />
     <PackageReference Include="Plugin.ImageResizer" Version="1.0.1-alpha" />
     <PackageReference Include="Plugin.Multilingual" Version="1.0.2" />
-    <PackageReference Include="Plugin.Permissions" Version="6.0.1" />
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
     <PackageReference Include="Refit" Version="7.0.0" />
     <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
@@ -66,7 +65,6 @@
     <Folder Include="AttachedProperties\" />
     <Folder Include="Validation\" />
     <Folder Include="ViewModels\ContentViewViewModels\" />
-    <Folder Include="Views\ContentViews\" />
     <Folder Include="Effects\" />
   </ItemGroup>
 

@@ -13,6 +13,7 @@ using System.Windows.Input;
 using Maham.Setting;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Microsoft.AppCenter.Crashes;
 
 namespace Maham.Bases
 {
@@ -157,6 +158,101 @@ namespace Maham.Bases
         public void OnNavigatedTo(INavigationParameters parameters)
         {
            // throw new NotImplementedException();
+        }
+
+        //public async Task<bool> RequestStoragePermission()
+        //{
+        //    var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+
+        //    if (status != Plugin.Permissions.Abstractions.PermissionStatus.Granted)
+        //    {
+        //       // var request = await CrossPermissions.Current.RequestPermissionsAsync<StoragePermission>();
+        //        PermissionStatus statusd = await CrossPermissions.Current.RequestPermissionAsync<StoragePermission>();
+        //        if (request.ContainsKey(Permission.Storage) && request[Permission.Storage] == Plugin.Permissions.Abstractions.PermissionStatus.Granted)
+        //        {
+        //            // Permission granted, access storage here
+        //            Console.WriteLine("Storage permission granted");
+        //            return true;
+        //        }
+        //        else
+        //        {
+        //            // Permission denied, inform user
+        //            Console.WriteLine("Storage permission denied");
+        //            return false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        // Permission already granted, access storage here
+        //        Console.WriteLine("Storage permission already granted");
+        //        return true;
+        //    }
+        //}
+        public async Task<bool> StoragPremissionGranted()
+        {
+            try
+            {
+                bool granted = false;
+
+                await Device.InvokeOnMainThreadAsync(async () =>
+                {
+                   //var status = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
+                   // if (status != PermissionStatus.Granted)
+                   // {
+                   //     status = await Permissions.RequestAsync<Permissions.StorageWrite>();
+                   //     status = await Permissions.RequestAsync<Permissions.StorageRead>();
+                   //     granted = status == PermissionStatus.Granted;
+                   // }
+
+                    //var writeStatus = await Permissions.CheckStatusAsync<Permissions.StorageWrite>();
+                    //var readStatus = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
+
+                    //if (writeStatus == PermissionStatus.Granted && readStatus == PermissionStatus.Granted)
+                    //{
+                    //    // Permissions have already been granted
+                    //    // Perform your storage-related operations
+                    //}
+                    //else
+                    //{
+                    //    // Permissions have not been granted
+                    //    // Request the permissions
+                    //    var permissionsToRequest = new List<string>();
+
+                    //    if (writeStatus != PermissionStatus.Granted)
+                    //        permissionsToRequest.Add<Permissions.StorageWrite>();
+
+                    //    if (readStatus != PermissionStatus.Granted)
+                    //        permissionsToRequest.Add<Permissions.StorageRead>();
+
+                    //    var results = await Permissions.RequestAsync(permissionsToRequest.ToArray());
+
+                    //    if (results.ContainsKey(typeof(Permissions.StorageWrite)))
+                    //        writeStatus = results[typeof(Permissions.StorageWrite)];
+
+                    //    if (results.ContainsKey(typeof(Permissions.StorageRead)))
+                    //        readStatus = results[typeof(Permissions.StorageRead)];
+
+                    //    if (writeStatus == PermissionStatus.Granted && readStatus == PermissionStatus.Granted)
+                    //    {
+                    //        // Permissions have been granted
+                    //        // Perform your storage-related operations
+                    //    }
+                    //    else
+                    //    {
+                    //        // Permissions have been denied
+                    //        // Handle the denial or notify the user
+                    //    }
+                    //}
+                });
+
+
+                return granted;
+            }
+            catch (Exception ex)
+            {
+                 Crashes.TrackError(ex);
+                return false;
+            }
         }
     }
 }

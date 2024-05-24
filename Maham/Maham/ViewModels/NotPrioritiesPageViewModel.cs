@@ -231,7 +231,7 @@ namespace Maham.ViewModels
                 // IsBusy = true;
                 //UnExpandAllItems();
                 //  await StoragPremissionGranted();
-                DependencyService.Get<IFileHelper>().GetPermission();
+                DependencyService.Get<IFileHelper>().GetStoragePermission();
                 await navService.NavigateToAsync<TaskDetailsPageViewModel>();
                 // await _navigationService.NavigateAsync("TaskDetailsPage");
                 // await _navigationService.NavigateAsync("MainTabbedPage?selectedTab=TasksPage/TaskDetailsPage");

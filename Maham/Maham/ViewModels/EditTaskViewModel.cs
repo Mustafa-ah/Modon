@@ -1,26 +1,17 @@
 ﻿using Microsoft.AppCenter.Crashes;
 using Plugin.FilePicker;
-using Plugin.Multilingual;
-using Plugin.Permissions;
-using Plugin.Permissions.Abstractions;
-using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
 using Refit;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Maham.Bases;
 using Maham.Constants;
-using Maham.Enums;
 using Maham.Extentions;
 using Maham.Helpers;
 using Maham.Models;
@@ -28,15 +19,14 @@ using Maham.Models.User;
 using Maham.Resources;
 using Maham.Service;
 using Maham.Service.General;
-using Maham.Service.Model.Request.Tasks;
 using Maham.Setting;
 using Maham.Views;
 using Xamarin.Forms;
 using Maham.Service.Model.Response.Tasks;
 using Task = System.Threading.Tasks.Task;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using Newtonsoft.Json;
+using Xamarin.Essentials;
 
 namespace Maham.ViewModels
 {
@@ -415,11 +405,11 @@ namespace Maham.ViewModels
         {
             try
             {
-                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+                var status = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
                 if (status != PermissionStatus.Granted)
                 {
-                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
-                    status = results[Permission.Storage];
+                    status = await Permissions.RequestAsync<Permissions.StorageRead>();
+                    status = await Permissions.RequestAsync<Permissions.StorageWrite>();
                 }
                 if (status != PermissionStatus.Granted)
                 {
@@ -1081,11 +1071,11 @@ namespace Maham.ViewModels
         }
         private async Task<bool> PremissionGranted()
         {
-            var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+            var status = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
             if (status != PermissionStatus.Granted)
             {
-                var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
-                status = results[Permission.Storage];
+                status = await Permissions.RequestAsync<Permissions.StorageRead>();
+                status = await Permissions.RequestAsync<Permissions.StorageWrite>();
             }
 
             return status == PermissionStatus.Granted;

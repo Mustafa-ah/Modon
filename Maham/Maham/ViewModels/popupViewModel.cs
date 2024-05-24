@@ -16,11 +16,10 @@ using Maham.Setting;
 using Maham.Service;
 using Microsoft.AppCenter.Crashes;
 using Maham.Resources;
-using Plugin.Permissions;
-using Plugin.Permissions.Abstractions;
 using System.IO;
 using Maham.Helpers;
 using Maham.Constants;
+using Xamarin.Essentials;
 
 namespace Maham.ViewModels
 {
@@ -96,11 +95,11 @@ namespace Maham.ViewModels
         {
             try
             {
-                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+                var status = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
                 if (status != PermissionStatus.Granted)
                 {
-                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
-                    status = results[Permission.Storage];
+                    status = await Permissions.RequestAsync<Permissions.StorageRead>();
+                    status = await Permissions.RequestAsync<Permissions.StorageWrite>();
                 }
                 if (status != PermissionStatus.Granted)
                 {

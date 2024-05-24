@@ -6,7 +6,6 @@ using Android.OS;
 using Android.Runtime;
 using Android.Widget;
 using Plugin.FirebasePushNotification;
-using Plugin.Permissions;
 using Prism;
 using Prism.Ioc;
 using System;
@@ -17,6 +16,7 @@ using Maham.Helpers;
 using System.IO;
 using Newtonsoft.Json;
 using Maham.Constants;
+using System.Linq;
 
 namespace Maham.Droid
 {
@@ -30,11 +30,11 @@ namespace Maham.Droid
                 string path = DependencyService.Get<IFileHelper>().file(AppConstants.AppName);
                 string filepath = Path.Combine(path, DateTime.Now.ToLongTimeString());
                 var newExc = new ApplicationException("AndroidEnvironment_UnhandledExceptionRaiser", args.Exception);
-                DependencyService.Get<IFileHelper>().FilePath(filepath);;
+                DependencyService.Get<IFileHelper>().FilePath(filepath); ;
                 File.WriteAllText(filepath, JsonConvert.SerializeObject(newExc));
             };
 
-                TabLayoutResource = Resource.Layout.Tabbar;
+            TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             //.EmulateBackPressed = OnBackPressed;
             SetTheme(Resource.Style.MainTheme);
@@ -72,6 +72,23 @@ namespace Maham.Droid
             
         }
 
+        //public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        //{
+        //    if (Xamarin.Essentials.DeviceInfo.Version.Major >= 13 && (permissions.Where(p => p.Equals("android.permission.WRITE_EXTERNAL_STORAGE")).Any() || permissions.Where(p => p.Equals("android.permission.READ_EXTERNAL_STORAGE")).Any()))
+        //    {
+        //        var wIdx = Array.IndexOf(permissions, "android.permission.WRITE_EXTERNAL_STORAGE");
+        //        var rIdx = Array.IndexOf(permissions, "android.permission.READ_EXTERNAL_STORAGE");
+
+        //        if (wIdx != -1 && wIdx < permissions.Length) grantResults[wIdx] = Permission.Granted;
+        //        if (rIdx != -1 && rIdx < permissions.Length) grantResults[rIdx] = Permission.Granted;
+        //    }
+
+        //    Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        //    PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        //    base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        //}
+
         protected override void OnNewIntent(Intent intent)
         {
             base.OnNewIntent(intent);
@@ -106,7 +123,16 @@ namespace Maham.Droid
         {
             //Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
-            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            //if (Xamarin.Essentials.DeviceInfo.Version.Major >= 13 && (permissions.Where(p => p.Equals("android.permission.WRITE_EXTERNAL_STORAGE")).Any() || permissions.Where(p => p.Equals("android.permission.READ_EXTERNAL_STORAGE")).Any()))
+            //{
+            //    var wIdx = Array.IndexOf(permissions, "android.permission.WRITE_EXTERNAL_STORAGE");
+            //    var rIdx = Array.IndexOf(permissions, "android.permission.READ_EXTERNAL_STORAGE");
+
+            //    if (wIdx != -1 && wIdx < permissions.Length) grantResults[wIdx] = Permission.Granted;
+            //    if (rIdx != -1 && rIdx < permissions.Length) grantResults[rIdx] = Permission.Granted;
+            //}
+
+            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             //  base.OnRequestPermissionsResult(requestCode, permissions, grantResults);

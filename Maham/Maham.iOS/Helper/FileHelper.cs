@@ -34,5 +34,10 @@ namespace Maham.iOS.Helper
                 PreviewController.PresentPreview(true);
             });
         }
+
+        public void GetPermission()
+        {
+            //throw new NotImplementedException();
+        }
     }
 }

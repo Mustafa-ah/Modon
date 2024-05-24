@@ -1,11 +1,6 @@
 ﻿
 using Microsoft.AppCenter.Crashes;
 using Plugin.FilePicker;
-using Plugin.Multilingual;
-using Plugin.Permissions;
-using Plugin.Permissions.Abstractions;
-using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
 using Refit;
 using Rg.Plugins.Popup.Services;
@@ -36,6 +31,7 @@ using Xamarin.Forms;
 using Maham.Service.Model.Response.Tasks;
 using Task = System.Threading.Tasks.Task;
 using Newtonsoft.Json;
+using Xamarin.Essentials;
 
 namespace Maham.ViewModels
 {
@@ -1058,11 +1054,11 @@ namespace Maham.ViewModels
         }
         private async Task<bool> PremissionGranted()
         {
-            var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+            var status = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
             if (status != PermissionStatus.Granted)
             {
-                var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
-                status = results[Permission.Storage];
+                status = await Permissions.RequestAsync<Permissions.StorageRead>();
+                status = await Permissions.RequestAsync<Permissions.StorageWrite>();
             }
 
             return status == PermissionStatus.Granted;
