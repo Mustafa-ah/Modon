@@ -576,7 +576,7 @@ namespace Maham.ViewModels
 
                     if (!String.IsNullOrEmpty(_result))
                     {
-                        File.WriteAllBytes(filepath, Convert.FromBase64String(_result));
+                        File.WriteAllBytes(filepath, Convert.FromBase64String(Convert.ToString(_result)));
                         DependencyService.Get<IFileHelper>().FilePath(filepath);
                     }
                    

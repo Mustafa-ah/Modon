@@ -34,18 +34,21 @@ namespace Maham.Droid.Helpers
 
         public string file(string name)
         {
-             var path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-           // var internalStorageDirectory = new Java.IO.File(Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity.ApplicationContext.FilesDir, name);
+            string path = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
+            Java.IO.File externalDir = Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity.GetExternalFilesDir(null);
+
+            // var path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+            // var internalStorageDirectory = new Java.IO.File(Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity.ApplicationContext.FilesDir, name);
             //var path = global::Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
-            //if (Build.VERSION.SdkInt >= BuildVersionCodes.Q)
-            //{
-            //    path = CreateAppSpecificDirectory();// Path.Combine(Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity.GetExternalFilesDir(Android.OS.Environment.DirectoryDocuments).AbsolutePath, "TaskDocs");
-            //}
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.Q)
+            {
+                path = externalDir.AbsolutePath;// Path.Combine(Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity.GetExternalFilesDir(Android.OS.Environment.DirectoryDocuments).AbsolutePath, "TaskDocs");
+            }
             var filename1 = Path.Combine(path.ToString(), name);
             return filename1;// internalStorageDirectory.AbsolutePath;
         }
 
-        public void FilePath(string filePath)
+        public void FilePathO(string filePath)
         {
             //var path = global::Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
             //var filename1 = Path.Combine(path.ToString(), filename);
@@ -113,6 +116,86 @@ namespace Maham.Droid.Helpers
                 alert.SetMessage(msg);
                 alert.SetPositiveButton(ok, (senderAlert, args) => {
                     
+                });
+
+                //alert.SetNegativeButton(dialogNegativeBtnLabel, (senderAlert, args) => {
+                //    tcs.SetResult(dialogNegativeBtnLabel);
+                //});
+
+                Dialog dialog = alert.Create();
+                dialog.Show();
+
+
+            }
+            //Forms.Context.StartActivity(Intent.CreateChooser(intent, "Your title"));
+        }
+
+        public void FilePath(string filePath)
+        {
+
+            var bytes = File.ReadAllBytes(filePath);
+            File.WriteAllBytes(filePath, bytes);
+
+            Java.IO.File file = new Java.IO.File(filePath);
+            file.SetReadable(true);
+
+            string application = "";
+            string extension = Path.GetExtension(filePath);
+
+            // get mimeType
+            switch (extension.ToLower())
+            {
+                case ".txt":
+                    application = "text/plain";
+                    break;
+                case ".doc":
+                case ".docx":
+                    application = "application/msword";
+                    break;
+                case ".pdf":
+                    application = "application/pdf";
+                    break;
+                case ".xls":
+                case ".xlsx":
+                    application = "application/vnd.ms-excel";
+                    break;
+                case ".jpg":
+                case ".jpeg":
+                case ".png":
+                    application = "image/jpeg";
+                    break;
+                default:
+                    application = "*/*";
+                    break;
+            }
+
+            // Use FileProvider to get a content URI
+            Android.Net.Uri uri = FileProvider.GetUriForFile(
+                Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity,
+                Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity.PackageName + ".fileprovider",
+                file);
+
+            Intent intent = new Intent(Intent.ActionView);
+            intent.SetDataAndType(uri, application);
+            intent.SetFlags(ActivityFlags.ClearWhenTaskReset | ActivityFlags.NewTask | ActivityFlags.GrantReadUriPermission);
+
+            var ac = intent.ResolveActivity(Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity.PackageManager);
+            if (ac != null)
+            {
+                Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity.StartActivity(intent);
+            }
+
+            else
+            {
+                string ok = Setting.Settings.IsRtl ? "موافق" : "OK";
+                string msg = Setting.Settings.IsRtl ? "لا يوجد تطبيق يمكنه فتح هذا الملف" : "No application available to handle this file";
+
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity);
+                //alert.SetTitle(dialogTitle);
+                alert.SetMessage(msg);
+                alert.SetPositiveButton(ok, (senderAlert, args) => {
+
                 });
 
                 //alert.SetNegativeButton(dialogNegativeBtnLabel, (senderAlert, args) => {
