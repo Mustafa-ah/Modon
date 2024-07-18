@@ -128,36 +128,42 @@ namespace Maham.ViewModels
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                
-                // clear old list not work
-                var tabs = await GetTabs();
-                 TaskTabbedPages = new ObservableCollection<TaskTabbedPage>();
-
-              //  ObservableCollection < TaskTabbedPage > tempTabs = new ObservableCollection<TaskTabbedPage>();
-
-                foreach (var item in tabs)
+                try
                 {
-                    var TaskTabbedPage = new TaskTabbedPage();
+                    // clear old list not work
+                    var tabs = await GetTabs();
+                    TaskTabbedPages = new ObservableCollection<TaskTabbedPage>();
 
-                    TaskTabbedPage.Id = item.Id;
-                    if (isRtl)
+                    //  ObservableCollection < TaskTabbedPage > tempTabs = new ObservableCollection<TaskTabbedPage>();
+
+                    foreach (var item in tabs)
                     {
-                        TaskTabbedPage.TabName = item.TitleAr;
-                        TaskTabbedPages.Insert(0, TaskTabbedPage);
+                        var TaskTabbedPage = new TaskTabbedPage();
+
+                        TaskTabbedPage.Id = item.Id;
+                        if (isRtl)
+                        {
+                            TaskTabbedPage.TabName = item.TitleAr;
+                            TaskTabbedPages.Insert(0, TaskTabbedPage);
+                        }
+                        else
+                        {
+                            TaskTabbedPage.TabName = item.Title;
+                            TaskTabbedPages.Add(TaskTabbedPage);
+                        }
+
                     }
-                    else
-                    {
-                        TaskTabbedPage.TabName = item.Title;
-                        TaskTabbedPages.Add(TaskTabbedPage);
-                    }
-                    
+                    // TaskTabbedPages = tempTabs;
+                    int index_ = isRtl ? TaskTabbedPages.Count - 1 : 0;
+                    TaskTabbedPages[index_].IsFirstTab = true;
+
+                    await System.Threading.Tasks.Task.Delay(500);
+                    MessagingCenter.Send(this, "SetCurrentTaskPage");
                 }
-               // TaskTabbedPages = tempTabs;
-                int index_ = isRtl ? TaskTabbedPages.Count - 1 : 0;
-                TaskTabbedPages[index_].IsFirstTab = true;
-
-                await System.Threading.Tasks.Task.Delay(500);
-                MessagingCenter.Send(this, "SetCurrentTaskPage");
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
 
             });
         }
@@ -176,14 +182,18 @@ namespace Maham.ViewModels
                 {
                     case TasksMode.TaskList:
                         //result = await api.GetAllTaskListViews("Bearer " + Settings.AccessToken);
-                        var jsonData = await api.GetAllTaskListViewsTest("Bearer " + Settings.AccessToken);
+                        var jsonData = await api.GetAllTaskListViews("Bearer " + Settings.AccessToken);
                         result = Newtonsoft.Json.JsonConvert.DeserializeObject<ResultData<TabsResponse>>(jsonData);
                         break;
                     case TasksMode.TaskListUserGroup:
-                        result = await api.GetAllTaskListUserGroupViews("Bearer " + Settings.AccessToken);
+                        //result = await api.GetAllTaskListUserGroupViews("Bearer " + Settings.AccessToken);
+                        var jsonData2 = await api.GetAllTaskListUserGroupViews("Bearer " + Settings.AccessToken);
+                        result = Newtonsoft.Json.JsonConvert.DeserializeObject<ResultData<TabsResponse>>(jsonData2);
                         break;
                     case TasksMode.ClosedTasksList:
-                        result = await api.GetAllClosedTasks("Bearer " + Settings.AccessToken);
+                        //result = await api.GetAllClosedTasks("Bearer " + Settings.AccessToken);
+                        var jsonData3 = await api.GetAllClosedTasks("Bearer " + Settings.AccessToken);
+                        result = Newtonsoft.Json.JsonConvert.DeserializeObject<ResultData<TabsResponse>>(jsonData3);
                         break;
                     default:
                         break;

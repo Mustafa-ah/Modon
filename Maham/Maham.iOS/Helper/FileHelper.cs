@@ -39,5 +39,10 @@ namespace Maham.iOS.Helper
         {
             //throw new NotImplementedException();
         }
+
+        public void GetStoragePermission()
+        {
+            //throw new NotImplementedException();
+        }
     }
 }

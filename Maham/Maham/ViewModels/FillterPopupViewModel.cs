@@ -993,9 +993,11 @@ namespace Maham.ViewModels
             try
             {
                 var result = await api.GetEntities("Bearer " + Settings.AccessToken);
-                List<ListPopUpModel_Guid> x = new List<ListPopUpModel_Guid>();
+                
+                var data = JsonConvert.DeserializeObject<ResultData<Entity>>(result);
+                //List<ListPopUpModel_Guid> x = new List<ListPopUpModel_Guid>();
                 IsSectorsLoading = false;
-                return result.Data;
+                return data.Data;
             }
             catch (Exception exception)
             {

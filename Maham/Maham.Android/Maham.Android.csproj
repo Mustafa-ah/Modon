@@ -58,6 +58,7 @@
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <MandroidI18n>Mideast</MandroidI18n>
     <LangVersion>latest</LangVersion>
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />

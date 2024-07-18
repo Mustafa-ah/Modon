@@ -257,7 +257,7 @@ namespace Maham.Service
         #endregion
         #region Filter Tasks Params 
         [Get("/api/Entity/GetEntitiesHierarchy")]
-        Task<ResultData<Entity>> GetEntities([Header("Authorization")] string accessToken);
+        Task<string> GetEntities([Header("Authorization")] string accessToken);
 
         [Get("/api/Entity/GetEntitysList")]
         Task<Result> GetSectors([Header("Authorization")] string accessToken);
@@ -289,7 +289,7 @@ namespace Maham.Service
 
         #region NewApis
         [Get("/api/View/GetAllTaskListViews")]
-        Task<ResultData<TabsResponse>> GetAllTaskListViews([Header("Authorization")] string accessToken);
+        Task<string> GetAllTaskListViews([Header("Authorization")] string accessToken);
 
         [Get("/api/View/GetAllTaskListViews")]
         Task<string> GetAllTaskListViewsTest([Header("Authorization")] string accessToken);
@@ -307,10 +307,10 @@ namespace Maham.Service
 
         // /api​/View​/GetAllTaskListUserGroupViews
         [Get("/api/View/GetAllTaskListUserGroupViews")]
-        Task<ResultData<TabsResponse>> GetAllTaskListUserGroupViews([Header("Authorization")] string accessToken);
+        Task<string> GetAllTaskListUserGroupViews([Header("Authorization")] string accessToken);
 
         [Get("/api/View/GetAllClosedTasksViews")]
-        Task<ResultData<TabsResponse>> GetAllClosedTasks([Header("Authorization")] string accessToken);
+        Task<string> GetAllClosedTasks([Header("Authorization")] string accessToken);
 
         #endregion
 

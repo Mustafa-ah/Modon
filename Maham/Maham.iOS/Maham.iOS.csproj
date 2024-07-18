@@ -48,6 +48,8 @@
     <MtouchArch>i386, x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
     <MtouchExtraArgs>--registrar:static</MtouchExtraArgs>
+    <CodesignProvision>MODON_TASKY_ADHOC_2024</CodesignProvision>
+    <CodesignKey>Apple Distribution: Sherif El Shamaa (M9HCLYJ56N)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -74,15 +76,13 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution: Saudi Industrial Property Authority (Modon) (8C7BXHZX88)</CodesignKey>
-    <CodesignEntitlements>
-    </CodesignEntitlements>
-    <CodesignProvision>Maham Provisioning Profile</CodesignProvision>
+    <CodesignProvision>MODON_TASKY_ADHOC_2024</CodesignProvision>
     <CodesignExtraArgs />
     <CodesignResourceRules />
     <BuildIpa>true</BuildIpa>
     <IpaIncludeArtwork>true</IpaIncludeArtwork>
     <MtouchLink>SdkOnly</MtouchLink>
+    <CodesignKey>Apple Distribution: Sherif El Shamaa (M9HCLYJ56N)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -297,6 +297,9 @@
     </PackageReference>
     <PackageReference Include="Plugin.Badge">
       <Version>2.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Build.Download">
+      <Version>0.11.4</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
