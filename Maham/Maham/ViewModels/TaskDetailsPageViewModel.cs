@@ -1368,7 +1368,7 @@ namespace Maham.ViewModels
                 }
                 if (!has)
                     has = Settings.IsSuperAdmin || (Settings.Ability.Where(x => x.FkModule.Name.ToLower() == module
-                                                                                && x.FkPrivilege.Name.ToLower() == action).Count() > 0);
+                                                                                && x.FkPrivilege.Name.ToLower() == action).Count() > 0 && IsTaskCreator);
             }
             catch (Exception e)
             {
