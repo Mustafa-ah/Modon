@@ -57,7 +57,7 @@ namespace Maham
 
            
 
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjkzMDcxQDMxMzcyZTMxMmUzMGw5WXJOWlRReTBWSlpRMUU5Wm91TlVHaDFKc3o0Nzl1SWZORVMxelUrV009");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NCaF5cXmZCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXhfeHRcRWRcWU13XUc=");
            // Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzAwODhAMzEzNjJlMzMyZTMwRzFkWWRzNnJNRnEzM0QvRlp5MGcrcVdaNGpxSVpxaklKWTAvWm9OUU9VUT0=");
             InitializeComponent();
 

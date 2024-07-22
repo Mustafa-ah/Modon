@@ -43,11 +43,11 @@
     <PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="SuaveControls.FloatingActionButton" Version="2018.1.5" />
-    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="17.1.0.38" />
-    <PackageReference Include="Syncfusion.Xamarin.SfGauge" Version="17.1.0.38" />
-    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="17.1.0.38" />
-     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.1.0.38" />
-    <PackageReference Include="Syncfusion.Xamarin.SfTreeView" Version="17.1.0.38" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="26.1.42" />
+    <PackageReference Include="Syncfusion.Xamarin.SfGauge" Version="26.1.42" />
+    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="26.1.42" />
+     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="26.1.42" />
+    <PackageReference Include="Syncfusion.Xamarin.SfTreeView" Version="26.1.42" />
     <PackageReference Include="Unity" Version="5.11.10" />
     <PackageReference Include="Vapolia.XamarinFormsGesture" Version="3.3.2" />
     <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />

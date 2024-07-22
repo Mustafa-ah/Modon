@@ -252,13 +252,13 @@
       <Version>2018.1.5</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
-      <Version>17.1.0.38</Version>
+      <Version>26.1.42</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfGauge.IOS">
-      <Version>17.1.0.38</Version>
+      <Version>26.1.42</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfProgressBar.IOS">
-      <Version>17.1.0.38</Version>
+      <Version>26.1.42</Version>
     </PackageReference>
     <PackageReference Include="Unity">
       <Version>5.11.10</Version>
@@ -290,10 +290,10 @@
       <ExcludeAssets>all</ExcludeAssets>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfTreeView">
-      <Version>17.1.0.38</Version>
+      <Version>26.1.42</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Buttons">
-      <Version>17.1.0.38</Version>
+      <Version>26.1.42</Version>
     </PackageReference>
     <PackageReference Include="Plugin.Badge">
       <Version>2.3.1</Version>
