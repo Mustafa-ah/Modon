@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Maham.Views.NotPrioritiesPage"
@@ -370,9 +370,9 @@
                         WidthRequest="80"
                         Source="FloatingButton.png">
                     <Image.Margin>
-                        <OnPlatform x:TypeArguments="Thickness"
-                                                    iOS ="0,0,0,60"
-                                                    Android ="0,0,0,0">
+                        <OnPlatform x:TypeArguments="Thickness">
+                             <On Platform="iOS" Value="0,0,0,85" />
+                             <On Platform="Android" Value="0,0,0,0" />
                         </OnPlatform>
                     </Image.Margin>
                     <Image.GestureRecognizers>

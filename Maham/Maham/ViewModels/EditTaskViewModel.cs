@@ -1123,6 +1123,7 @@ namespace Maham.ViewModels
             OnNavigatedTo(NavParameters);
             base.OnAppearing();
         }
+
         public async Task GetTaskData()
         {
             var api = RestService.For<ITaskyApi>(new HttpClient(new HttpLoggingHandler()) { BaseAddress = new Uri(Settings.ApiUrl) });
@@ -1156,7 +1157,7 @@ namespace Maham.ViewModels
                     prioritylist = false;
                     priorityId = _priority.id;
 
-                    sourcename = task.SourceDisplayName;
+                    sourcename = IsRTL ? task.SourceDisplayName : task.SourceDisplayNameEn;
                     sourceId = task.SourceId;
 
                     Description = task.Description;
@@ -1178,9 +1179,9 @@ namespace Maham.ViewModels
                         AsUserGroup = true;
                         AsUser = false;
                     }
-                    if (!String.IsNullOrEmpty(task.AssignorEntityUser))
+                    if (!String.IsNullOrEmpty(task.AssigneeRoleName))
                     {
-                        PositionName = task.AssignorEntityUser;
+                        PositionName = task.AssigneeRoleName;
                         PositionID = task.AssignorEntityUserId.ToString();
                         GetAssignEmployeeByPositionID(PositionID);
                         AsUser = true;
@@ -1195,8 +1196,6 @@ namespace Maham.ViewModels
                     };
                     ResponsibleID = Lastemployee.Value2.ID;
                     employeename = IsRTL? task.ArabicName : Lastemployee.Text;
-
-
 
 
                     //FilesList = new ObservableCollection<FileDataModel>();
@@ -1303,13 +1302,15 @@ namespace Maham.ViewModels
                 {
                     var result = await api.GetPositionAssign("Bearer " + Settings.AccessToken, positionId);
 
-                    SetSelectedEntity(result.Data.FirstOrDefault(), entityId);
+                    //SetSelectedEntity(result.Data.FirstOrDefault(), entityId);
+                    SetSelectedEntities(result.Data, entityId);
                 }
                 else
                 {
                     var result = await api.GetUserGroupAssignees("Bearer " + Settings.AccessToken, positionId, (int)Enums.Privilege.Reassign);
 
-                    SetSelectedEntity(result.Data.FirstOrDefault(), entityId);
+                    // SetSelectedEntity(result.Data.FirstOrDefault(), entityId);
+                    SetSelectedEntities(result.Data, entityId);
                 }
                 
 
@@ -1327,7 +1328,21 @@ namespace Maham.ViewModels
             //return name;
         }
 
-      
+
+        void SetSelectedEntities(List<Entity> entities, string entityId)
+        {
+            try
+            {
+                foreach (var entity in entities)
+                {
+                    SetSelectedEntity(entity, entityId);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
         void SetSelectedEntity(Entity entity, string entityId)
         {
             if (entity == null)

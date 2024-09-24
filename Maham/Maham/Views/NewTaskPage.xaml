@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
@@ -10,7 +10,6 @@
              xmlns:behaviors="clr-namespace:Maham.Behaviors"
              x:Class="Maham.Views.NewTaskPage"
              xmlns:transalte="clr-namespace:Maham.Helpers"
-         
              BackgroundColor="{StaticResource backgroundcolors}"
                x:Name="RootItem">
     <ContentPage.Resources>
@@ -61,7 +60,7 @@
                                                            WidthRequest="25"
                                                            Margin="5,20,5,0"
                                                              />
-                        <Label Text="As User Group" VerticalOptions="End"/>
+                        <Label Text="{transalte:Translate asusergroup}" VerticalOptions="End"/>
 
 
 
@@ -76,7 +75,7 @@
                                                            WidthRequest="25"
                                                            Margin="5,20,5,0"
                                                              />
-                        <Label Text="As User" VerticalOptions="End" />
+                        <Label Text="{transalte:Translate asuser}" VerticalOptions="End" />
 
 
                         <StackLayout.GestureRecognizers>
@@ -222,7 +221,7 @@
                                       BackgroundColor="White"
                                         HeightRequest="56">
                     <customcontrol:CustomEntry 
-                        FlowDirection="LeftToRight"
+                        FlowDirection="MatchParent"
                                          HorizontalTextAlignment="Start"
                                            Margin="10,10,10,5"
                                            HorizontalOptions="FillAndExpand"
@@ -291,7 +290,7 @@
                                                     <behaviors:EventToCommandBehavior EventName="Focused" Command="{Binding OnSelectStarDateCommand}"/>
                                                     <behaviors:EventToCommandBehavior EventName="DateSelected" Command="{Binding OnSelectStarDateCommand}"/>
                                                 </DatePicker.Behaviors>
-                                            </DatePicker>
+                             </DatePicker>
                         </Grid>
                     </customcontrol:RoundedView>
                 </StackLayout>
@@ -692,7 +691,7 @@
                             <StackLayout Grid.Column="0">
 
                                 <customcontrol:CustomEntry 
-                                FlowDirection="LeftToRight"
+                                FlowDirection="MatchParent"
                                 PlaceholderColor="{StaticResource lightgrey2}"
                                 HeightRequest="30"
                                  ReturnType="Next"
@@ -803,7 +802,7 @@
                         <customcontrol:CustomEditor
                                           Margin="12,10,5,5"
                                            HorizontalOptions="FillAndExpand"
-                                           VerticalOptions ="LayoutOptions.FillAndExpand"
+                                           VerticalOptions ="FillAndExpand"
                                            x:Name="describtionlable"
                                            Text="{Binding Description}"
                                            PlaceholderColor="{StaticResource lightgrey2}"

@@ -184,7 +184,10 @@
     <value>تم تمكين التذكير</value>
   </data>
     <data name="asusergroup" xml:space="preserve">
-    <value>كمجموعة مستخدم</value>
+    <value>كأحد مجموعات المستخدمين</value>
+  </data>
+   <data name="asuser" xml:space="preserve">
+    <value>كأحد المستخدمين</value>
   </data>
     <data name="crtiticlenumtext" xml:space="preserve">
     <value>حرج</value>

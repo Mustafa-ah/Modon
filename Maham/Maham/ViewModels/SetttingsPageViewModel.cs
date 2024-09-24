@@ -68,11 +68,13 @@ namespace Maham.ViewModels
                 
                 if (AllowPushNotification)
                 {
-                     CrossFirebasePushNotification.Current.RegisterForPushNotifications();
+                    //CrossFirebasePushNotification.Current.RegisterForPushNotifications();
+                    var response = await api.AddUserFireBaseToken("Bearer " + Settings.AccessToken, Settings.FirebaseToken, Settings.FirebaseToken,
+                                   Settings.UserId, Settings.AppLang);
                 }
                 else
                 {
-                    CrossFirebasePushNotification.Current.UnregisterForPushNotifications();
+                    //CrossFirebasePushNotification.Current.UnregisterForPushNotifications();
                     var response = await api.DeleteUserFireBaseToken("Bearer " + Settings.AccessToken, Settings.FirebaseToken, Settings.UserId);
                 }
             }

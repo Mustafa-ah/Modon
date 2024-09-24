@@ -45,7 +45,8 @@ namespace Maham.Service
                 {
                     var result = await req.Content.ReadAsStringAsync();
 
-                    Debug.WriteLine($"{msg} {string.Join("", result.Cast<char>().Take(256))}...");
+                    //Debug.WriteLine($"{msg} {string.Join("", result.Cast<char>().Take(256))}...");
+                    Debug.WriteLine($"{msg} {string.Join("", result)}");
                 }
             }
 
@@ -79,7 +80,8 @@ namespace Maham.Service
                 {
                     var result = await resp.Content.ReadAsStringAsync();
 
-                    Debug.WriteLine($"{msg} {string.Join("", result.Cast<char>().Take(256))}...");
+                    //Debug.WriteLine($"{msg} {string.Join("", result.Cast<char>().Take(256))}...");
+                    Debug.WriteLine($"{msg} {string.Join("", result)}");
                 }
             }
 

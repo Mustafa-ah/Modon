@@ -28,6 +28,7 @@ namespace Maham.Models
         public string AssigneeRoleName { get; set; }
         public string Sector { get; set; }
         public string SourceDisplayName { get; set; }
+        public string SourceDisplayNameEn { get; set; }
         public bool? ReminderEnabled { get; set; }
         public DateTime? ReminderDate { get; set; }
         public Guid? AssignorUserGroupId { get; set; }

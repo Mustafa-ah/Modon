@@ -165,6 +165,9 @@
     <data name="asusergroup" xml:space="preserve">
     <value>As User Group</value>
   </data>
+  <data name="asuser" xml:space="preserve">
+    <value>As User</value>
+  </data>
     <data name="browsfiletext" xml:space="preserve">
     <value>Browse Files To Upload</value>
   </data>
