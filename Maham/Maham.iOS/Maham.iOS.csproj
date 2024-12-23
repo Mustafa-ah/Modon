@@ -48,7 +48,7 @@
     <MtouchArch>i386, x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
     <MtouchExtraArgs>--registrar:static</MtouchExtraArgs>
-    <CodesignProvision>MODON_TASKY_ADHOC_2024</CodesignProvision>
+    <CodesignProvision>TASKY_APPSTORE_2024</CodesignProvision>
     <CodesignKey>Apple Distribution: Sherif El Shamaa (M9HCLYJ56N)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
@@ -93,8 +93,8 @@
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
-    <CodesignProvision>ModonAdhocProfile2020</CodesignProvision>
-    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignProvision></CodesignProvision>
+    <CodesignKey>iPhone Distribution: SAUDI AUTHORITY FOR INDUSTRIAL CITIES AND TECHNOLOGY ZONES</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
     <OptimizePNGs>true</OptimizePNGs>
@@ -113,10 +113,10 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>Apple Distribution: Saudi Industrial Property Authority (Modon) (8C7BXHZX88)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>Maham 2023</CodesignProvision>
     <MtouchLink>SdkOnly</MtouchLink>
+    <CodesignProvision>TASKY_APPSTORE_2024</CodesignProvision>
+    <CodesignKey>Apple Distribution: Sherif El Shamaa (M9HCLYJ56N)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
