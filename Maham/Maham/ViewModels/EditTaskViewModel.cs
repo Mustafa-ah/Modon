@@ -887,7 +887,7 @@ namespace Maham.ViewModels
                 task.StartDate = StartDate_DT;
                 task.EndDate = EndDate_DT;
                 task.PriorityId = priorityId;
-                task.ResponsibleID = Lastemployee.Value2;
+                task.ResponsibleID = new List<Service.Model.Response.Value2>(){Lastemployee.Value2};
                 task.SourceId = sourceId;
                 task.Description = Description;
                 task.ReminderEnabled = ReminderEnabled;
@@ -1191,7 +1191,7 @@ namespace Maham.ViewModels
                     Lastemployee = new ResponsiblesDDL()
                     {
                         Text = task.Assignee,
-                        Value2 = task.ResponsibleID,
+                        Value2 = task.ResponsibleID.FirstOrDefault(),
                         IsCheckedemployee = true,
                     };
                     ResponsibleID = Lastemployee.Value2.ID;

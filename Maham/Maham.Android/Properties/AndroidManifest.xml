@@ -12,7 +12,7 @@
 	<uses-permission android:minSdkVersion="33" android:name="android.permission.READ_MEDIA_IMAGES" />
 	<uses-permission android:minSdkVersion="33" android:name="android.permission.READ_MEDIA_VIDEO" />
 	<uses-permission android:name="android.permission.CAMERA" />
-	<application android:label="Maham" android:icon="@drawable/AppIcon" android:networkSecurityConfig="@xml/network_security_config" android:allowBackup="false">
+	<application android:icon="@drawable/AppIcon" android:networkSecurityConfig="@xml/network_security_config" android:allowBackup="false" android:label="Maham">
 		<!--<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.modon.Maham.fileprovider" android:exported="false" android:grantUriPermissions="true">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
 		</provider>-->

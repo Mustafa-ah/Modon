@@ -10,7 +10,7 @@ namespace Maham.Models
     public class TaskDto
     {
         public Guid Id { get; set; }
-        public Value2 ResponsibleID { get; set; }//could be User/Usergroup"PMO"
+        public List<Value2> ResponsibleID { get; set; }//could be User/Usergroup"PMO"
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime StartDate { get; set; }
@@ -26,7 +26,7 @@ namespace Maham.Models
         public string As { get; set; }// as user or as usergroup
         public string Assignee { get; set; }
         public string AssigneeRoleName { get; set; }
-        public string Sector { get; set; }
+        public List<string> Sector { get; set; }
         public string SourceDisplayName { get; set; }
         public string SourceDisplayNameEn { get; set; }
         public bool? ReminderEnabled { get; set; }

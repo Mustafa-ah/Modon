@@ -936,7 +936,7 @@ namespace Maham.ViewModels
 
                     CanReassign = false;
 
-                    IsTaskOwner = task.ResponsibleID.ID.ToString() == Settings.UserId;
+                    IsTaskOwner = task.ResponsibleID.FirstOrDefault().ID.ToString() == Settings.UserId;
                     IsTaskCreator = task.CreatedBy.ToString() == Settings.UserId;//(task.CreatedBy == Guid.Parse(Settings.UserId))
                     IsClosedStatus = StatusId == (int)SatausEnum.Closed;
                     CanRejectTask = CanReject(task);
@@ -1361,7 +1361,7 @@ namespace Maham.ViewModels
                     {
                         has = Settings.creatorPrivilege.Contains(action);
                     }
-                    if (!has && (task.ResponsibleID.Type == (int)SelectListItemType.User && Settings.UserId == task.ResponsibleID.ID) || (task.ResponsibleID.Type == (int)SelectListItemType.UserGroup && Settings.UserGroupList.Contains(Guid.Parse(task.ResponsibleID.ID))))
+                    if (!has && (task.ResponsibleID.FirstOrDefault().Type == (int)SelectListItemType.User && Settings.UserId == task.ResponsibleID.FirstOrDefault().ID) || (task.ResponsibleID.FirstOrDefault().Type == (int)SelectListItemType.UserGroup && Settings.UserGroupList.Contains(Guid.Parse(task.ResponsibleID.FirstOrDefault().ID))))
                     {
                         has = Settings.assigneePrivilege.Contains(action);
                     }

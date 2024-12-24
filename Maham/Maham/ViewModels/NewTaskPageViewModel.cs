@@ -733,7 +733,7 @@ namespace Maham.ViewModels
                     newTaskModel.StartDate = StartDate_DT;
                     newTaskModel.EndDate = EndDate_DT;
                     newTaskModel.PriorityId = priorityId;
-                    newTaskModel.ResponsibleID = Lastemployee.Value2;
+                    newTaskModel.ResponsibleID = new List<Service.Model.Response.Value2>(){Lastemployee.Value2};
                     newTaskModel.SourceId = sourceId;
                     newTaskModel.Description = Description;
                     newTaskModel.ReminderEnabled = ReminderEnabled;
