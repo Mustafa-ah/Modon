@@ -33,9 +33,8 @@
     <MtouchFastDev>true</MtouchFastDev>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <OptimizePNGs>true</OptimizePNGs>
-    <CodesignKey>iPhone Distribution: Saudi Industrial Property Authority (Modon) (8C7BXHZX88)</CodesignKey>
-    <CodesignProvision>
-    </CodesignProvision>
+    <CodesignKey>iPhone Distribution: Ubieva LLC (DFKCU7D9WB)</CodesignKey>
+    <CodesignProvision>Automatic</CodesignProvision>
     <MtouchI18n>mideast</MtouchI18n>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
@@ -61,11 +60,11 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Distribution: Sherif El Shamaa (M9HCLYJ56N)</CodesignKey>
+    <CodesignKey>iPhone Distribution: Ubieva LLC (DFKCU7D9WB)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchI18n>mideast</MtouchI18n>
-    <CodesignProvision>ModonAdhocProfile2020</CodesignProvision>
+    <CodesignProvision>Automatic</CodesignProvision>
     <MtouchLink>SdkOnly</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
@@ -94,7 +93,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
     <CodesignProvision></CodesignProvision>
-    <CodesignKey>iPhone Distribution: SAUDI AUTHORITY FOR INDUSTRIAL CITIES AND TECHNOLOGY ZONES</CodesignKey>
+    <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
     <OptimizePNGs>true</OptimizePNGs>
@@ -153,6 +152,11 @@
     <BundleResource Include="Resources\user%403x.png" />
     <Compile Include="Renderer\CustomDatePicker.cs" />
     <None Include=".DS_Store" />
+    <BundleResource Include="Resources\group13.jpg" />
+    <BundleResource Include="Resources\Group13%401x.png" />
+    <BundleResource Include="Resources\Group13%402x.png" />
+    <BundleResource Include="Resources\Group13%403x.png" />
+    <BundleResource Include="Resources\splash_logo.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\Contents.json">
@@ -188,6 +192,7 @@
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default@2x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <InterfaceDefinition Include="LaunchScreen1.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -1127,70 +1132,7 @@
     <BundleResource Include="Resources\post.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage-1125%403x~iphoneX-portrait_1125x2436.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage-1242%403x~iphone6s-landscape_2208x1242.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage-1242%403x~iphone6s-portrait_1242x2208.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage-2436%403x~iphoneX-landscape_2436x1125.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage-568h%402x~iphone_640x1136.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage-750%402x~iphone6-landscape_1334x750.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage-750%402x~iphone6-portrait_750x1334.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage-Landscape%402x~ipad_2048x1496.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage-Landscape%402x~ipad_2048x1536.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage-Landscape%402x~ipad_2224x1668.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage-Landscape%402x~ipad_2732x2048.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage-Landscape~ipad_1024x748.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage-Landscape~ipad_1024x768.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage-Portrait%402x~ipad_1536x2008.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage-Portrait%402x~ipad_1536x2048.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage-Portrait%402x~ipad_1668x2224.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage-Portrait%402x~ipad_2048x2732.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage-Portrait~ipad_768x1024.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\LaunchImage.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage~ipad.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage~iphone-320x480.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\LaunchImage~iphone_640x960.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\logouticon.png" />
