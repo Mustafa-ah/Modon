@@ -48,8 +48,8 @@
     <MtouchArch>i386, x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
     <MtouchExtraArgs>--registrar:static</MtouchExtraArgs>
-    <CodesignProvision>TASKY_APPSTORE_2024</CodesignProvision>
-    <CodesignKey>Apple Distribution: Sherif El Shamaa (M9HCLYJ56N)</CodesignKey>
+    <CodesignProvision>Automatic</CodesignProvision>
+    <CodesignKey>Apple Distribution: Saudi Industrial Property Authority (Modon) (8C7BXHZX88)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -76,13 +76,13 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignProvision>MODON_TASKY_ADHOC_2024</CodesignProvision>
+    <CodesignProvision></CodesignProvision>
     <CodesignExtraArgs />
     <CodesignResourceRules />
     <BuildIpa>true</BuildIpa>
     <IpaIncludeArtwork>true</IpaIncludeArtwork>
     <MtouchLink>SdkOnly</MtouchLink>
-    <CodesignKey>Apple Distribution: Sherif El Shamaa (M9HCLYJ56N)</CodesignKey>
+    <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -94,7 +94,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
     <CodesignProvision></CodesignProvision>
-    <CodesignKey>iPhone Distribution: SAUDI AUTHORITY FOR INDUSTRIAL CITIES AND TECHNOLOGY ZONES</CodesignKey>
+    <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
     <OptimizePNGs>true</OptimizePNGs>
@@ -115,8 +115,8 @@
     <MtouchArch>ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
-    <CodesignProvision>TASKY_APPSTORE_2024</CodesignProvision>
-    <CodesignKey>Apple Distribution: Sherif El Shamaa (M9HCLYJ56N)</CodesignKey>
+    <CodesignProvision>AppStor_MODON_2026_up</CodesignProvision>
+    <CodesignKey>Apple Distribution: Saudi Industrial Property Authority (Modon) (8C7BXHZX88)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
@@ -152,6 +152,10 @@
     <BundleResource Include="Resources\user%402x.png" />
     <BundleResource Include="Resources\user%403x.png" />
     <Compile Include="Renderer\CustomDatePicker.cs" />
+    <BundleResource Include="PrivacyInfo.xcprivacy" />
+    <BundleResource Include="FBLPromises.PrivacyInfo.xcprivacy" />
+    <BundleResource Include="FirebaseCore.PrivacyInfo.xcprivacy" />
+    <BundleResource Include="FirebaseCoreDiagnostics.PrivacyInfo.xcprivacy" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-20x20@1x.png">
