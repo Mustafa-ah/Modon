@@ -1,7 +1,7 @@
 ﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-using Plugin.FirebasePushNotification;
+    //using Plugin.FirebasePushNotification;
 using Plugin.Multilingual;
 using Prism;
 using Prism.Ioc;
@@ -190,58 +190,58 @@ namespace Maham
                 
                 //CrossFirebasePushNotification.Current.Subscribe("general");
 
-                CrossFirebasePushNotification.Current.OnTokenRefresh += async (s, p) =>
-                {
+                //CrossFirebasePushNotification.Current.OnTokenRefresh += async (s, p) =>
+                //{
                    
-                    if (!string.IsNullOrEmpty(Settings.UserId))
-                    {
-                        try
-                        {
-                            if (Settings.IsLoged)
-                            {
+                //    if (!string.IsNullOrEmpty(Settings.UserId))
+                //    {
+                //        try
+                //        {
+                //            if (Settings.IsLoged)
+                //            {
 
-                                var api = RestService.For<ITaskyApi>(new System.Net.Http.HttpClient(new HttpLoggingHandler()) { BaseAddress = new Uri(Settings.ApiUrl) });
-                                var response = await api.AddUserFireBaseToken("Bearer " + Settings.AccessToken, Settings.FirebaseToken, p.Token,
-                                    Settings.UserId, Settings.AppLang);
-                                if (response.Success)
-                                {
+                //                var api = RestService.For<ITaskyApi>(new System.Net.Http.HttpClient(new HttpLoggingHandler()) { BaseAddress = new Uri(Settings.ApiUrl) });
+                //                var response = await api.AddUserFireBaseToken("Bearer " + Settings.AccessToken, Settings.FirebaseToken, p.Token,
+                //                    Settings.UserId, Settings.AppLang);
+                //                if (response.Success)
+                //                {
 
-                                    var langResponse = await api.SetPreferredLanguage("Bearer " + Settings.AccessToken, Setting.Settings.UserId, Settings.FirebaseToken, culture);
+                //                    var langResponse = await api.SetPreferredLanguage("Bearer " + Settings.AccessToken, Setting.Settings.UserId, Settings.FirebaseToken, culture);
 
-                                }
-                                else
-                                {
-                                    var propertiesL = new Dictionary<string, string> { { "App.cs: Error msg ", response.Data }, { "UserId", Settings.UserId } };
-                                    Analytics.TrackEvent("AddUserFireBaseToken", propertiesL);
-                                }
-                            }
-                        }
-                        catch (Exception exception)
-                        {
-                            var properties = new Dictionary<string, string> { { "app.xaml.cs", "ontokennotfication" } };
-                            Crashes.TrackError(exception, properties);
-                        }
-                    }
-                    ////AddUserFireBaseToken uses this as prev token after that we can save te new token
-                    Settings.FirebaseToken = p.Token;
+                //                }
+                //                else
+                //                {
+                //                    var propertiesL = new Dictionary<string, string> { { "App.cs: Error msg ", response.Data }, { "UserId", Settings.UserId } };
+                //                    Analytics.TrackEvent("AddUserFireBaseToken", propertiesL);
+                //                }
+                //            }
+                //        }
+                //        catch (Exception exception)
+                //        {
+                //            var properties = new Dictionary<string, string> { { "app.xaml.cs", "ontokennotfication" } };
+                //            Crashes.TrackError(exception, properties);
+                //        }
+                //    }
+                //    ////AddUserFireBaseToken uses this as prev token after that we can save te new token
+                //    Settings.FirebaseToken = p.Token;
 
-                    var properties2 = new Dictionary<string, string> { { "App.cs: FireBase token ", p.Token } };
-                    Analytics.TrackEvent("OnTokenRefresh_New3", properties2);
-                };
+                //    var properties2 = new Dictionary<string, string> { { "App.cs: FireBase token ", p.Token } };
+                //    Analytics.TrackEvent("OnTokenRefresh_New3", properties2);
+                //};
 
                 
-                // not display notification when app killed
-                CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
-                {
-                    try
-                    {
-                        Settings.TaskId = p.Data["taskId"].ToString();
-                    }
-                    catch (Exception ex)
-                    {
-                        Crashes.TrackError(ex);
-                    }
-                };
+                //// not display notification when app killed
+                //CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
+                //{
+                //    try
+                //    {
+                //        Settings.TaskId = p.Data["taskId"].ToString();
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        Crashes.TrackError(ex);
+                //    }
+                //};
             
             }
             catch (Exception exception)

@@ -1022,37 +1022,44 @@ namespace Maham.ViewModels
                         }
 
                         string filepath;
-                        foreach (var item in task.Attachment)
+                        if(task.Attachment != null && task.Attachment.Count > 0)
                         {
-                            if (item.IsEvidence != null && item.IsEvidence.Value)
+                            foreach (var item in task.Attachment)
                             {
-                                ImageTypee = "search_icon";
+                                if (item.IsEvidence != null && item.IsEvidence.Value)
+                                {
+                                    ImageTypee = "search_icon";
+                                }
+                                else
+                                {
+                                    ImageTypee = "attach_icon";
+                                }
+                                filepath = Path.Combine(path, item.Name);
+                                FilelistData.Add(new FileDataModel { FileName = item.Name, filepath = filepath, FileTime = item.CreatedAt.ToShortDateStringForView(), image = ImageTypee, AttachmentId = item.Id });
+
+                            }
+
+                            if (FilelistData.Count == 0)
+                            {
+                                FilelistDataVisible = false;
+                                ishowmore = false;
                             }
                             else
                             {
-                                ImageTypee = "attach_icon";
+                                FilelistDataVisible = true;
+                                if (FilelistData.Count > 2)
+                                {
+                                    ishowmore = true;
+                                }
+                                else
+                                {
+                                    ishowmore = false;
+                                }
                             }
-                            filepath = Path.Combine(path, item.Name);
-                            FilelistData.Add(new FileDataModel { FileName = item.Name, filepath = filepath, FileTime = item.CreatedAt.ToShortDateStringForView(), image = ImageTypee, AttachmentId = item.Id });
-
-                        }
-
-                        if (FilelistData.Count == 0)
-                        {
-                            FilelistDataVisible = false;
-                            ishowmore = false;
                         }
                         else
                         {
-                            FilelistDataVisible = true;
-                            if (FilelistData.Count > 2)
-                            {
-                                ishowmore = true;
-                            }
-                            else
-                            {
-                                ishowmore = false;
-                            }
+                            GetAllAttachmentsByTaskID();
                         }
 
                     }
@@ -1126,6 +1133,59 @@ namespace Maham.ViewModels
                 Crashes.TrackError(exception, properties);
             }
 
+        }
+
+        private async void GetAllAttachmentsByTaskID()
+        {
+            try
+            {
+                var api = RestService.For<ITaskyApi>(new System.Net.Http.HttpClient(new HttpLoggingHandler()) { BaseAddress = new Uri(Settings.ApiUrl) });
+                var result = await api.GetTaskAttachment("Bearer " + Settings.AccessToken, Settings.TaskId);
+                if (result.Success)
+                {
+                    string filepath;
+                    foreach (var item in result.Data)
+                    {
+                        if (item.IsEvidence != null && item.IsEvidence.Value)
+                        {
+                            ImageTypee = "search_icon";
+                        }
+                        else
+                        {
+                            ImageTypee = "attach_icon";
+                        }
+                        filepath = Path.Combine(path, item.Name);
+                        FilelistData.Add(new FileDataModel { FileName = item.Name, filepath = filepath, FileTime = item.CreatedAt.ToShortDateStringForView(), image = ImageTypee, AttachmentId = item.Id });
+
+                    }
+
+                    if (FilelistData.Count == 0)
+                    {
+                        FilelistDataVisible = false;
+                        ishowmore = false;
+                    }
+                    else
+                    {
+                        FilelistDataVisible = true;
+                        if (FilelistData.Count > 2)
+                        {
+                            ishowmore = true;
+                        }
+                        else
+                        {
+                            ishowmore = false;
+                        }
+                    }
+                }
+            }
+            catch (System.Exception exception)
+            {
+                var properties = new Dictionary<string, string>
+                       {
+                             { "_EditTaskViewModel", "gettaskbyid" },
+                       };
+                Crashes.TrackError(exception, properties);
+            }
         }
 
         private bool CanEditTask()

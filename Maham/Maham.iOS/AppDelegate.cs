@@ -1,5 +1,5 @@
 ﻿using Foundation;
-using Plugin.FirebasePushNotification;
+//using Plugin.FirebasePushNotification;
 using Naxam.Controls.Platform.iOS;
 using Prism;
 using Prism.Ioc;
@@ -51,10 +51,10 @@ namespace Maham.iOS
             LoadApplication(new App(new iOSInitializer()));
             //just make sure that changes pushed
 
-            FirebasePushNotificationManager.Initialize(options, true);
+            //FirebasePushNotificationManager.Initialize(options, true);
 
-            FirebasePushNotificationManager.CurrentNotificationPresentationOption = 
-                UNNotificationPresentationOptions.Alert | UNNotificationPresentationOptions.Badge;
+            //FirebasePushNotificationManager.CurrentNotificationPresentationOption = 
+                //UNNotificationPresentationOptions.Alert | UNNotificationPresentationOptions.Badge;
 
             //Xamarin does not load the renderer rendered assemblies, by default, in iOS and UWP projects
             new Syncfusion.SfGauge.XForms.iOS.SfGaugeRenderer();
@@ -75,22 +75,22 @@ namespace Maham.iOS
 
             // CrossFirebasePushNotification.Current.OnNotificationReceived += Current_OnNotificationReceived;
 
-            CrossFirebasePushNotification.Current.OnNotificationOpened += async (s, p) =>
-            {
-                try
-                {
-                    if (p.Data.Count > 0 && p.Data.ContainsKey("taskId"))
-                    {
-                        string taskId_ = p.Data["taskId"].ToString();
-                        Setting.Settings.TaskId = taskId_;
-                        await ((App)App.Current).ExtResolve<INavService>().NavigateToAsync<ViewModels.TaskDetailsPageViewModel>(taskId_);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Crashes.TrackError(ex);
-                }
-            };
+            //CrossFirebasePushNotification.Current.OnNotificationOpened += async (s, p) =>
+            //{
+            //    try
+            //    {
+            //        if (p.Data.Count > 0 && p.Data.ContainsKey("taskId"))
+            //        {
+            //            string taskId_ = p.Data["taskId"].ToString();
+            //            Setting.Settings.TaskId = taskId_;
+            //            await ((App)App.Current).ExtResolve<INavService>().NavigateToAsync<ViewModels.TaskDetailsPageViewModel>(taskId_);
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Crashes.TrackError(ex);
+            //    }
+            //};
            
             return base.FinishedLaunching(app, options);
         }
@@ -135,7 +135,7 @@ namespace Maham.iOS
                              { "AppDelegate:  deviceToken ",deviceToken.ToString() },
                        };
             Analytics.TrackEvent("RegisteredForRemoteNotifications", properties2);
-            FirebasePushNotificationManager.DidRegisterRemoteNotifications(deviceToken);
+            //FirebasePushNotificationManager.DidRegisterRemoteNotifications(deviceToken);
         }
 
         public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
@@ -145,7 +145,7 @@ namespace Maham.iOS
                              { "AppDelegate:  "," approval fail" },
                        };
             Analytics.TrackEvent("FailedToRegisterForRemoteNotifications", properties2);
-            FirebasePushNotificationManager.RemoteNotificationRegistrationFailed(error);
+           // FirebasePushNotificationManager.RemoteNotificationRegistrationFailed(error);
         }
         // To receive notifications in foregroung on iOS 9 and below.
         // To receive notifications in background in any iOS version
@@ -162,7 +162,7 @@ namespace Maham.iOS
             // If you disable method swizzling, you'll need to call this method. 
             // This lets FCM track message delivery and analytics, which is performed
             // automatically with method swizzling enabled.
-            FirebasePushNotificationManager.DidReceiveMessage(userInfo);
+            //FirebasePushNotificationManager.DidReceiveMessage(userInfo);
             // Do your magic to handle the notification data
             System.Console.WriteLine(userInfo);
 

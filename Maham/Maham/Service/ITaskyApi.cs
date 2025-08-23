@@ -198,8 +198,9 @@ namespace Maham.Service
         Task<string> RejectTask([Header("Authorization")] string accessToken, string taskID);
         #endregion
         #region get task attachhment
+        //60/api/Task/GetAllAttachmentsByTaskID?
         [Get("/api/Task/GetAllAttachmentsByTaskID?taskid={taskid}")]
-        Task<Result> GetTaskAttachment([Header("Authorization")] string accessToken, string taskid);
+        Task<ResultData<AttachmentDto>> GetTaskAttachment([Header("Authorization")] string accessToken, string taskid);
         #endregion
         #region gettaskcomment
         [Get("/api/Task/GetAllCommentsByTaskID?taskid={taskid}")]

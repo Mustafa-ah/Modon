@@ -152,6 +152,8 @@ namespace Maham.ViewModels.Authentication
                              { "LoginPageViewModel", "Signincommand" },
                        };
                     Crashes.TrackError(exception, properties);
+                    var msg = exception.Message + "\n" + exception.InnerException.Message;
+                    await Application.Current.MainPage.DisplayAlert($"Request Error", msg, "Ok");
                 }
                 finally
                 {

@@ -20,9 +20,13 @@ namespace Maham.Service.Model.Response.Login
         public Guid? UserGroup { get; set; }
         public bool HasPositions { get; set; }
         public Guid? Position { get; set; }
-        public bool IsSuperAdmin { get; set; }
+        public string ViewCaredentials { get; set; }
         public List<RoleModulePrivilege> Ability { get; set; }
         public List<Guid> UserGroupList { get; set; }
         public bool IsEntityManager { get; set; }
+        public bool IsSuperAdmin
+        {
+            get { return ViewCaredentials == "0NArODpbEWEqNZQqPehSWQ==";}
+        }
     }
 }

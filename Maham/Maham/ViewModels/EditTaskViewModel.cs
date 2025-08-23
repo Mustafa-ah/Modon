@@ -28,6 +28,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using Xamarin.Essentials;
 
+
 namespace Maham.ViewModels
 {
     public class EditTaskViewModel : BaseViewModel
@@ -1201,39 +1202,48 @@ namespace Maham.ViewModels
                     //FilesList = new ObservableCollection<FileDataModel>();
                     //FilesList.Clear();
 
-                    var path = DependencyService.Get<IFileHelper>().file(AppConstants.AppName);
-                    if (!Directory.Exists(path))
-                    {
-                        Directory.CreateDirectory(path);
-                    }
+                    
 
                     string filepath;
-                    foreach (var item in task.Attachment)
+                    if (task.Attachment != null && task.Attachment.Count > 0)
                     {
-                        var checkextension = Path.GetExtension(item.Name);
-                        if (checkextension.Equals(".png") || checkextension.Equals(".jpg") || checkextension.Equals(".jpeg"))
+                        var path = DependencyService.Get<IFileHelper>().file(AppConstants.AppName);
+                        if (!Directory.Exists(path))
                         {
-                            ImageTypeedit = "picture";
+                            Directory.CreateDirectory(path);
+                        }
+
+                        foreach (var item in task.Attachment)
+                        {
+                            var checkextension = Path.GetExtension(item.Name);
+                            if (checkextension.Equals(".png") || checkextension.Equals(".jpg") || checkextension.Equals(".jpeg"))
+                            {
+                                ImageTypeedit = "picture";
+                            }
+                            else
+                            {
+                                ImageTypeedit = "pdf";
+                            }
+                            filepath = Path.Combine(path, item.Name);
+                            FilesList.Add(new FileDataModel { FileName = item.Name,FileTime=item.CreatedAt.ToShortDateStringForView(), filepath = filepath, image = ImageTypeedit, AttachmentId = item.Id });
+
+                        }
+                        if (FilesList.Count > 0)
+                        {
+                            FilelistVisbility = true;
+                        }
+                        if (FilesList.Count > 2)
+                        {
+                            ishowmore = true;
                         }
                         else
                         {
-                            ImageTypeedit = "pdf";
+                            ishowmore = false;
                         }
-                        filepath = Path.Combine(path, item.Name);
-                        FilesList.Add(new FileDataModel { FileName = item.Name,FileTime=item.CreatedAt.ToShortDateStringForView(), filepath = filepath, image = ImageTypeedit, AttachmentId = item.Id });
-
-                    }
-                    if (FilesList.Count > 0)
-                    {
-                        FilelistVisbility = true;
-                    }
-                    if (FilesList.Count > 2)
-                    {
-                        ishowmore = true;
                     }
                     else
                     {
-                        ishowmore = false;
+                        GetAllAttachmentsByTaskID();
                     }
                 }
 
@@ -1250,6 +1260,60 @@ namespace Maham.ViewModels
                 Crashes.TrackError(exception, properties);
             }
 
+        }
+
+        private async void GetAllAttachmentsByTaskID()
+        {
+            try
+            {
+                var api = RestService.For<ITaskyApi>(new System.Net.Http.HttpClient(new HttpLoggingHandler()) { BaseAddress = new Uri(Settings.ApiUrl) });
+                var result = await api.GetTaskAttachment("Bearer " + Settings.AccessToken, Settings.TaskId);
+                if (result.Success)
+                {
+                     string filepath;
+                    var path = DependencyService.Get<IFileHelper>().file(AppConstants.AppName);
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+
+                    foreach (var item in result.Data)
+                    {
+                        var checkextension = Path.GetExtension(item.Name);
+                        if (checkextension.Equals(".png") || checkextension.Equals(".jpg") || checkextension.Equals(".jpeg"))
+                        {
+                            ImageTypeedit = "picture";
+                        }
+                        else
+                        {
+                        ImageTypeedit = "pdf";
+                    }
+                    filepath = Path.Combine(path, item.Name);
+                        FilesList.Add(new FileDataModel { FileName = item.Name,FileTime=item.CreatedAt.ToShortDateStringForView(), filepath = filepath, image = ImageTypeedit, AttachmentId = item.Id });
+
+                    }
+                    if (FilesList.Count > 0)
+                    {
+                        FilelistVisbility = true;
+                    }
+                    if (FilesList.Count > 2)
+                    {
+                        ishowmore = true;
+                    }
+                    else
+                    {
+                        ishowmore = false;
+                    }
+                }
+            }
+            catch (System.Exception exception)
+            {
+                var properties = new Dictionary<string, string>
+                       {
+                             { "_EditTaskViewModel", "gettaskbyid" },
+                       };
+                Crashes.TrackError(exception, properties);
+            }
         }
 
         public async Task GetAssignEmployeeEntitiyId(string[] IDs)

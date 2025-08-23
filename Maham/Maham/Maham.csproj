@@ -34,7 +34,6 @@
     <PackageReference Include="Naxam.TopTabbedPage.Forms" Version="0.0.3.5" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="PlatformTabbedPage" Version="2.0.0" />
-    <PackageReference Include="Plugin.FirebasePushNotification" Version="3.4.35" />
     <PackageReference Include="Plugin.ImageResizer" Version="1.0.1-alpha" />
     <PackageReference Include="Plugin.Multilingual" Version="1.0.2" />
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />

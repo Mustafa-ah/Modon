@@ -1,5 +1,5 @@
 ﻿using Microsoft.AppCenter.Crashes;
-using Plugin.FirebasePushNotification;
+//using Plugin.FirebasePushNotification;
 using Prism.Navigation;
 using Prism.Services;
 using Refit;
