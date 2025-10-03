@@ -424,7 +424,7 @@
     <value>Task Loading Error! Please Contact Administration</value>
   </data>
     <data name="logouttext" xml:space="preserve">
-    <value>Log Out</value>
+    <value>Log Out 1.0.15</value>
   </data>
     <data name="lowenumtext" xml:space="preserve">
     <value>Low</value>

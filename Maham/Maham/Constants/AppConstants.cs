@@ -6,8 +6,8 @@ namespace Maham.Constants
 {
   public static  class AppConstants
     {
-       // public const string BasicURL = "https://maham.modon.gov.sa";
-        public const string BasicURL = "https://apps.stingrayltd.com:50260";
+        public const string BasicURL = "https://maham.modon.gov.sa";
+       // public const string BasicURL = "https://apps.stingrayltd.com:50260";
        // public const string BasicURL = "http://dev.stingrayltd.com:50260";
         //public const string BasicURL = "http://192.168.1.2:5003";
         //public const string BasicURL = "http://197.50.225.151:2020";
