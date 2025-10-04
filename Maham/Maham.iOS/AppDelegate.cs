@@ -51,6 +51,16 @@ namespace Maham.iOS
             TopTabbedRenderer.Init();
             Distribute.DontCheckForUpdatesInDebug();
 
+            // // Force compact style for iPad globally
+            // if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+            // {
+            //     var compactTraits = UITraitCollection.FromHorizontalSizeClass(UIUserInterfaceSizeClass.Compact);
+            //     foreach (var window in UIApplication.SharedApplication.Windows)
+            //     {
+            //         window.RootViewController.SetOverrideTraitCollection(compactTraits, window.RootViewController);
+            //     }
+            // }
+            
             LoadApplication(new App(new iOSInitializer()));
             //just make sure that changes pushed
 

@@ -1,7 +1,9 @@
 ﻿using System;
 using CoreGraphics;
+using Foundation;
 using Maham.CustomControl;
 using Maham.iOS.Renderer;
+using Maham.Views;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
@@ -13,30 +15,68 @@ namespace Maham.iOS.Renderer
     {
         private bool _isIpadBottomTabsApplied = false;
 
+        public CustomTabBarRenderer()
+        {
+            // Early initialization for iPad
+            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+            {
+                // Force compact traits early in the lifecycle
+                ModalPresentationStyle = UIModalPresentationStyle.FullScreen;
+            }
+        }
+
         public override void ViewDidLoad()
         {
+            // Apply trait override BEFORE calling base.ViewDidLoad
+            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+            {
+                var compactTraits = UITraitCollection.FromHorizontalSizeClass(UIUserInterfaceSizeClass.Compact);
+                SetOverrideTraitCollection(compactTraits, this);
+            }
+
             base.ViewDidLoad();
             
             if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
             {
-                // Apply initial setup as soon as possible
-                // Just ensure it runs on main thread in next cycle
-                BeginInvokeOnMainThread(() => 
+                // Additional setup
+                TabBar.Translucent = false;
+                EdgesForExtendedLayout = UIRectEdge.None;
+                
+                BeginInvokeOnMainThread(() =>
                 {
                     ApplyIpadBottomTabs();
                 });
             }
         }
 
+        protected override void OnElementChanged(VisualElementChangedEventArgs e)
+        {
+            // Apply early in the renderer lifecycle
+            if (e.NewElement != null && UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+            {
+                var compactTraits = UITraitCollection.FromHorizontalSizeClass(UIUserInterfaceSizeClass.Compact);
+                SetOverrideTraitCollection(compactTraits, this);
+            }
+
+            base.OnElementChanged(e);
+        }
+
         public override void ViewWillAppear(bool animated)
         {
+            // Re-apply trait collection before appearance
+            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+            {
+                var compactTraits = UITraitCollection.FromHorizontalSizeClass(UIUserInterfaceSizeClass.Compact);
+                SetOverrideTraitCollection(compactTraits, this);
+            }
+
             base.ViewWillAppear(animated);
 
             if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
             {
                 ApplyIpadBottomTabs();
                 
-                // Force iPhone-style bottom tabs
+                // Additional UI adjustments
                 if (ViewControllers != null)
                 {
                     foreach (var vc in ViewControllers)
@@ -65,8 +105,9 @@ namespace Maham.iOS.Renderer
                         tabBarHeight
                     );
                     
-                    // Ensure tab bar is visible and properly positioned
-                    TabBar.Hidden = false;
+                    // Force update
+                    TabBar.SetNeedsLayout();
+                    TabBar.LayoutIfNeeded();
                 }
             }
         }
@@ -77,11 +118,10 @@ namespace Maham.iOS.Renderer
 
             if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
             {
-                // Always force compact width traits on iPad
-                var compact = UITraitCollection.FromHorizontalSizeClass(UIUserInterfaceSizeClass.Compact);
-                SetOverrideTraitCollection(compact, this);
+                var compactTraits = UITraitCollection.FromHorizontalSizeClass(UIUserInterfaceSizeClass.Compact);
+                SetOverrideTraitCollection(compactTraits, this);
                 
-                _isIpadBottomTabsApplied = false; // Reset to reapply
+                _isIpadBottomTabsApplied = false;
                 ApplyIpadBottomTabs();
             }
         }
@@ -90,7 +130,6 @@ namespace Maham.iOS.Renderer
         {
             if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
             {
-                // Force iPhone-like compact width
                 return UITraitCollection.FromHorizontalSizeClass(UIUserInterfaceSizeClass.Compact);
             }
             return base.GetOverrideTraitCollectionForChildViewController(childViewController);
@@ -103,26 +142,21 @@ namespace Maham.iOS.Renderer
 
             try
             {
-                // Force tab bar to bottom
-                if (TabBar != null)
-                {
-                    TabBar.Translucent = false;
-                    
-                    // Ensure tab bar stays at bottom with proper sizing
-                    var tabBarHeight = TabBar.Frame.Height > 0 ? TabBar.Frame.Height : 49; // Default height
-                    TabBar.Frame = new CGRect(
-                        0,
-                        View.Frame.Height - tabBarHeight,
-                        View.Frame.Width,
-                        tabBarHeight
-                    );
-                    
-                    // Force layout if needed
-                    TabBar.SetNeedsLayout();
-                    TabBar.LayoutIfNeeded();
-                }
+                // Ensure tab bar is properly configured
+                TabBar.Translucent = false;
+                TabBar.Hidden = false;
+                
+                var tabBarHeight = TabBar.Frame.Height > 0 ? TabBar.Frame.Height : 49;
+                TabBar.Frame = new CGRect(
+                    0,
+                    View.Frame.Height - tabBarHeight,
+                    View.Frame.Width,
+                    tabBarHeight
+                );
                 
                 _isIpadBottomTabsApplied = true;
+                
+                System.Diagnostics.Debug.WriteLine("iPad bottom tabs applied successfully");
             }
             catch (Exception ex)
             {
