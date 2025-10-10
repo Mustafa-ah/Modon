@@ -1,46 +1,167 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+using CoreGraphics;
 using Foundation;
+using Maham.CustomControl;
 using Maham.iOS.Renderer;
 using Maham.Views;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-//[assembly: ExportRenderer(typeof(TasksPage), typeof(CustomTabBarRenderer))]
+
+[assembly: ExportRenderer(typeof(ExtCustomTabbedPage), typeof(CustomTabBarRenderer))]
 namespace Maham.iOS.Renderer
 {
     public class CustomTabBarRenderer : TabbedRenderer
     {
+        private bool _isIpadBottomTabsApplied = false;
+
+        public CustomTabBarRenderer()
+        {
+            // Early initialization for iPad
+            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+            {
+                // Force compact traits early in the lifecycle
+                ModalPresentationStyle = UIModalPresentationStyle.FullScreen;
+            }
+        }
+
+        public override void ViewDidLoad()
+        {
+            // Apply trait override BEFORE calling base.ViewDidLoad
+            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+            {
+                var compactTraits = UITraitCollection.FromHorizontalSizeClass(UIUserInterfaceSizeClass.Compact);
+                SetOverrideTraitCollection(compactTraits, this);
+            }
+
+            base.ViewDidLoad();
+            
+            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+            {
+                // Additional setup
+                TabBar.Translucent = false;
+                EdgesForExtendedLayout = UIRectEdge.None;
+                
+                BeginInvokeOnMainThread(() =>
+                {
+                    ApplyIpadBottomTabs();
+                });
+            }
+        }
+
+        protected override void OnElementChanged(VisualElementChangedEventArgs e)
+        {
+            // Apply early in the renderer lifecycle
+            if (e.NewElement != null && UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+            {
+                var compactTraits = UITraitCollection.FromHorizontalSizeClass(UIUserInterfaceSizeClass.Compact);
+                SetOverrideTraitCollection(compactTraits, this);
+            }
+
+            base.OnElementChanged(e);
+        }
+
         public override void ViewWillAppear(bool animated)
         {
-            if (TabBar?.Items == null)
-                return;
-
-            // Go through our elements and change them
-            var tabs = Element as TabbedPage;
-            if (tabs != null)
+            // Re-apply trait collection before appearance
+            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
             {
-                for (int i = 0; i < TabBar.Items.Length; i++)
-                    UpdateTabBarItem(TabBar.Items[i]);
+                var compactTraits = UITraitCollection.FromHorizontalSizeClass(UIUserInterfaceSizeClass.Compact);
+                SetOverrideTraitCollection(compactTraits, this);
             }
 
             base.ViewWillAppear(animated);
+
+            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+            {
+                ApplyIpadBottomTabs();
+                
+                // Additional UI adjustments
+                if (ViewControllers != null)
+                {
+                    foreach (var vc in ViewControllers)
+                    {
+                        vc.TabBarItem.TitlePositionAdjustment = new UIOffset(0, 0);
+                    }
+                }
+            }
         }
 
-        private void UpdateTabBarItem(UITabBarItem item)
+        public override void ViewDidLayoutSubviews()
         {
-            if (item == null)
+            base.ViewDidLayoutSubviews();
+
+            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+            {
+                ApplyIpadBottomTabs();
+                
+                if (TabBar != null && View != null)
+                {
+                    var tabBarHeight = TabBar.Frame.Height;
+                    TabBar.Frame = new CGRect(
+                        0,
+                        View.Frame.Height - tabBarHeight,
+                        View.Frame.Width,
+                        tabBarHeight
+                    );
+                    
+                    // Force update
+                    TabBar.SetNeedsLayout();
+                    TabBar.LayoutIfNeeded();
+                }
+            }
+        }
+
+        public override void TraitCollectionDidChange(UITraitCollection previousTraitCollection)
+        {
+            base.TraitCollectionDidChange(previousTraitCollection);
+
+            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+            {
+                var compactTraits = UITraitCollection.FromHorizontalSizeClass(UIUserInterfaceSizeClass.Compact);
+                SetOverrideTraitCollection(compactTraits, this);
+                
+                _isIpadBottomTabsApplied = false;
+                ApplyIpadBottomTabs();
+            }
+        }
+
+        public override UITraitCollection GetOverrideTraitCollectionForChildViewController(UIViewController childViewController)
+        {
+            if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+            {
+                return UITraitCollection.FromHorizontalSizeClass(UIUserInterfaceSizeClass.Compact);
+            }
+            return base.GetOverrideTraitCollectionForChildViewController(childViewController);
+        }
+
+        private void ApplyIpadBottomTabs()
+        {
+            if (_isIpadBottomTabsApplied || TabBar == null || View == null) 
                 return;
 
-            // Set the font for the title.
-            item.SetTitleTextAttributes(new UITextAttributes() { Font = UIFont.FromName("Your-Font", 10) }, UIControlState.Normal);
-            item.SetTitleTextAttributes(new UITextAttributes() { Font = UIFont.FromName("Your-Font", 10) }, UIControlState.Selected);
-
-            // Moves the titles up just a bit.
-            item.TitlePositionAdjustment = new UIOffset(0, -2);
+            try
+            {
+                // Ensure tab bar is properly configured
+                TabBar.Translucent = false;
+                TabBar.Hidden = false;
+                
+                var tabBarHeight = TabBar.Frame.Height > 0 ? TabBar.Frame.Height : 49;
+                TabBar.Frame = new CGRect(
+                    0,
+                    View.Frame.Height - tabBarHeight,
+                    View.Frame.Width,
+                    tabBarHeight
+                );
+                
+                _isIpadBottomTabsApplied = true;
+                
+                System.Diagnostics.Debug.WriteLine("iPad bottom tabs applied successfully");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error applying iPad bottom tabs: {ex.Message}");
+            }
         }
     }
 }

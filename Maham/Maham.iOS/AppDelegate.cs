@@ -13,6 +13,7 @@ using Maham.Service.General;
 using System;
 using Microsoft.AppCenter.Crashes;
 using Syncfusion.XForms.iOS.TreeView;
+using ObjCRuntime;
 
 namespace Maham.iOS
 {
@@ -22,6 +23,7 @@ namespace Maham.iOS
     [Register("AppDelegate")]
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
+
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
         // method you should instantiate the window, load the UI into it and then make the window
@@ -48,6 +50,17 @@ namespace Maham.iOS
 
             TopTabbedRenderer.Init();
             Distribute.DontCheckForUpdatesInDebug();
+
+            // // Force compact style for iPad globally
+            // if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+            // {
+            //     var compactTraits = UITraitCollection.FromHorizontalSizeClass(UIUserInterfaceSizeClass.Compact);
+            //     foreach (var window in UIApplication.SharedApplication.Windows)
+            //     {
+            //         window.RootViewController.SetOverrideTraitCollection(compactTraits, window.RootViewController);
+            //     }
+            // }
+            
             LoadApplication(new App(new iOSInitializer()));
             //just make sure that changes pushed
 

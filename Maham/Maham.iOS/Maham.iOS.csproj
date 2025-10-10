@@ -48,7 +48,7 @@
     <MtouchArch>i386, x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
     <MtouchExtraArgs>--registrar:static</MtouchExtraArgs>
-    <CodesignProvision>Automatic</CodesignProvision>
+    <CodesignProvision>AUG_APPSTOR_MAHAM</CodesignProvision>
     <CodesignKey>Apple Distribution: Saudi Industrial Property Authority (Modon) (8C7BXHZX88)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
@@ -76,13 +76,13 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignProvision></CodesignProvision>
+    <CodesignProvision>AUG_APPSTOR_MAHAM</CodesignProvision>
     <CodesignExtraArgs />
     <CodesignResourceRules />
     <BuildIpa>true</BuildIpa>
     <IpaIncludeArtwork>true</IpaIncludeArtwork>
     <MtouchLink>SdkOnly</MtouchLink>
-    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignKey>Apple Distribution: Saudi Industrial Property Authority (Modon) (8C7BXHZX88)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -115,7 +115,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
-    <CodesignProvision>AppStor_MODON_2026_up</CodesignProvision>
+    <CodesignProvision>AUG_APPSTOR_MAHAM</CodesignProvision>
     <CodesignKey>Apple Distribution: Saudi Industrial Property Authority (Modon) (8C7BXHZX88)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
@@ -138,8 +138,6 @@
     <BundleResource Include="GoogleService-Info.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <ITunesArtwork Include="iTunesArtwork" />
-    <ITunesArtwork Include="iTunesArtwork%402x" />
     <BundleResource Include="Resources\Fonts\GothamBold.ttf" />
     <BundleResource Include="Resources\Fonts\GothamBook.ttf" />
     <BundleResource Include="Resources\Fonts\GothamMedium.ttf" />
@@ -298,6 +296,9 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Build.Download">
       <Version>0.11.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.CommunityToolkit">
+      <Version>2.0.6</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

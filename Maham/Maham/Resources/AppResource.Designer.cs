@@ -1030,7 +1030,7 @@ namespace Maham.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Log Out.
+        ///   Looks up a localized string similar to Log Out 1.0.15.
         /// </summary>
         public static string logouttext {
             get {
